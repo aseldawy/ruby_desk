@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Ahmed ElDawy"]
-  s.date = %q{2010-01-05}
+  s.date = %q{2010-01-06}
   s.description = %q{A gem that works as an interface for oDesk APIs that can be used for both desktop and web applications}
   s.email = %q{ahmed.eldawy@badrit.com}
   s.extra_rdoc_files = [
@@ -17,14 +17,16 @@ Gem::Specification.new do |s|
      "README.rdoc"
   ]
   s.files = [
-    ".document",
-     ".gitignore",
-     "LICENSE",
+    "LICENSE",
      "README.rdoc",
      "Rakefile",
      "VERSION",
      "lib/ruby_desk.rb",
+     "lib/ruby_desk/connector.rb",
+     "lib/ruby_desk/team_room.rb",
+     "ruby_desk.gemspec",
      "test/helper.rb",
+     "test/test.rb",
      "test/test_ruby_desk.rb"
   ]
   s.homepage = %q{http://github.com/aseldawy/ruby_desk}
