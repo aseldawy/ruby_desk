@@ -8,9 +8,10 @@ module RubyDesk
       :snapshot_api, :workdiary_api
     def initialize(params={})
       params.each do |k, v|
-        if k.to_s == 'user'
+        case k.to_s
+         when 'user' then
           @user = RubyDesk::User.new(v)
-        else
+         else
           self.instance_variable_set("@#{k}", v)
         end
       end

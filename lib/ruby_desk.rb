@@ -1,5 +1,9 @@
+require 'rubygems'
+require 'json'
+
 module RubyDesk
 end
 
-require 'ruby_desk/connector'
-require 'ruby_desk/team_room'
+Dir.glob(File.join(File.dirname(__FILE__), 'ruby_desk', '*.rb')).each do |file|
+  require file
+end

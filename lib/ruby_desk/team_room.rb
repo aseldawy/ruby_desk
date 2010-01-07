@@ -6,7 +6,7 @@ module RubyDesk
         # parses a JSON result returned from oDesk and extracts an array of TeamRooms out of it
         json = JSON.parse(response)
         team_rooms = []
-        json['teamrooms']['teamroom'].each do |teamroom|
+        [json['teamrooms']['teamroom']].flatten.each do |teamroom|
           # Append this TeamRoom to array
           team_rooms << self.new(teamroom)
         end
