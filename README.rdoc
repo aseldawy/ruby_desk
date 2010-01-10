@@ -6,7 +6,7 @@ A gem built by BadrIT (www.badrit.com) that works as an interface for oDesk APIs
 Initialize with your api key
   rd = RubyDesk::Connector.new(api_key, api_secret)
 
-Gets the URL that will ask the user to authenticate your application
+Get the URL that will ask the user to authenticate your application
   rd.auth_url
 
 You should then redirect the user to the returned URL to get the frob.
@@ -23,3 +23,4 @@ Now you are ready to use all the APIs you need
 == Copyright
 
 Copyright (c) 2010 Ahmed ElDawy. See LICENSE for details.
+
