@@ -8,4 +8,38 @@ class RubyDesk::Snapshot < RubyDesk::OdeskEntity
 
   attribute :user, :class=>RubyDesk::User
 
+  def self.work_diary(connector, company_id, user_id, date = nil, timezone = "mine")
+    response = connector.prepare_and_invoke_api_call(
+      "team/v1/workdiaries/#{company_id}/#{user_id}" + (date ? "/"+date : ""),
+        :params=>{:timezone=>timezone}, :method=>:get)
+    json = JSON.parse(response)
+
+    return nil unless json['snapshots']['snapshot']
+    [json['snapshots']['snapshot']].flatten.map do |snapshot|
+      self.new(snapshot)
+    end
+  end
+
+  def self.snapshot_details(connector, company_id, user_id, timestamp = nil)
+    timestamp_param = case timestamp
+      when String then timestamp
+      when Date, Time then timestamp.strftime("%Y%m%d")
+      when Range then [timestamp.first, timestamp.last].map{|t|t.strftime("%Y%m%d")}.join(",")
+      when Array then timestamp.map{|t| t.strftime("%Y%m%d")}.join(";")
+    end
+    # Invoke API call
+    response = connector.prepare_and_invoke_api_call(
+      "team/v1/workdiaries/#{company_id}/#{user_id}" +
+      (timestamp_param ? "/#{timestamp_param}" : ""), :method=>:get)
+
+    # Parse result in json format
+    json = JSON.parse(response)
+
+    # Generate ruby objects for each snapshot
+    [json['snapshot']].flatten.map do |snapshot|
+      self.new(snapshot)
+    end
+  end
+
 end
+

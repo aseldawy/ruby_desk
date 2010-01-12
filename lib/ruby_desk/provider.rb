@@ -14,7 +14,7 @@ class RubyDesk::Provider < RubyDesk::OdeskEntity
       end
       return categories
     end
-    
+
     # Implements search with the given criteria
     #* q - ProfileData (ProfileData)
     #      * Profile data is any text that appears in a provider's profile. For example if q = 'odesk' the search would return any user's with the word odesk in their profile.
@@ -74,7 +74,8 @@ class RubyDesk::Provider < RubyDesk::OdeskEntity
       if options.respond_to? :to_str
         return search(connector, :q=>options.to_str)
       end
-      response = connector.prepare_and_invoke_api_call 'profiles/v1/search/providers', {:api_token=>@api_token, :api_key=>@api_key}, :method=>:get, :format=>'json'
+      response = connector.prepare_and_invoke_api_call(
+        'profiles/v1/search/providers', :method=>:get)
       # parses a JSON result returned from oDesk and extracts an array of Providers out of it
       json = JSON.parse(response)
       providers = []
@@ -83,11 +84,11 @@ class RubyDesk::Provider < RubyDesk::OdeskEntity
       end
       return providers
     end
-    
+
     def get_profile(connector, id, options={})
       brief = options.delete :brief || false
-      response = connector.prepare_and_invoke_api_call("profiles/v1/providers/#{id}" + (brief ? "/brief" : ""),
-          {:api_token=>@api_token, :api_key=>@api_key}, :method=>:get, :format=>'json')
+      response = connector.prepare_and_invoke_api_call(
+        "profiles/v1/providers/#{id}" + (brief ? "/brief" : ""), :method=>:get)
       json = JSON.parse(response)
       return self.new(json['profile'])
     end
@@ -119,7 +120,7 @@ class RubyDesk::Provider < RubyDesk::OdeskEntity
       :ag_adj_score, :dev_recent_hours, :dev_timezone, :ag_country_tz, :ag_city,
       :dev_test_passed_count, :dev_tot_feedback, :ag_summary, :ag_manager_name,
       :ag_active_assignments, :portfolio_items
-  
+
   attribute :skills, :class=>RubyDesk::Skill, :sub_element=>'skill'
   attribute :dev_scores, :class=>RubyDesk::DeveloperSkill, :sub_element=>'dev_score'
   attribute :dev_ac_agencies, :class=>RubyDesk::Agency, :sub_element=>'dev_ac_agency'
@@ -145,3 +146,4 @@ class RubyDesk::Provider < RubyDesk::OdeskEntity
     end
   end
 end
+
