@@ -5,12 +5,15 @@ require 'net/https'
 
 module RubyDesk
   class Connector
-    ODESK_API_URL = "www.odesk.com/api/"
-    ODESK_AUTH_URL = "www.odesk.com/services/api/auth/"
-    DEFAULT_OPTIONS = {:secure=>true, :sign=>true, :format=>'xml'}
-    
+    ODESK_URL = "www.odesk.com/"
+    ODESK_API_URL = "#{ODESK_URL}api/"
+    ODESK_GDS_URL = "#{ODESK_URL}gds/"
+    ODESK_AUTH_URL = "#{ODESK_URL}services/api/auth/"
+    DEFAULT_OPTIONS = {:secure=>true, :sign=>true, :format=>'json',
+      :base_url=>ODESK_API_URL, :auth=>true, :params=>{} }
+
     attr_writer :frob
-    
+
     def initialize(api_key=nil, api_secret=nil, frob=nil, api_token=nil)
       @api_key = api_key
       @api_secret = api_secret
@@ -19,46 +22,52 @@ module RubyDesk
       @api_key = "991ac77f4c202873b0ab88f11762370c"
       @api_secret = "c3382d5902e5a7b0"
     end
-    
-    # Sign the given parameters and returns the signature 
+
+    # Sign the given parameters and returns the signature
     def sign(params)
       # sort parameters by its names (keys)
       sorted_params = params.sort { |a, b| a.to_s <=> b.to_s}
-      
+
       # concatenate secret with names, values
       concatenated = @api_secret + sorted_params.to_s
-      
-      # Calculate md5 of concatenated string
-      md5 = Digest::MD5.hexdigest(concatenated)
-      
-      # Return the calculated value as the signature
-      md5
+
+      # Calculate and return md5 of concatenated string
+      Digest::MD5.hexdigest(concatenated)
     end
-    
+
     # Returns the correct URL to go to to invoke the given api
     # path: the path of the API to call. e.g. 'auth'
-    # params: a hash of parameters that needs to be appended
     # options:
     # * :secure=>false: Whether a secure connection is required or not.
     # * :sign=>true: Whether you need to sign the parameters or not
-    def prepare_api_call(path, params = {}, options = {})
+    # * :params=>{}: a hash of parameters that needs to be appended
+    # * :auth=>true: when true indicates that this call need authentication.
+    #     This forces adding :api_token, :api_key and :api_sig to parameters.
+    def prepare_api_call(path, options = {})
       options = DEFAULT_OPTIONS.merge(options)
-      params[:api_sig] = sign(params) if options[:sign]
-      {:url=>"http#{options[:secure]? 's' : ''}://" + ODESK_API_URL + path + "." + options[:format],
-          :params=> params, :method=>options[:method]}
+      params = options[:params]
+      params[:api_sig] = sign(params) if options[:sign] || options[:auth]
+      if options[:auth]
+        params[:api_token] ||= @api_token
+        params[:api_key] ||= @api_key
+      end
+      url = (options[:secure] ? "https" : "http") + "://"
+      url << options[:base_url] << path
+      url << ".#{options[:format]}" if options[:format]
+      return {:url=>url, :params=> params, :method=>options[:method]}
     end
-    
+
     # invokes the given API call and returns body of the response as text
     def invoke_api_call(api_call)
       url = URI.parse(api_call[:url])
       http = Net::HTTP.new(url.host, url.port)
       http.use_ssl = true
-  
+
       data = api_call[:params].to_a.map{|pair| pair.join '='}.join('&')
       headers = {
         'Content-Type' => 'application/x-www-form-urlencoded'
       }
-      
+
       case api_call[:method]
         when :get, 'get' then
           resp, data = http.request(Net::HTTP::Get.new(url.path+"?"+data, headers))
@@ -67,28 +76,30 @@ module RubyDesk
         when :delete, 'delete' then
           resp, data = http.request(Net::HTTP::Delete.new(url.path, headers), data)
       end
-      
+
       return data
     end
-    
+
     # Prepares an API call with the given arguments then invokes it and returns its body
-    def prepare_and_invoke_api_call(path, params = {}, options = {})
-      api_call = prepare_api_call(path, params, options)
+    def prepare_and_invoke_api_call(path, options = {})
+      api_call = prepare_api_call(path, options)
       invoke_api_call(api_call)
     end
-    
+
     # Returns the URL that authenticates the application for the current user
     def auth_url
-      params = {:api_key=>@api_key}
-      params[:api_sig] = sign(params)
-      "https://"+ODESK_AUTH_URL+"?"+params.to_a.map{|pair| pair.join '='}.join('&')
+      auth_call = prepare_api_call("", :params=>{:api_key=>@api_key},
+        :base_url=>ODESK_AUTH_URL)
+      return auth_call[:url]
     end
-    
+
     # return the URL that logs user out of odesk applications
     def logout_url
-      "https://"+ODESK_AUTH_URL
+      logout_call = prepare_api_call("", :base_url=>ODESK_AUTH_URL,
+        :secure=>false)
+      return logout_call[:url]
     end
-    
+
     # Returns an authentication frob.
     #  Parameters
     #    * frob
@@ -98,11 +109,13 @@ module RubyDesk
     #  Return Data
     #    * token
     def get_token
-      response = prepare_and_invoke_api_call 'auth/v1/keys/tokens', {:frob=>@frob, :api_key=>@api_key}, :method=>:post, :format=>'json'
+      response = prepare_and_invoke_api_call 'auth/v1/keys/tokens',
+          :params=>{:frob=>@frob, :api_key=>@api_key}, :method=>:post,
+          :auth=>false
       json = JSON.parse(response)
       @api_token = json['token']
     end
-    
+
     # Returns an authentication frob.
     #Parameters
     #    * api_key
@@ -110,25 +123,26 @@ module RubyDesk
     #
     #Return Data
     #    * frob
-    
+
     def get_frob
-      response = prepare_and_invoke_api_call 'auth/v1/keys/frobs', {:api_key=>@api_key}, :method=>:post, :format=>'json'
+      response = prepare_and_invoke_api_call 'auth/v1/keys/frobs',
+        :params=>{:api_key=>@api_key}, :method=>:post, :auth=>false
       json = JSON.parse(response)
       @frob = json['frob']
     end
-    
+
     # Returns the authenticated user associated with the given authorization token.
     #  Parameters
-    #  
+    #
     #      * api_key
     #      * api_sig
     #      * api_token
-    #  
+    #
     #  Return Data
-    #  
-    #      * token     
+    #
+    #      * token
     def check_token
-      prepare_and_invoke_api_call 'auth/v1/keys/token', {:api_key=>@api_key, :api_token=>@api_token}, :method=>:get, :format=>'json'
+      prepare_and_invoke_api_call 'auth/v1/keys/token', :method=>:get
       json = JSON.parse(response)
       # TODO what to make with results?
       return json
@@ -141,9 +155,10 @@ module RubyDesk
     #  * api_token
 
     def revoke_token
-      prepare_and_invoke_api_call 'auth/v1/keys/token', {:api_key=>@api_key, :api_token=>@api_token}, :method=>:delete, :format=>'json'
+      prepare_and_invoke_api_call 'auth/v1/keys/token', :method=>:delete
       @api_token = nil
     end
-  
+
   end
 end
+
