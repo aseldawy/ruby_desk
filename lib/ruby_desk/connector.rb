@@ -14,13 +14,10 @@ module RubyDesk
 
     attr_writer :frob
 
-    def initialize(api_key=nil, api_secret=nil, frob=nil, api_token=nil)
+    def initialize(api_key=nil, api_secret=nil, api_token=nil)
       @api_key = api_key
       @api_secret = api_secret
-      @frob = frob
       @api_token = api_token
-      @api_key = "991ac77f4c202873b0ab88f11762370c"
-      @api_secret = "c3382d5902e5a7b0"
     end
 
     # Sign the given parameters and returns the signature
@@ -67,6 +64,8 @@ module RubyDesk
       headers = {
         'Content-Type' => 'application/x-www-form-urlencoded'
       }
+      puts "url:"+url.path
+      puts "data:"+data
 
       case api_call[:method]
         when :get, 'get' then
