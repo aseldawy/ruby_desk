@@ -46,11 +46,11 @@ module RubyDesk
     def prepare_api_call(path, options = {})
       options = DEFAULT_OPTIONS.merge(options)
       params = options[:params]
-      params[:api_sig] = sign(params) if options[:sign] || options[:auth]
       if options[:auth]
         params[:api_token] ||= @api_token
         params[:api_key] ||= @api_key
       end
+      params[:api_sig] = sign(params) if options[:sign] || options[:auth]
       url = (options[:secure] ? "https" : "http") + "://"
       url << options[:base_url] << path
       url << ".#{options[:format]}" if options[:format]
@@ -89,8 +89,9 @@ module RubyDesk
     # Returns the URL that authenticates the application for the current user
     def auth_url
       auth_call = prepare_api_call("", :params=>{:api_key=>@api_key},
-        :base_url=>ODESK_AUTH_URL)
-      return auth_call[:url]
+        :base_url=>ODESK_AUTH_URL, :format=>nil, :method=>:get, :auth=>false)
+      data = auth_call[:params].to_a.map{|pair| pair.join '='}.join('&')
+      return auth_call[:url]+"?"+data
     end
 
     # return the URL that logs user out of odesk applications
