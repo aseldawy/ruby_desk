@@ -9,11 +9,11 @@ Initialize with your api key
 Gets the URL that will ask the user to authenticate your application
   rd.auth_url
 
-This will get you the frob you need to access all APIs.
+You should then redirect the user to the returned URL to get the frob.
 When you get the frob set it using
   rd.frob = frob
 
-After that you should request an api_token
+Finally, you should request an api_token
   rd.get_token
 
 Now you are ready to use all the APIs you need

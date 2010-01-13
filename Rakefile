@@ -11,6 +11,7 @@ begin
     gem.homepage = "http://github.com/aseldawy/ruby_desk"
     gem.authors = ["Ahmed ElDawy"]
     gem.files = FileList['lib/**/*.rb', '[A-Z]*', 'test/**/*'].to_a
+    gem.add_dependency('json')
     # gem.add_development_dependency "thoughtbot-shoulda", ">= 0"
     # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
   end
