@@ -10,7 +10,7 @@ module RubyDesk
     ODESK_GDS_URL = "#{ODESK_URL}gds/"
     ODESK_AUTH_URL = "#{ODESK_URL}services/api/auth/"
     DEFAULT_OPTIONS = {:secure=>true, :sign=>true, :format=>'json',
-      :base_url=>ODESK_API_URL, :auth=>true, :params=>{} }
+      :base_url=>ODESK_API_URL, :auth=>true}
 
     attr_writer :frob
 
@@ -42,7 +42,7 @@ module RubyDesk
     #     This forces adding :api_token, :api_key and :api_sig to parameters.
     def prepare_api_call(path, options = {})
       options = DEFAULT_OPTIONS.merge(options)
-      params = options[:params]
+      params = options[:params] || {}
       if options[:auth]
         params[:api_token] ||= @api_token
         params[:api_key] ||= @api_key
@@ -64,8 +64,6 @@ module RubyDesk
       headers = {
         'Content-Type' => 'application/x-www-form-urlencoded'
       }
-      puts "url:"+url.path
-      puts "data:"+data
 
       case api_call[:method]
         when :get, 'get' then
