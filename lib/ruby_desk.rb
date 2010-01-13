@@ -2,6 +2,7 @@ require 'rubygems'
 require 'json'
 
 module RubyDesk
+  class Error < RuntimeError; end;
 end
 
 # This first file is required by other files

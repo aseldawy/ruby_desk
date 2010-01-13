@@ -1,4 +1,46 @@
 class RubyDesk::Provider < RubyDesk::OdeskEntity
+
+  attributes :affiliated, :ag_name, :ag_description, :dev_adj_score_recent,
+    :dev_is_affiliated, :profile_title_full, :dev_total_hours_rounded,
+    :favorited, :ag_member_since, :ag_tot_feedback, :ag_recent_hours,
+    :dev_last_worked, :ciphertext, :dev_pay_rate, :dev_agency_ref,
+    :competencies, :dev_usr_score, :dev_eng_skill, :dev_ic, :dev_bill_rate,
+    :dev_tot_feedback_recent, :ag_rank_percentile,
+    :dev_agency_ciphertext, :ag_total_developers, :ag_hours_lastdays,
+    :dev_blurb, :agency_ciphertext, :dev_total_assignments, :tsexams,
+    :dev_short_name, :dev_active_interviews, :dev_full_name, :dev_country,
+    :dev_expose_full_name, :dev_city, :provider_profile_api, :ag_manager_blurb,
+    :job_categories, :dev_year_exp, :dev_billed_assignments, :dev_portrait,
+    :experiences, :ag_total_hours, :candidacies, :dev_last_activity,
+    :dev_billed_assignments_recent, :dev_rank_percentile, :assignments, :dev_region,
+    :search_affiliate_providers_url, :ag_billed_assignments, :ag_teamid_rollup,
+    :dev_member_since, :dev_availability, :dev_profile_title, :dev_category,
+    :assignments_count, :dev_total_hours, :dev_portfolio_items_count,
+    :dev_recno, :certification, :ag_teamid, :education, :dev_cur_assignments,
+    :version, :oth_experiences, :dev_recent_rank_percentile, :is_odesk_ready,
+    :response_time, :ag_cny_recno, :ag_country, :ag_portrait, :dev_is_ready,
+    :dev_adj_score, :dev_groups, :dev_blurb_short, :ag_last_date_worked,
+    :ag_adj_score_recent, :dev_ui_profile_access, :dev_pay_agency_rate, :trends,
+    :dev_location, :dev_est_availability, :tsexams_count, :permalink, :ag_logo,
+    :ag_adj_score, :dev_recent_hours, :dev_timezone, :ag_country_tz, :ag_city,
+    :dev_test_passed_count, :dev_tot_feedback, :ag_summary, :ag_manager_name,
+    :ag_active_assignments, :portfolio_items
+
+  attribute :skills, :class=>RubyDesk::Skill, :sub_element=>'skill'
+  attribute :dev_scores, :class=>RubyDesk::DeveloperSkill, :sub_element=>'dev_score'
+  attribute :dev_ac_agencies, :class=>RubyDesk::Agency, :sub_element=>'dev_ac_agency'
+  attribute :competencies, :class=>RubyDesk::Competency, :sub_element=>'competency'
+  attribute :tsexams, :class=>RubyDesk::Exam, :sub_element=>'tsexam'
+  attribute :job_categories, :class=>RubyDesk::JobCategory, :sub_element=>'job_category'
+  attribute :experiences, :class=>RubyDesk::Experience, :sub_element=>'experience'
+  attribute :candidacies, :class=>RubyDesk::Candidacy, :sub_element=>'candidacy'
+  attribute :assignments, :class=>RubyDesk::Assignment, :sub_element=>'assignments'
+  attribute :certification, :class=>RubyDesk::Certificate, :sub_element=>'certificate'
+  attribute :education, :class=>RubyDesk::Institution, :sub_element=>'institution'
+  attribute :oth_experiences, :class=>RubyDesk::OtherExperience, :sub_element=>'oth_experience'
+  attribute :trends, :class=>RubyDesk::Trend, :sub_element=>'trend'
+  attribute :portfolio_items, :class=>RubyDesk::PortfolioItem, :sub_element=>'portfolio_item'
+
   class << self
     def all_categories
       text = File.read(File.join(File.dirname(__FILE__), "..", "categories"))
@@ -75,7 +117,8 @@ class RubyDesk::Provider < RubyDesk::OdeskEntity
         return search(connector, :q=>options.to_str)
       end
       response = connector.prepare_and_invoke_api_call(
-        'profiles/v1/search/providers', :method=>:get)
+        'profiles/v1/search/providers', :method=>:get,
+        :auth=>false, :sign=>false)
       # parses a JSON result returned from oDesk and extracts an array of Providers out of it
       json = JSON.parse(response)
       providers = []
@@ -95,46 +138,6 @@ class RubyDesk::Provider < RubyDesk::OdeskEntity
   end
   # Save categories in a constant
   AllCategories = all_categories
-
-  attributes :ag_name, :ag_description, :dev_adj_score_recent, :dev_is_affiliated,
-      :profile_title_full, :dev_total_hours_rounded, :favorited, :ag_member_since,
-      :ag_tot_feedback, :ag_recent_hours, :dev_last_worked, :ciphertext,
-      :dev_pay_rate, :dev_agency_ref, :competencies, :dev_usr_score, :dev_eng_skill,
-      :dev_ic, :dev_bill_rate, :dev_tot_feedback_recent, :ag_rank_percentile,
-      :dev_agency_ciphertext, :ag_total_developers, :ag_hours_lastdays,
-      :dev_blurb, :agency_ciphertext, :dev_total_assignments, :tsexams,
-      :dev_short_name, :dev_active_interviews, :dev_full_name, :dev_country,
-      :dev_expose_full_name, :dev_city, :provider_profile_api, :ag_manager_blurb,
-      :job_categories, :dev_year_exp, :dev_billed_assignments, :dev_portrait,
-      :experiences, :ag_total_hours, :candidacies, :dev_last_activity,
-      :dev_billed_assignments_recent, :dev_rank_percentile, :assignments, :dev_region,
-      :search_affiliate_providers_url, :ag_billed_assignments, :ag_teamid_rollup,
-      :dev_member_since, :dev_availability, :dev_profile_title, :dev_category,
-      :assignments_count, :dev_total_hours, :dev_portfolio_items_count,
-      :dev_recno, :certification, :ag_teamid, :education, :dev_cur_assignments,
-      :version, :oth_experiences, :dev_recent_rank_percentile, :is_odesk_ready,
-      :response_time, :ag_cny_recno, :ag_country, :ag_portrait, :dev_is_ready,
-      :dev_adj_score, :dev_groups, :dev_blurb_short, :ag_last_date_worked,
-      :ag_adj_score_recent, :dev_ui_profile_access, :dev_pay_agency_rate, :trends,
-      :dev_location, :dev_est_availability, :tsexams_count, :permalink, :ag_logo,
-      :ag_adj_score, :dev_recent_hours, :dev_timezone, :ag_country_tz, :ag_city,
-      :dev_test_passed_count, :dev_tot_feedback, :ag_summary, :ag_manager_name,
-      :ag_active_assignments, :portfolio_items
-
-  attribute :skills, :class=>RubyDesk::Skill, :sub_element=>'skill'
-  attribute :dev_scores, :class=>RubyDesk::DeveloperSkill, :sub_element=>'dev_score'
-  attribute :dev_ac_agencies, :class=>RubyDesk::Agency, :sub_element=>'dev_ac_agency'
-  attribute :competencies, :class=>RubyDesk::Competency, :sub_element=>'competency'
-  attribute :tsexams, :class=>RubyDesk::Exam, :sub_element=>'tsexam'
-  attribute :job_categories, :class=>RubyDesk::JobCategory, :sub_element=>'job_category'
-  attribute :experiences, :class=>RubyDesk::Experience, :sub_element=>'experience'
-  attribute :candidacies, :class=>RubyDesk::Candidacy, :sub_element=>'candidacy'
-  attribute :assignments, :class=>RubyDesk::Assignment, :sub_element=>'assignments'
-  attribute :certification, :class=>RubyDesk::Certificate, :sub_element=>'certificate'
-  attribute :education, :class=>RubyDesk::Institution, :sub_element=>'institution'
-  attribute :oth_experiences, :class=>RubyDesk::OtherExperience, :sub_element=>'oth_experience'
-  attribute :trends, :class=>RubyDesk::Trend, :sub_element=>'trend'
-  attribute :portfolio_items, :class=>RubyDesk::PortfolioItem, :sub_element=>'portfolio_item'
 
   def iinitialize(params={})
     params.each do |k, v|
