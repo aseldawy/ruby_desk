@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{ruby_desk}
-  s.version = "0.0.0"
+  s.version = "0.4.1"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Ahmed ElDawy"]
-  s.date = %q{2010-01-06}
+  s.date = %q{2010-01-19}
   s.description = %q{A gem that works as an interface for oDesk APIs that can be used for both desktop and web applications}
   s.email = %q{ahmed.eldawy@badrit.com}
   s.extra_rdoc_files = [
@@ -21,13 +21,22 @@ Gem::Specification.new do |s|
      "README.rdoc",
      "Rakefile",
      "VERSION",
+     "lib/categories",
      "lib/ruby_desk.rb",
      "lib/ruby_desk/connector.rb",
+     "lib/ruby_desk/odesk_entity.rb",
+     "lib/ruby_desk/provider.rb",
+     "lib/ruby_desk/snapshot.rb",
      "lib/ruby_desk/team_room.rb",
-     "ruby_desk.gemspec",
+     "lib/ruby_desk/time_report.rb",
      "test/helper.rb",
-     "test/test.rb",
-     "test/test_ruby_desk.rb"
+     "test/profile.json",
+     "test/providers.json",
+     "test/snapshot.json",
+     "test/teamrooms.json",
+     "test/test_ruby_desk.rb",
+     "test/timereport.json",
+     "test/workdiary.json"
   ]
   s.homepage = %q{http://github.com/aseldawy/ruby_desk}
   s.rdoc_options = ["--charset=UTF-8"]
@@ -36,8 +45,7 @@ Gem::Specification.new do |s|
   s.summary = %q{Wrapper for oDesk APIs in Ruby}
   s.test_files = [
     "test/test_ruby_desk.rb",
-     "test/helper.rb",
-     "test/test.rb"
+     "test/helper.rb"
   ]
 
   if s.respond_to? :specification_version then
@@ -45,9 +53,12 @@ Gem::Specification.new do |s|
     s.specification_version = 3
 
     if Gem::Version.new(Gem::RubyGemsVersion) >= Gem::Version.new('1.2.0') then
+      s.add_runtime_dependency(%q<json>, [">= 0"])
     else
+      s.add_dependency(%q<json>, [">= 0"])
     end
   else
+    s.add_dependency(%q<json>, [">= 0"])
   end
 end
 

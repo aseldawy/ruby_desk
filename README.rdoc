@@ -2,6 +2,10 @@
 
 A gem built by BadrIT (www.badrit.com) that works as an interface for oDesk APIs. It can be used for both desktop and web applications
 
+== Using RubyDesk with Rails
+If you want to use oDesk APIs with Rails applications you may better use ror_desk.
+ror_desk is a plugin built on Ruby Desk and makes it much easier to use with Rails.
+
 == Example
 Initialize with your api key
   rd = RubyDesk::Connector.new(api_key, api_secret)
