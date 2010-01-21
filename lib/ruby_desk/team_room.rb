@@ -4,10 +4,9 @@ class RubyDesk::TeamRoom
 
   class << self
     def get_teamrooms(connector)
-      response = connector.prepare_and_invoke_api_call 'team/v1/teamrooms',
+      json = connector.prepare_and_invoke_api_call 'team/v1/teamrooms',
           :method=>:get
-      # parses a JSON result returned from oDesk and extracts an array of TeamRooms out of it
-      json = JSON.parse(response)
+
       team_rooms = []
       [json['teamrooms']['teamroom']].flatten.each do |teamroom|
         # Append this TeamRoom to array
@@ -28,9 +27,9 @@ class RubyDesk::TeamRoom
   end
 
   def snapshot(connector, online='now')
-    response = connector.prepare_and_invoke_api_call "team/v1/teamrooms/#{self.id}",
+    json = connector.prepare_and_invoke_api_call "team/v1/teamrooms/#{self.id}",
       :params=>{:online=>online}, :method=>:get
-    json = JSON.parse(response)
+
     RubyDesk::Snapshot.new(json['teamroom']['snapshot'])
   end
 

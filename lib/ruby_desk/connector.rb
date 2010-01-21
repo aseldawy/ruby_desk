@@ -2,6 +2,8 @@ require 'digest/md5'
 require 'uri'
 require 'net/http'
 require 'net/https'
+require 'rexml/document'
+require 'json'
 
 module RubyDesk
   class Connector
@@ -22,6 +24,7 @@ module RubyDesk
 
     # Sign the given parameters and returns the signature
     def sign(params)
+      RubyDesk.logger.info "Params to sign: #{params.inspect}"
       # sort parameters by its names (keys)
       sorted_params = params.sort { |a, b| a.to_s <=> b.to_s}
 
@@ -65,6 +68,10 @@ module RubyDesk
         'Content-Type' => 'application/x-www-form-urlencoded'
       }
 
+      RubyDesk.logger.info "URL: #{api_call[:url]}"
+      RubyDesk.logger.info "method: #{api_call[:method]}"
+      RubyDesk.logger.info "Params: #{data}"
+
       case api_call[:method]
         when :get, 'get' then
           resp, data = http.request(Net::HTTP::Get.new(url.path+"?"+data, headers))
@@ -74,13 +81,29 @@ module RubyDesk
           resp, data = http.request(Net::HTTP::Delete.new(url.path, headers), data)
       end
 
-      return data
+      RubyDesk.logger.info "Response code: #{resp.code}"
+      RubyDesk.logger.info "Returned data: #{data}"
+
+      case resp.code
+        when "200" then return data
+        when "401" then raise RubyDesk::UnauthorizedError, data
+        when "500" then raise RubyDesk::ServerError, data
+      end
+
     end
 
     # Prepares an API call with the given arguments then invokes it and returns its body
     def prepare_and_invoke_api_call(path, options = {})
       api_call = prepare_api_call(path, options)
-      invoke_api_call(api_call)
+      data = invoke_api_call(api_call)
+
+      parsed_data = case options[:format]
+        when 'json' then JSON.parse(data)
+        when 'xml' then REXML::Document.new(data)
+        else JSON.parse(data) rescue REXML::Document.new(data) rescue data
+      end
+      RubyDesk.logger.info "Parsed data: #{parsed_data.inspect}"
+      return parsed_data
     end
 
     # Returns the URL that authenticates the application for the current user
@@ -107,10 +130,9 @@ module RubyDesk
     #  Return Data
     #    * token
     def get_token
-      response = prepare_and_invoke_api_call 'auth/v1/keys/tokens',
+      json = prepare_and_invoke_api_call 'auth/v1/keys/tokens',
           :params=>{:frob=>@frob, :api_key=>@api_key}, :method=>:post,
           :auth=>false
-      json = JSON.parse(response)
       @api_token = json['token']
     end
 
@@ -123,9 +145,8 @@ module RubyDesk
     #    * frob
 
     def get_frob
-      response = prepare_and_invoke_api_call 'auth/v1/keys/frobs',
+      json = prepare_and_invoke_api_call 'auth/v1/keys/frobs',
         :params=>{:api_key=>@api_key}, :method=>:post, :auth=>false
-      json = JSON.parse(response)
       @frob = json['frob']
     end
 
@@ -140,9 +161,8 @@ module RubyDesk
     #
     #      * token
     def check_token
-      prepare_and_invoke_api_call 'auth/v1/keys/token', :method=>:get
-      json = JSON.parse(response)
-      # TODO what to make with results?
+      json = prepare_and_invoke_api_call 'auth/v1/keys/token', :method=>:get
+      # TODO what to do with results?
       return json
     end
 

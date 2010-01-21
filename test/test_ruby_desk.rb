@@ -2,6 +2,17 @@ require 'helper'
 require 'date'
 
 class TestRubyDesk < Test::Unit::TestCase
+
+  def dummy_connector(result_filename)
+    connector = RubyDesk::Connector.new('824d225a889aca186c55ac49a6b23957',
+      '984aa36db13fff5c')
+    connector.instance_variable_set '@result_filename', result_filename
+    def connector.invoke_api_call(*args)
+      File.read(File.join(File.dirname(__FILE__), @result_filename))
+    end if result_filename
+    return connector
+  end
+
   def test_sign
     connector  = RubyDesk::Connector.new('824d225a889aca186c55ac49a6b23957',
       '984aa36db13fff5c')
@@ -32,10 +43,7 @@ class TestRubyDesk < Test::Unit::TestCase
   end
 
   def test_provider_search
-    connector = Object.new
-    def connector.prepare_and_invoke_api_call(*args)
-      File.read(File.join(File.dirname(__FILE__), 'providers.json'))
-    end
+    connector = dummy_connector('providers.json')
 
     providers = RubyDesk::Provider.search(connector, 'rails')
 
@@ -46,10 +54,7 @@ class TestRubyDesk < Test::Unit::TestCase
   end
 
   def test_get_profile
-    connector = Object.new
-    def connector.prepare_and_invoke_api_call(*args)
-      File.read(File.join(File.dirname(__FILE__), 'profile.json'))
-    end
+    connector = dummy_connector('profile.json')
 
     profile = RubyDesk::Provider.get_profile(connector, 'aseldawy')
 
@@ -59,10 +64,7 @@ class TestRubyDesk < Test::Unit::TestCase
   end
 
   def test_team_rooms
-    connector = Object.new
-    def connector.prepare_and_invoke_api_call(*args)
-      File.read(File.join(File.dirname(__FILE__), 'teamrooms.json'))
-    end
+    connector = dummy_connector('teamrooms.json')
 
     teamrooms = RubyDesk::TeamRoom.get_teamrooms(connector)
 
@@ -71,10 +73,7 @@ class TestRubyDesk < Test::Unit::TestCase
   end
 
   def test_workdiary
-    connector = Object.new
-    def connector.prepare_and_invoke_api_call(*args)
-      File.read(File.join(File.dirname(__FILE__), 'workdiary.json'))
-    end
+    connector = dummy_connector('workdiary.json')
 
     snapshots = RubyDesk::Snapshot.work_diary(connector, 'techunlimited',
       'aseldawy')
@@ -83,10 +82,7 @@ class TestRubyDesk < Test::Unit::TestCase
   end
 
   def test_snapshot
-    connector = Object.new
-    def connector.prepare_and_invoke_api_call(*args)
-      File.read(File.join(File.dirname(__FILE__), 'snapshot.json'))
-    end
+    connector = dummy_connector('snapshot.json')
 
     snapshots = RubyDesk::Snapshot.snapshot_details(connector, 'techunlimited',
       'aseldawy', Time.now)
@@ -107,6 +103,8 @@ class TestRubyDesk < Test::Unit::TestCase
         "SELECT worked_on WHERE (provider_id>=1 AND provider_id<=3)"],
       [{:select=>"worked_on", :conditions=>{:provider_id=>1...3}},
         "SELECT worked_on WHERE (provider_id>=1 AND provider_id<3)"],
+      [{:select=>["worked_on", "hours"]},
+        "SELECT worked_on,hours"],
     ]
     test_data.each do |options, query|
       assert query.include?(RubyDesk::TimeReport.build_query(options))
@@ -114,10 +112,7 @@ class TestRubyDesk < Test::Unit::TestCase
   end
 
   def test_timreport
-    connector = Object.new
-    def connector.prepare_and_invoke_api_call(*args)
-      File.read(File.join(File.dirname(__FILE__), 'timereport.json'))
-    end
+    connector = dummy_connector('timereport.json')
 
     timereport = RubyDesk::TimeReport.find(connector,
       :select=>"worked_on, sum(hours), provider_id")
@@ -125,6 +120,14 @@ class TestRubyDesk < Test::Unit::TestCase
     assert_equal Hash, timereport.first.class
     assert_equal Date, timereport.first['worked_on'].class
     assert timereport.first['hours'].is_a?(Numeric)
+  end
+
+  def test_timreport_error
+    assert_raises RubyDesk::Error do
+      connector = dummy_connector('timereport_error.json')
+      timereport = RubyDesk::TimeReport.find(connector,
+        :select=>"worked_on, sum(hours), provider_id")
+    end
   end
 
 end

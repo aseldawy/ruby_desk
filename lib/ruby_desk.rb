@@ -1,8 +1,18 @@
 require 'rubygems'
 require 'json'
+require 'logger'
 
 module RubyDesk
   class Error < RuntimeError; end;
+  class UnauthorizedError < Error; end;
+  class ServerError < Error; end;
+
+  class << self
+    attr_accessor :logger
+  end
+
+  self.logger = Logger.new(STDERR)
+  self.logger.sev_threshold = Logger::FATAL
 end
 
 # This first file is required by other files

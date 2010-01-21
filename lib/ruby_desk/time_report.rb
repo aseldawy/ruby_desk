@@ -54,11 +54,12 @@ class RubyDesk::TimeReport
     call_url << "/hours" if options[:hours]
 
     gds_query = build_query(options)
-    response = connector.prepare_and_invoke_api_call(call_url, :method=>:get,
+    json = connector.prepare_and_invoke_api_call(call_url, :method=>:get,
       :base_url=>RubyDesk::Connector::ODESK_GDS_URL, :format=>nil,
       :params=>{:tq=>URI.escape(gds_query," ,%&=./"), :tqx=>"out:json"})
 
-    json = JSON.parse(response)
+    raise RubyDesk::Error, json['errors'].inspect if json['status'] == "error"
+
     columns = [json['table']['cols']].flatten
     rows = [json['table']['rows']].flatten.map do |row_data|
       row = {}
@@ -73,7 +74,8 @@ class RubyDesk::TimeReport
 
   def self.build_query(options)
     gds_query = ""
-    gds_query << "SELECT " << options[:select]
+    gds_query << "SELECT " << (options[:select].respond_to?(:join)?
+      options[:select].join(",") : options[:select])
     if options[:conditions]
       gds_query << " WHERE "
       combined = options[:conditions].map do |field, condition|
@@ -83,10 +85,11 @@ class RubyDesk::TimeReport
             "#{field}=#{value_to_str(condition)}"
           when Array then
             condition.map{|v| "#{field}=#{value_to_str(v)}"}.join(" OR ")
-          when Range
+          when Range then
             "#{field}>=#{value_to_str(condition.first)} AND #{field}" +
               (condition.exclude_end? ? "<" : "<=") +
               value_to_str(condition.last)
+          else raise "Invalid condition for field: #{field}"
         end +
         ")"
       end

@@ -116,11 +116,10 @@ class RubyDesk::Provider < RubyDesk::OdeskEntity
       if options.respond_to? :to_str
         return search(connector, :q=>options.to_str)
       end
-      response = connector.prepare_and_invoke_api_call(
+      json = connector.prepare_and_invoke_api_call(
         'profiles/v1/search/providers', :method=>:get,
         :auth=>false, :sign=>false)
-      # parses a JSON result returned from oDesk and extracts an array of Providers out of it
-      json = JSON.parse(response)
+
       providers = []
       [json['providers']['provider']].flatten.each do |provider|
         providers << self.new(provider)
@@ -130,9 +129,8 @@ class RubyDesk::Provider < RubyDesk::OdeskEntity
 
     def get_profile(connector, id, options={})
       brief = options.delete :brief || false
-      response = connector.prepare_and_invoke_api_call(
+      json = connector.prepare_and_invoke_api_call(
         "profiles/v1/providers/#{id}" + (brief ? "/brief" : ""), :method=>:get)
-      json = JSON.parse(response)
       return self.new(json['profile'])
     end
   end
