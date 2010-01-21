@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{ruby_desk}
-  s.version = "0.4.1"
+  s.version = "0.5.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Ahmed ElDawy"]
-  s.date = %q{2010-01-19}
+  s.date = %q{2010-01-21}
   s.description = %q{A gem that works as an interface for oDesk APIs that can be used for both desktop and web applications}
   s.email = %q{ahmed.eldawy@badrit.com}
   s.extra_rdoc_files = [
@@ -36,6 +36,7 @@ Gem::Specification.new do |s|
      "test/teamrooms.json",
      "test/test_ruby_desk.rb",
      "test/timereport.json",
+     "test/timereport_error.json",
      "test/workdiary.json"
   ]
   s.homepage = %q{http://github.com/aseldawy/ruby_desk}
