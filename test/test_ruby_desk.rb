@@ -5,7 +5,7 @@ class TestRubyDesk < Test::Unit::TestCase
 
   def dummy_connector(result_filename)
     connector = RubyDesk::Connector.new('824d225a889aca186c55ac49a6b23957',
-      '984aa36db13fff5c')
+      '984aa36db13fff5c', 'fffff')
     connector.instance_variable_set '@result_filename', result_filename
     def connector.invoke_api_call(*args)
       File.read(File.join(File.dirname(__FILE__), @result_filename))
@@ -22,11 +22,20 @@ class TestRubyDesk < Test::Unit::TestCase
         :api_token=>'ffffffffffffffffffffffffffffffff')
   end
 
-  def test_api_call
+  def test_sign_escaped_params
     connector  = RubyDesk::Connector.new('824d225a889aca186c55ac49a6b23957',
       '984aa36db13fff5c')
+    assert_equal 'dc30357f7c6b62aadf99e5313ac93365',
+      connector.sign(:online=>'a%6C%6C', :tz=>'mine',
+        :api_key=>'824d225a889aca186c55ac49a6b23957',
+        :api_token=>'ffffffffffffffffffffffffffffffff')
+  end
+
+  def test_api_call
+    connector  = RubyDesk::Connector.new('824d225a889aca186c55ac49a6b23957',
+      '984aa36db13fff5c', 'fff')
     api_call = connector.prepare_api_call('auth/v1/keys/tokens',
-      :params=>{:frob=>@frob, :api_key=>@api_key},
+      :params=>{:frob=>'342423', :api_key=>@api_key},
       :method=>:post, :format=>'json')
     assert api_call[:url].index('.json')
     assert api_call[:url].index('/api/auth/v1/keys/tokens')
@@ -35,7 +44,7 @@ class TestRubyDesk < Test::Unit::TestCase
 
   def test_gds_api_call
     connector  = RubyDesk::Connector.new('824d225a889aca186c55ac49a6b23957',
-      '984aa36db13fff5c')
+      '984aa36db13fff5c', 'ff')
     api_call = connector.prepare_api_call('timereports/v1/companies/1',
       :method=>:post, :base_url=>RubyDesk::Connector::ODESK_GDS_URL)
     assert api_call[:url].index('/gds/timereports/v1/companies/1')

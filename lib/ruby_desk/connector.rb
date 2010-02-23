@@ -24,15 +24,28 @@ module RubyDesk
 
     # Sign the given parameters and returns the signature
     def sign(params)
-      RubyDesk.logger.info "Params to sign: #{params.inspect}"
+      RubyDesk.logger.debug {"Params to sign: #{params.inspect}"}
       # sort parameters by its names (keys)
       sorted_params = params.sort { |a, b| a.to_s <=> b.to_s}
+
+      RubyDesk.logger.debug {"Sorted params: #{sorted_params.inspect}"}
+      
+      # Unescape escaped params
+      sorted_params.map! do |k, v|
+        [k, URI.unescape(v)]
+      end
 
       # concatenate secret with names, values
       concatenated = @api_secret + sorted_params.to_s
 
+      RubyDesk.logger.debug {"concatenated: #{concatenated}"}
+
       # Calculate and return md5 of concatenated string
-      Digest::MD5.hexdigest(concatenated)
+      md5 = Digest::MD5.hexdigest(concatenated)
+
+      RubyDesk.logger.debug {"md5: #{md5}"}
+
+      return md5
     end
 
     # Returns the correct URL to go to to invoke the given api

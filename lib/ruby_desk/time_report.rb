@@ -20,7 +20,7 @@ class RubyDesk::TimeReport
   #
   # Allowed values for options are
   # :select
-  # :condition
+  # :conditions
   #   Here is the limited support for the where clause.
   #     Fields
   #      * Name
@@ -76,7 +76,7 @@ class RubyDesk::TimeReport
     gds_query = ""
     gds_query << "SELECT " << (options[:select].respond_to?(:join)?
       options[:select].join(",") : options[:select])
-    if options[:conditions]
+    if options[:conditions] && options[:conditions].any?
       gds_query << " WHERE "
       combined = options[:conditions].map do |field, condition|
         "(" +
