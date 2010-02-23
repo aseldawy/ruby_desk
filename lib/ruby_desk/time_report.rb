@@ -62,6 +62,7 @@ class RubyDesk::TimeReport
 
     columns = [json['table']['cols']].flatten
     rows = [json['table']['rows']].flatten.map do |row_data|
+      next if row_data.empty?
       row = {}
       [row_data['c']].flatten.each_with_index do |row_element, element_index|
         column = columns[element_index]
@@ -69,7 +70,7 @@ class RubyDesk::TimeReport
       end
       row
     end
-    return rows
+    return rows.compact
   end
 
   def self.build_query(options)

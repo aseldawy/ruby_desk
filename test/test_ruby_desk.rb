@@ -131,6 +131,14 @@ class TestRubyDesk < Test::Unit::TestCase
     assert timereport.first['hours'].is_a?(Numeric)
   end
 
+  def test_empty_timreport
+    connector = dummy_connector('empty_timereport.json')
+
+    timereport = RubyDesk::TimeReport.find(connector,
+      :select=>"worked_on, sum(hours)")
+    assert_equal 0, timereport.size
+  end
+
   def test_timreport_error
     assert_raises RubyDesk::Error do
       connector = dummy_connector('timereport_error.json')
