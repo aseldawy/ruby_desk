@@ -29,26 +29,33 @@ class RubyDesk::TimeReport
   #      * provider_id
   #      * worked_on
   #      * assignment_team_id
-  #      * provider_id
   #      * task
   # :order
   def self.find(connector, options={})
     options = DEFAULT_OPTIONS.merge(options)
+    options[:conditions].each_pair do |k, v|
+      if Array === v && v.size == 1
+        options[:conditions][k] = v.first
+      elsif Array === v && v.empty?
+        options[:conditions].delete(k)
+      end
+    end
     call_url = "timereports/v1"
     # Adjust a URL that has as much information as we can
     if String === options[:conditions][:company_id]
       # Limit to one company in url (better looking)
       call_url << "/companies/#{options[:conditions].delete :company_id}"
-
-      if String === options[:conditions][:agency_id]
-        # Limit to one agency in url (better looking)
-        call_url << "/agencies/#{options[:conditions].delete :agency_id}"
-      elsif String === options[:conditions][:team_id]
-        # Limit to one team in url (better looking)
-        call_url << "/teams/#{options[:conditions].delete :team_id}"
-      end
-    elsif String === options[:conditions][:provider_id]
+    end
+    if String === options[:conditions][:provider_id]
       call_url << "/providers/#{options[:conditions].delete :provider_id}"
+    end
+    if String === options[:conditions][:agency_id]
+      # Limit to one agency in url (better looking)
+      call_url << "/agencies/#{options[:conditions].delete :agency_id}"
+    end
+    if String === options[:conditions][:team_id]
+      # Limit to one team in url (better looking)
+      call_url << "/teams/#{options[:conditions].delete :team_id}"
     end
 
     call_url << "/hours" if options[:hours]
@@ -104,7 +111,7 @@ class RubyDesk::TimeReport
 
   def self.value_to_str(value)
     case value
-      when String then value
+      when String then "'#{value}'"
       when Date, Time then "'"+value.strftime("%Y-%m-%d")+"'"
       when Numeric then value.to_s
     end

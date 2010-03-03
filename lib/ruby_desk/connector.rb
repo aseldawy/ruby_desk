@@ -100,6 +100,7 @@ module RubyDesk
       case resp.code
         when "200" then return data
         when "401" then raise RubyDesk::UnauthorizedError, data
+        when "404" then raise RubyDesk::PageNotFound, data
         when "500" then raise RubyDesk::ServerError, data
       end
 
@@ -130,7 +131,7 @@ module RubyDesk
     # return the URL that logs user out of odesk applications
     def logout_url
       logout_call = prepare_api_call("", :base_url=>ODESK_AUTH_URL,
-        :secure=>false)
+        :secure=>false, :auth=>false)
       return logout_call[:url]
     end
 

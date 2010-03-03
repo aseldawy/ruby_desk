@@ -5,6 +5,7 @@ require 'logger'
 module RubyDesk
   class Error < RuntimeError; end;
   class UnauthorizedError < Error; end;
+  class PageNotFound < Error; end;
   class ServerError < Error; end;
 
   class << self

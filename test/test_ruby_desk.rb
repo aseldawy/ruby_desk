@@ -105,9 +105,9 @@ class TestRubyDesk < Test::Unit::TestCase
         "SELECT worked_on WHERE (worked_on='2009-10-10')"],
       [{:select=>"worked_on, provider_id", :conditions=>{:provider_id=>[1,2,3]}},
         "SELECT worked_on, provider_id WHERE (provider_id=1 OR provider_id=2 OR provider_id=3)"],
-      [{:select=>"worked_on", :conditions=>{:provider_id=>1, :agency_id=>3}},
-        ["SELECT worked_on WHERE (agency_id=3) AND (provider_id=1)",
-        "SELECT worked_on WHERE (provider_id=1) AND (agency_id=3)"]],
+      [{:select=>"worked_on", :conditions=>{:provider_id=>'aseldawy', :agency_id=>3}},
+        ["SELECT worked_on WHERE (agency_id=3) AND (provider_id='aseldawy')",
+        "SELECT worked_on WHERE (provider_id='aseldawy') AND (agency_id=3)"]],
       [{:select=>"worked_on", :conditions=>{:provider_id=>1..3}},
         "SELECT worked_on WHERE (provider_id>=1 AND provider_id<=3)"],
       [{:select=>"worked_on", :conditions=>{:provider_id=>1...3}},
@@ -116,6 +116,7 @@ class TestRubyDesk < Test::Unit::TestCase
         "SELECT worked_on,hours"],
     ]
     test_data.each do |options, query|
+      # I use include? because some queries have more than possible form
       assert query.include?(RubyDesk::TimeReport.build_query(options))
     end
   end
