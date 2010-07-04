@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+
+	<title>File: README.rdoc [ruby_desk 0.7.0
+]</title>
+
+	<link type="text/css" media="screen" href="./rdoc.css" rel="stylesheet" />
+
+	<script src="./js/jquery.js" type="text/javascript"
+		charset="utf-8"></script>
+	<script src="./js/thickbox-compressed.js" type="text/javascript"
+		charset="utf-8"></script>
+	<script src="./js/quicksearch.js" type="text/javascript"
+		charset="utf-8"></script>
+	<script src="./js/darkfish.js" type="text/javascript"
+		charset="utf-8"></script>
+</head>
+
+<body class="file">
+	<div id="metadata">
+		<div id="home-metadata">
+			<div id="home-section" class="section">
+        <h3 class="section-header">
+          <a href="./index.html">Home</a>
+          <a href="./index.html#classes">Classes</a>
+          <a href="./index.html#methods">Methods</a>
+        </h3>
+			</div>
+		</div>
+
+		<div id="project-metadata">
+			
+			
+			<div id="fileindex-section" class="section project-section">
+				<h3 class="section-header">Files</h3>
+				<ul>
+				
+					<li class="file"><a href="./README_rdoc.html">README.rdoc</a></li>
+				
+				</ul>
+			</div>
+			
+
+			<div id="classindex-section" class="section project-section">
+				<h3 class="section-header">Class Index
+					<span class="search-toggle"><img src="./images/find.png"
+						height="16" width="16" alt="[+]"
+						title="show/hide quicksearch" /></span></h3>
+				<form action="#" method="get" accept-charset="utf-8" class="initially-hidden">
+				<fieldset>
+					<legend>Quicksearch</legend>
+					<input type="text" name="quicksearch" value=""
+						class="quicksearch-field" />
+				</fieldset>
+				</form>
+
+				<ul class="link-list">
+				
+					<li><a href="./RubyDesk.html">RubyDesk</a></li>
+				
+					<li><a href="./RubyDesk/Connector.html">RubyDesk::Connector</a></li>
+				
+					<li><a href="./RubyDesk/Error.html">RubyDesk::Error</a></li>
+				
+					<li><a href="./RubyDesk/OdeskEntity.html">RubyDesk::OdeskEntity</a></li>
+				
+					<li><a href="./RubyDesk/PageNotFound.html">RubyDesk::PageNotFound</a></li>
+				
+					<li><a href="./RubyDesk/Provider.html">RubyDesk::Provider</a></li>
+				
+					<li><a href="./RubyDesk/ServerError.html">RubyDesk::ServerError</a></li>
+				
+					<li><a href="./RubyDesk/Snapshot.html">RubyDesk::Snapshot</a></li>
+				
+					<li><a href="./RubyDesk/TeamRoom.html">RubyDesk::TeamRoom</a></li>
+				
+					<li><a href="./RubyDesk/TimeReport.html">RubyDesk::TimeReport</a></li>
+				
+					<li><a href="./RubyDesk/UnauthorizedError.html">RubyDesk::UnauthorizedError</a></li>
+				
+				</ul>
+				<div id="no-class-search-results" style="display: none;">No matching classes.</div>
+			</div>
+
+			
+		</div>
+	</div>
+
+	<div id="documentation">
+		<h1><a href="RubyDesk.html">RubyDesk</a></h1>
+<p>
+A gem built by BadrIT (<a href="http://www.badrit.com">www.badrit.com</a>)
+that works as an interface for oDesk APIs. It can be used for both desktop
+and web applications
+</p>
+<h2>Using <a href="RubyDesk.html">RubyDesk</a> with Rails</h2>
+<p>
+If you want to use oDesk APIs with Rails applications you may better use
+ror_desk. ror_desk is a plugin built on Ruby Desk and makes it much easier
+to use with Rails.
+</p>
+<h2>Example</h2>
+<p>
+Initialize with your api key
+</p>
+<pre>
+  rd = RubyDesk::Connector.new(api_key, api_secret)
+</pre>
+<p>
+Get the URL that will ask the user to authenticate your application
+</p>
+<pre>
+  rd.auth_url
+</pre>
+<p>
+You should then redirect the user to the returned URL to get the frob. When
+you get the frob set it using
+</p>
+<pre>
+  rd.frob = frob
+</pre>
+<p>
+Finally, you should request an api_token
+</p>
+<pre>
+  rd.get_token
+</pre>
+<p>
+Now you are ready to use all the APIs you need
+</p>
+<pre>
+  team_rooms = RubyDesk::TeamRoom.get_teamrooms(rd)
+  team_rooms.each { |team_room| puts team_room.id }
+</pre>
+<h2>Copyright</h2>
+<p>
+Copyright &#169; 2010 Ahmed ElDawy. See LICENSE for details.
+</p>
+
+	</div>
+
+	<div id="validator-badges">
+		<p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+		<p><small>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish
+			Rdoc Generator</a> 1.1.6</small>.</p>
+	</div>
+</body>
+</html>
+

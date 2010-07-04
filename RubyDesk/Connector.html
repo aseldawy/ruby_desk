@@ -1,0 +1,797 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+
+	<title>Class: RubyDesk::Connector</title>
+
+	<link rel="stylesheet" href="../rdoc.css" type="text/css" media="screen" />
+
+	<script src="../js/jquery.js" type="text/javascript"
+		charset="utf-8"></script>
+	<script src="../js/thickbox-compressed.js" type="text/javascript"
+		charset="utf-8"></script>
+	<script src="../js/quicksearch.js" type="text/javascript"
+		charset="utf-8"></script>
+	<script src="../js/darkfish.js" type="text/javascript"
+		charset="utf-8"></script>
+
+</head>
+<body class="class">
+
+	<div id="metadata">
+		<div id="home-metadata">
+			<div id="home-section" class="section">
+        <h3 class="section-header">
+          <a href="../index.html">Home</a>
+          <a href="../index.html#classes">Classes</a>
+          <a href="../index.html#methods">Methods</a>
+        </h3>
+			</div>
+		</div>
+
+		<div id="file-metadata">
+			<div id="file-list-section" class="section">
+				<h3 class="section-header">In Files</h3>
+				<div class="section-body">
+					<ul>
+					
+						<li><a href="../lib/ruby_desk/connector_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
+							class="thickbox" title="lib/ruby_desk/connector.rb">lib/ruby_desk/connector.rb</a></li>
+					
+					</ul>
+				</div>
+			</div>
+
+			
+		</div>
+
+		<div id="class-metadata">
+
+			<!-- Parent Class -->
+			
+			<div id="parent-class-section" class="section">
+				<h3 class="section-header">Parent</h3>
+				
+				<p class="link">Object</p>
+				
+			</div>
+			
+
+			<!-- Namespace Contents -->
+			
+
+			<!-- Method Quickref -->
+			
+			<div id="method-list-section" class="section">
+				<h3 class="section-header">Methods</h3>
+				<ul class="link-list">
+					
+					<li><a href="#method-c-new">::new</a></li>
+					
+					<li><a href="#method-i-auth_url">#auth_url</a></li>
+					
+					<li><a href="#method-i-check_token">#check_token</a></li>
+					
+					<li><a href="#method-i-get_frob">#get_frob</a></li>
+					
+					<li><a href="#method-i-get_token">#get_token</a></li>
+					
+					<li><a href="#method-i-invoke_api_call">#invoke_api_call</a></li>
+					
+					<li><a href="#method-i-logout_url">#logout_url</a></li>
+					
+					<li><a href="#method-i-prepare_and_invoke_api_call">#prepare_and_invoke_api_call</a></li>
+					
+					<li><a href="#method-i-prepare_api_call">#prepare_api_call</a></li>
+					
+					<li><a href="#method-i-revoke_token">#revoke_token</a></li>
+					
+					<li><a href="#method-i-sign">#sign</a></li>
+					
+				</ul>
+			</div>
+			
+
+			<!-- Included Modules -->
+			
+		</div>
+
+		<div id="project-metadata">
+			
+			
+			<div id="fileindex-section" class="section project-section">
+				<h3 class="section-header">Files</h3>
+				<ul>
+				
+					<li class="file"><a href="../README_rdoc.html">README.rdoc</a></li>
+				
+				</ul>
+			</div>
+			
+
+			<div id="classindex-section" class="section project-section">
+				<h3 class="section-header">Class Index
+					<span class="search-toggle"><img src="../images/find.png"
+						height="16" width="16" alt="[+]"
+						title="show/hide quicksearch" /></span></h3>
+				<form action="#" method="get" accept-charset="utf-8" class="initially-hidden">
+				<fieldset>
+					<legend>Quicksearch</legend>
+					<input type="text" name="quicksearch" value=""
+						class="quicksearch-field" />
+				</fieldset>
+				</form>
+
+				<ul class="link-list">
+				
+					<li><a href="../RubyDesk.html">RubyDesk</a></li>
+				
+					<li><a href="../RubyDesk/Connector.html">RubyDesk::Connector</a></li>
+				
+					<li><a href="../RubyDesk/Error.html">RubyDesk::Error</a></li>
+				
+					<li><a href="../RubyDesk/OdeskEntity.html">RubyDesk::OdeskEntity</a></li>
+				
+					<li><a href="../RubyDesk/PageNotFound.html">RubyDesk::PageNotFound</a></li>
+				
+					<li><a href="../RubyDesk/Provider.html">RubyDesk::Provider</a></li>
+				
+					<li><a href="../RubyDesk/ServerError.html">RubyDesk::ServerError</a></li>
+				
+					<li><a href="../RubyDesk/Snapshot.html">RubyDesk::Snapshot</a></li>
+				
+					<li><a href="../RubyDesk/TeamRoom.html">RubyDesk::TeamRoom</a></li>
+				
+					<li><a href="../RubyDesk/TimeReport.html">RubyDesk::TimeReport</a></li>
+				
+					<li><a href="../RubyDesk/UnauthorizedError.html">RubyDesk::UnauthorizedError</a></li>
+				
+				</ul>
+				<div id="no-class-search-results" style="display: none;">No matching classes.</div>
+			</div>
+
+			
+		</div>
+	</div>
+
+	<div id="documentation">
+		<h1 class="class">RubyDesk::Connector</h1>
+
+		<div id="description">
+			
+		</div>
+
+		<!-- Constants -->
+		
+		<div id="constants-list" class="section">
+			<h3 class="section-header">Constants</h3>
+			<dl>
+			
+				<dt><a name="ODESK_URL">ODESK_URL</a></dt>
+				
+				<dd class="description"></dd>
+				
+			
+				<dt><a name="ODESK_API_URL">ODESK_API_URL</a></dt>
+				
+				<dd class="description"></dd>
+				
+			
+				<dt><a name="ODESK_GDS_URL">ODESK_GDS_URL</a></dt>
+				
+				<dd class="description"></dd>
+				
+			
+				<dt><a name="ODESK_AUTH_URL">ODESK_AUTH_URL</a></dt>
+				
+				<dd class="description"></dd>
+				
+			
+				<dt><a name="DEFAULT_OPTIONS">DEFAULT_OPTIONS</a></dt>
+				
+				<dd class="description"></dd>
+				
+			
+			</dl>
+		</div>
+		
+
+		<!-- Attributes -->
+		
+		<div id="attribute-method-details" class="method-section section">
+			<h3 class="section-header">Attributes</h3>
+
+			
+			<div id="frob-attribute-method" class="method-detail">
+				<a name="frob"></a>
+				
+				<a name="frob="></a>
+				
+				<div class="method-heading attribute-method-heading">
+					<span class="method-name">frob</span><span
+						class="attribute-access-type">[W]</span>
+				</div>
+
+				<div class="method-description">
+				
+				
+				
+				</div>
+			</div>
+			
+		</div>
+		
+
+		<!-- Methods -->
+		
+		<div id="public-class-method-details" class="method-section section">
+			<h3 class="section-header">Public Class Methods</h3>
+
+		
+			<div id="new-method" class="method-detail ">
+				<a name="method-c-new"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">new</span><span
+						class="method-args">(api_key=nil, api_secret=nil, api_token=nil)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					
+					
+
+					
+					<div class="method-source-code"
+						id="new-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/ruby_desk/connector.rb, line 19</span>
+19:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">api_key</span>=<span class="ruby-keyword kw">nil</span>, <span class="ruby-identifier">api_secret</span>=<span class="ruby-keyword kw">nil</span>, <span class="ruby-identifier">api_token</span>=<span class="ruby-keyword kw">nil</span>)
+20:       <span class="ruby-ivar">@api_key</span> = <span class="ruby-identifier">api_key</span>
+21:       <span class="ruby-ivar">@api_secret</span> = <span class="ruby-identifier">api_secret</span>
+22:       <span class="ruby-ivar">@api_token</span> = <span class="ruby-identifier">api_token</span>
+23:     <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+		</div>
+	
+		<div id="public-instance-method-details" class="method-section section">
+			<h3 class="section-header">Public Instance Methods</h3>
+
+		
+			<div id="auth-url-method" class="method-detail ">
+				<a name="method-i-auth_url"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">auth_url</span><span
+						class="method-args">()</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+Returns the URL that authenticates the application for the current user
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="auth-url-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/ruby_desk/connector.rb, line 124</span>
+124:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">auth_url</span>
+125:       <span class="ruby-identifier">auth_call</span> = <span class="ruby-identifier">prepare_api_call</span>(<span class="ruby-value str">&quot;&quot;</span>, <span class="ruby-value">:params=</span><span class="ruby-operator">&gt;</span>{<span class="ruby-value">:api_key=</span><span class="ruby-operator">&gt;</span><span class="ruby-ivar">@api_key</span>},
+126:         <span class="ruby-value">:base_url=</span><span class="ruby-operator">&gt;</span><span class="ruby-constant">ODESK_AUTH_URL</span>, <span class="ruby-value">:format=</span><span class="ruby-operator">&gt;</span><span class="ruby-keyword kw">nil</span>, <span class="ruby-value">:method=</span><span class="ruby-operator">&gt;</span><span class="ruby-value">:get</span>, <span class="ruby-value">:auth=</span><span class="ruby-operator">&gt;</span><span class="ruby-keyword kw">false</span>)
+127:       <span class="ruby-identifier">data</span> = <span class="ruby-identifier">auth_call</span>[<span class="ruby-value">:params</span>].<span class="ruby-identifier">to_a</span>.<span class="ruby-identifier">map</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">pair</span><span class="ruby-operator">|</span> <span class="ruby-identifier">pair</span>.<span class="ruby-identifier">join</span> <span class="ruby-value str">'='</span>}.<span class="ruby-identifier">join</span>(<span class="ruby-value str">'&amp;'</span>)
+128:       <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">auth_call</span>[<span class="ruby-value">:url</span>]<span class="ruby-operator">+</span><span class="ruby-value str">&quot;?&quot;</span><span class="ruby-operator">+</span><span class="ruby-identifier">data</span>
+129:     <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="check-token-method" class="method-detail ">
+				<a name="method-i-check_token"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">check_token</span><span
+						class="method-args">()</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+Returns the authenticated user associated with the given authorization
+token.
+</p>
+<pre>
+ Parameters
+
+     * api_key
+     * api_sig
+     * api_token
+
+ Return Data
+
+     * token</pre>
+					
+
+					
+					<div class="method-source-code"
+						id="check-token-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/ruby_desk/connector.rb, line 177</span>
+177:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">check_token</span>
+178:       <span class="ruby-identifier">json</span> = <span class="ruby-identifier">prepare_and_invoke_api_call</span> <span class="ruby-value str">'auth/v1/keys/token'</span>, <span class="ruby-value">:method=</span><span class="ruby-operator">&gt;</span><span class="ruby-value">:get</span>
+179:       <span class="ruby-comment cmt"># TODO what to do with results?</span>
+180:       <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">json</span>
+181:     <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="get-frob-method" class="method-detail ">
+				<a name="method-i-get_frob"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">get_frob</span><span
+						class="method-args">()</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<pre>
+ Returns an authentication frob.
+</pre>
+<p>
+Parameters
+</p>
+<pre>
+    * api_key
+    * api_sig
+</pre>
+<p>
+Return Data
+</p>
+<pre>
+    * frob</pre>
+					
+
+					
+					<div class="method-source-code"
+						id="get-frob-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/ruby_desk/connector.rb, line 161</span>
+161:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">get_frob</span>
+162:       <span class="ruby-identifier">json</span> = <span class="ruby-identifier">prepare_and_invoke_api_call</span> <span class="ruby-value str">'auth/v1/keys/frobs'</span>,
+163:         <span class="ruby-value">:params=</span><span class="ruby-operator">&gt;</span>{<span class="ruby-value">:api_key=</span><span class="ruby-operator">&gt;</span><span class="ruby-ivar">@api_key</span>}, <span class="ruby-value">:method=</span><span class="ruby-operator">&gt;</span><span class="ruby-value">:post</span>, <span class="ruby-value">:auth=</span><span class="ruby-operator">&gt;</span><span class="ruby-keyword kw">false</span>
+164:       <span class="ruby-ivar">@frob</span> = <span class="ruby-identifier">json</span>[<span class="ruby-value str">'frob'</span>]
+165:     <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="get-token-method" class="method-detail ">
+				<a name="method-i-get_token"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">get_token</span><span
+						class="method-args">()</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+Returns an authentication frob.
+</p>
+<pre>
+ Parameters
+   * frob
+   * api_key
+   * api_sig
+
+ Return Data
+   * token</pre>
+					
+
+					
+					<div class="method-source-code"
+						id="get-token-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/ruby_desk/connector.rb, line 146</span>
+146:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">get_token</span>
+147:       <span class="ruby-identifier">json</span> = <span class="ruby-identifier">prepare_and_invoke_api_call</span> <span class="ruby-value str">'auth/v1/keys/tokens'</span>,
+148:           <span class="ruby-value">:params=</span><span class="ruby-operator">&gt;</span>{<span class="ruby-value">:frob=</span><span class="ruby-operator">&gt;</span><span class="ruby-ivar">@frob</span>, <span class="ruby-value">:api_key=</span><span class="ruby-operator">&gt;</span><span class="ruby-ivar">@api_key</span>}, <span class="ruby-value">:method=</span><span class="ruby-operator">&gt;</span><span class="ruby-value">:post</span>,
+149:           <span class="ruby-value">:auth=</span><span class="ruby-operator">&gt;</span><span class="ruby-keyword kw">false</span>
+150:       <span class="ruby-ivar">@api_token</span> = <span class="ruby-identifier">json</span>[<span class="ruby-value str">'token'</span>]
+151:     <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="invoke-api-call-method" class="method-detail ">
+				<a name="method-i-invoke_api_call"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">invoke_api_call</span><span
+						class="method-args">(api_call)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+invokes the given API call and returns body of the response as text
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="invoke-api-call-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/ruby_desk/connector.rb, line 74</span>
+ 74:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">invoke_api_call</span>(<span class="ruby-identifier">api_call</span>)
+ 75:       <span class="ruby-identifier">url</span> = <span class="ruby-constant">URI</span>.<span class="ruby-identifier">parse</span>(<span class="ruby-identifier">api_call</span>[<span class="ruby-value">:url</span>])
+ 76:       <span class="ruby-identifier">http</span> = <span class="ruby-constant">Net</span><span class="ruby-operator">::</span><span class="ruby-constant">HTTP</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">url</span>.<span class="ruby-identifier">host</span>, <span class="ruby-identifier">url</span>.<span class="ruby-identifier">port</span>)
+ 77:       <span class="ruby-identifier">http</span>.<span class="ruby-identifier">use_ssl</span> = <span class="ruby-keyword kw">true</span>
+ 78: 
+ 79:       <span class="ruby-identifier">data</span> = <span class="ruby-identifier">api_call</span>[<span class="ruby-value">:params</span>].<span class="ruby-identifier">to_a</span>.<span class="ruby-identifier">map</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">pair</span><span class="ruby-operator">|</span> <span class="ruby-identifier">pair</span>.<span class="ruby-identifier">join</span> <span class="ruby-value str">'='</span>}.<span class="ruby-identifier">join</span>(<span class="ruby-value str">'&amp;'</span>)
+ 80:       <span class="ruby-identifier">headers</span> = {
+ 81:         <span class="ruby-value str">'Content-Type'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">'application/x-www-form-urlencoded'</span>
+ 82:       }
+ 83: 
+ 84:       <span class="ruby-constant">RubyDesk</span>.<span class="ruby-identifier">logger</span>.<span class="ruby-identifier">info</span> <span class="ruby-node">&quot;URL: #{api_call[:url]}&quot;</span>
+ 85:       <span class="ruby-constant">RubyDesk</span>.<span class="ruby-identifier">logger</span>.<span class="ruby-identifier">info</span> <span class="ruby-node">&quot;method: #{api_call[:method]}&quot;</span>
+ 86:       <span class="ruby-constant">RubyDesk</span>.<span class="ruby-identifier">logger</span>.<span class="ruby-identifier">info</span> <span class="ruby-node">&quot;Params: #{data}&quot;</span>
+ 87: 
+ 88:       <span class="ruby-keyword kw">case</span> <span class="ruby-identifier">api_call</span>[<span class="ruby-value">:method</span>]
+ 89:         <span class="ruby-keyword kw">when</span> <span class="ruby-value">:get</span>, <span class="ruby-value str">'get'</span> <span class="ruby-keyword kw">then</span>
+ 90:           <span class="ruby-identifier">resp</span>, <span class="ruby-identifier">data</span> = <span class="ruby-identifier">http</span>.<span class="ruby-identifier">request</span>(<span class="ruby-constant">Net</span><span class="ruby-operator">::</span><span class="ruby-constant">HTTP</span><span class="ruby-operator">::</span><span class="ruby-constant">Get</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">url</span>.<span class="ruby-identifier">path</span><span class="ruby-operator">+</span><span class="ruby-value str">&quot;?&quot;</span><span class="ruby-operator">+</span><span class="ruby-identifier">data</span>, <span class="ruby-identifier">headers</span>))
+ 91:         <span class="ruby-keyword kw">when</span> <span class="ruby-value">:post</span>, <span class="ruby-value str">'post'</span> <span class="ruby-keyword kw">then</span>
+ 92:           <span class="ruby-identifier">resp</span>, <span class="ruby-identifier">data</span> = <span class="ruby-identifier">http</span>.<span class="ruby-identifier">request</span>(<span class="ruby-constant">Net</span><span class="ruby-operator">::</span><span class="ruby-constant">HTTP</span><span class="ruby-operator">::</span><span class="ruby-constant">Post</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">url</span>.<span class="ruby-identifier">path</span>, <span class="ruby-identifier">headers</span>), <span class="ruby-identifier">data</span>)
+ 93:         <span class="ruby-keyword kw">when</span> <span class="ruby-value">:delete</span>, <span class="ruby-value str">'delete'</span> <span class="ruby-keyword kw">then</span>
+ 94:           <span class="ruby-identifier">resp</span>, <span class="ruby-identifier">data</span> = <span class="ruby-identifier">http</span>.<span class="ruby-identifier">request</span>(<span class="ruby-constant">Net</span><span class="ruby-operator">::</span><span class="ruby-constant">HTTP</span><span class="ruby-operator">::</span><span class="ruby-constant">Delete</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">url</span>.<span class="ruby-identifier">path</span>, <span class="ruby-identifier">headers</span>), <span class="ruby-identifier">data</span>)
+ 95:       <span class="ruby-keyword kw">end</span>
+ 96: 
+ 97:       <span class="ruby-constant">RubyDesk</span>.<span class="ruby-identifier">logger</span>.<span class="ruby-identifier">info</span> <span class="ruby-node">&quot;Response code: #{resp.code}&quot;</span>
+ 98:       <span class="ruby-constant">RubyDesk</span>.<span class="ruby-identifier">logger</span>.<span class="ruby-identifier">info</span> <span class="ruby-node">&quot;Returned data: #{data}&quot;</span>
+ 99: 
+100:       <span class="ruby-keyword kw">case</span> <span class="ruby-identifier">resp</span>.<span class="ruby-identifier">code</span>
+101:         <span class="ruby-keyword kw">when</span> <span class="ruby-value str">&quot;200&quot;</span> <span class="ruby-keyword kw">then</span> <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">data</span>
+102:         <span class="ruby-keyword kw">when</span> <span class="ruby-value str">&quot;401&quot;</span> <span class="ruby-keyword kw">then</span> <span class="ruby-identifier">raise</span> <span class="ruby-constant">RubyDesk</span><span class="ruby-operator">::</span><span class="ruby-constant">UnauthorizedError</span>, <span class="ruby-identifier">data</span>
+103:         <span class="ruby-keyword kw">when</span> <span class="ruby-value str">&quot;404&quot;</span> <span class="ruby-keyword kw">then</span> <span class="ruby-identifier">raise</span> <span class="ruby-constant">RubyDesk</span><span class="ruby-operator">::</span><span class="ruby-constant">PageNotFound</span>, <span class="ruby-identifier">data</span>
+104:         <span class="ruby-keyword kw">when</span> <span class="ruby-value str">&quot;500&quot;</span> <span class="ruby-keyword kw">then</span> <span class="ruby-identifier">raise</span> <span class="ruby-constant">RubyDesk</span><span class="ruby-operator">::</span><span class="ruby-constant">ServerError</span>, <span class="ruby-identifier">data</span>
+105:       <span class="ruby-keyword kw">end</span>
+106: 
+107:     <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="logout-url-method" class="method-detail ">
+				<a name="method-i-logout_url"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">logout_url</span><span
+						class="method-args">()</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+return the URL that logs user out of odesk applications
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="logout-url-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/ruby_desk/connector.rb, line 132</span>
+132:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">logout_url</span>
+133:       <span class="ruby-identifier">logout_call</span> = <span class="ruby-identifier">prepare_api_call</span>(<span class="ruby-value str">&quot;&quot;</span>, <span class="ruby-value">:base_url=</span><span class="ruby-operator">&gt;</span><span class="ruby-constant">ODESK_AUTH_URL</span>,
+134:         <span class="ruby-value">:secure=</span><span class="ruby-operator">&gt;</span><span class="ruby-keyword kw">false</span>, <span class="ruby-value">:auth=</span><span class="ruby-operator">&gt;</span><span class="ruby-keyword kw">false</span>)
+135:       <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">logout_call</span>[<span class="ruby-value">:url</span>]
+136:     <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="prepare-and-invoke-api-call-method" class="method-detail ">
+				<a name="method-i-prepare_and_invoke_api_call"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">prepare_and_invoke_api_call</span><span
+						class="method-args">(path, options = {})</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+Prepares an API call with the given arguments then invokes it and returns
+its body
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="prepare-and-invoke-api-call-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/ruby_desk/connector.rb, line 110</span>
+110:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">prepare_and_invoke_api_call</span>(<span class="ruby-identifier">path</span>, <span class="ruby-identifier">options</span> = {})
+111:       <span class="ruby-identifier">api_call</span> = <span class="ruby-identifier">prepare_api_call</span>(<span class="ruby-identifier">path</span>, <span class="ruby-identifier">options</span>)
+112:       <span class="ruby-identifier">data</span> = <span class="ruby-identifier">invoke_api_call</span>(<span class="ruby-identifier">api_call</span>)
+113: 
+114:       <span class="ruby-identifier">parsed_data</span> = <span class="ruby-keyword kw">case</span> <span class="ruby-identifier">options</span>[<span class="ruby-value">:format</span>]
+115:         <span class="ruby-keyword kw">when</span> <span class="ruby-value str">'json'</span> <span class="ruby-keyword kw">then</span> <span class="ruby-constant">JSON</span>.<span class="ruby-identifier">parse</span>(<span class="ruby-identifier">data</span>)
+116:         <span class="ruby-keyword kw">when</span> <span class="ruby-value str">'xml'</span> <span class="ruby-keyword kw">then</span> <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">data</span>)
+117:         <span class="ruby-keyword kw">else</span> <span class="ruby-constant">JSON</span>.<span class="ruby-identifier">parse</span>(<span class="ruby-identifier">data</span>) <span class="ruby-keyword kw">rescue</span> <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">data</span>) <span class="ruby-keyword kw">rescue</span> <span class="ruby-identifier">data</span>
+118:       <span class="ruby-keyword kw">end</span>
+119:       <span class="ruby-constant">RubyDesk</span>.<span class="ruby-identifier">logger</span>.<span class="ruby-identifier">info</span> <span class="ruby-node">&quot;Parsed data: #{parsed_data.inspect}&quot;</span>
+120:       <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">parsed_data</span>
+121:     <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="prepare-api-call-method" class="method-detail ">
+				<a name="method-i-prepare_api_call"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">prepare_api_call</span><span
+						class="method-args">(path, options = {})</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+Returns the correct URL to go to to invoke the given api path: the path of
+the API to call. e.g. &#8216;auth&#8217; options:
+</p>
+<ul>
+<li><p>
+:secure=>false: Whether a secure connection is required or not.
+</p>
+</li>
+<li><p>
+:sign=>true: Whether you need to sign the parameters or not
+</p>
+</li>
+<li><p>
+:params=>{}: a hash of parameters that needs to be appended
+</p>
+</li>
+<li><p>
+:auth=>true: when true indicates that this call need authentication.
+</p>
+<pre>
+  This forces adding :api_token, :api_key and :api_sig to parameters.</pre>
+</li>
+</ul>
+					
+
+					
+					<div class="method-source-code"
+						id="prepare-api-call-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/ruby_desk/connector.rb, line 59</span>
+59:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">prepare_api_call</span>(<span class="ruby-identifier">path</span>, <span class="ruby-identifier">options</span> = {})
+60:       <span class="ruby-identifier">options</span> = <span class="ruby-constant">DEFAULT_OPTIONS</span>.<span class="ruby-identifier">merge</span>(<span class="ruby-identifier">options</span>)
+61:       <span class="ruby-identifier">params</span> = <span class="ruby-identifier">options</span>[<span class="ruby-value">:params</span>] <span class="ruby-operator">||</span> {}
+62:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">options</span>[<span class="ruby-value">:auth</span>]
+63:         <span class="ruby-identifier">params</span>[<span class="ruby-value">:api_token</span>] <span class="ruby-operator">||=</span> <span class="ruby-ivar">@api_token</span>
+64:         <span class="ruby-identifier">params</span>[<span class="ruby-value">:api_key</span>] <span class="ruby-operator">||=</span> <span class="ruby-ivar">@api_key</span>
+65:       <span class="ruby-keyword kw">end</span>
+66:       <span class="ruby-identifier">params</span>[<span class="ruby-value">:api_sig</span>] = <span class="ruby-identifier">sign</span>(<span class="ruby-identifier">params</span>) <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">options</span>[<span class="ruby-value">:sign</span>] <span class="ruby-operator">||</span> <span class="ruby-identifier">options</span>[<span class="ruby-value">:auth</span>]
+67:       <span class="ruby-identifier">url</span> = (<span class="ruby-identifier">options</span>[<span class="ruby-value">:secure</span>] <span class="ruby-operator">?</span> <span class="ruby-value str">&quot;https&quot;</span> <span class="ruby-operator">:</span> <span class="ruby-value str">&quot;http&quot;</span>) <span class="ruby-operator">+</span> <span class="ruby-value str">&quot;://&quot;</span>
+68:       <span class="ruby-identifier">url</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">options</span>[<span class="ruby-value">:base_url</span>] <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">path</span>
+69:       <span class="ruby-identifier">url</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">&quot;.#{options[:format]}&quot;</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">options</span>[<span class="ruby-value">:format</span>]
+70:       <span class="ruby-keyword kw">return</span> {<span class="ruby-value">:url=</span><span class="ruby-operator">&gt;</span><span class="ruby-identifier">url</span>, <span class="ruby-value">:params=</span><span class="ruby-operator">&gt;</span> <span class="ruby-identifier">params</span>, <span class="ruby-value">:method=</span><span class="ruby-operator">&gt;</span><span class="ruby-identifier">options</span>[<span class="ruby-value">:method</span>]}
+71:     <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="revoke-token-method" class="method-detail ">
+				<a name="method-i-revoke_token"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">revoke_token</span><span
+						class="method-args">()</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+Revokes the given aut Parameters
+</p>
+<pre>
+ * api_key
+ * api_sig
+ * api_token</pre>
+					
+
+					
+					<div class="method-source-code"
+						id="revoke-token-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/ruby_desk/connector.rb, line 189</span>
+189:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">revoke_token</span>
+190:       <span class="ruby-identifier">prepare_and_invoke_api_call</span> <span class="ruby-value str">'auth/v1/keys/token'</span>, <span class="ruby-value">:method=</span><span class="ruby-operator">&gt;</span><span class="ruby-value">:delete</span>
+191:       <span class="ruby-ivar">@api_token</span> = <span class="ruby-keyword kw">nil</span>
+192:     <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="sign-method" class="method-detail ">
+				<a name="method-i-sign"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">sign</span><span
+						class="method-args">(params)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+Sign the given parameters and returns the signature
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="sign-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/ruby_desk/connector.rb, line 26</span>
+26:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">sign</span>(<span class="ruby-identifier">params</span>)
+27:       <span class="ruby-constant">RubyDesk</span>.<span class="ruby-identifier">logger</span>.<span class="ruby-identifier">debug</span> {<span class="ruby-node">&quot;Params to sign: #{params.inspect}&quot;</span>}
+28:       <span class="ruby-comment cmt"># sort parameters by its names (keys)</span>
+29:       <span class="ruby-identifier">sorted_params</span> = <span class="ruby-identifier">params</span>.<span class="ruby-identifier">sort</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">a</span>, <span class="ruby-identifier">b</span><span class="ruby-operator">|</span> <span class="ruby-identifier">a</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">&lt;=&gt;</span> <span class="ruby-identifier">b</span>.<span class="ruby-identifier">to_s</span>}
+30: 
+31:       <span class="ruby-constant">RubyDesk</span>.<span class="ruby-identifier">logger</span>.<span class="ruby-identifier">debug</span> {<span class="ruby-node">&quot;Sorted params: #{sorted_params.inspect}&quot;</span>}
+32:       
+33:       <span class="ruby-comment cmt"># Unescape escaped params</span>
+34:       <span class="ruby-identifier">sorted_params</span>.<span class="ruby-identifier">map!</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">k</span>, <span class="ruby-identifier">v</span><span class="ruby-operator">|</span>
+35:         [<span class="ruby-identifier">k</span>, <span class="ruby-constant">URI</span>.<span class="ruby-identifier">unescape</span>(<span class="ruby-identifier">v</span>)]
+36:       <span class="ruby-keyword kw">end</span>
+37: 
+38:       <span class="ruby-comment cmt"># concatenate secret with names, values</span>
+39:       <span class="ruby-identifier">concatenated</span> = <span class="ruby-ivar">@api_secret</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">sorted_params</span>.<span class="ruby-identifier">to_s</span>
+40: 
+41:       <span class="ruby-constant">RubyDesk</span>.<span class="ruby-identifier">logger</span>.<span class="ruby-identifier">debug</span> {<span class="ruby-node">&quot;concatenated: #{concatenated}&quot;</span>}
+42: 
+43:       <span class="ruby-comment cmt"># Calculate and return md5 of concatenated string</span>
+44:       <span class="ruby-identifier">md5</span> = <span class="ruby-constant">Digest</span><span class="ruby-operator">::</span><span class="ruby-constant">MD5</span>.<span class="ruby-identifier">hexdigest</span>(<span class="ruby-identifier">concatenated</span>)
+45: 
+46:       <span class="ruby-constant">RubyDesk</span>.<span class="ruby-identifier">logger</span>.<span class="ruby-identifier">debug</span> {<span class="ruby-node">&quot;md5: #{md5}&quot;</span>}
+47: 
+48:       <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">md5</span>
+49:     <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+		</div>
+	
+
+	</div>
+
+
+	<div id="rdoc-debugging-section-dump" class="debugging-section">
+	
+		<p>Disabled; run with --debug to generate this.</p>
+	
+	</div>
+
+	<div id="validator-badges">
+		<p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+		<p><small>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish
+			Rdoc Generator</a> 1.1.6</small>.</p>
+	</div>
+
+</body>
+</html>
+
