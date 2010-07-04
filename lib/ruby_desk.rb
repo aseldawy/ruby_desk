@@ -2,13 +2,24 @@ require 'rubygems'
 require 'json'
 require 'logger'
 
+# The top level module that holds all constants and classes related to Ruby Desk
 module RubyDesk
+  # General error with calls fo RubyDesk.
+  # Use this to rescue from all errors related to RubyDesk
   class Error < RuntimeError; end;
+  
+  # Indicates an error with authorization such as wrong username/password combination
   class UnauthorizedError < Error; end;
+  
+  # Indicates that a page requested from oDesk is not found (404 result returned).
+  # The reason depends on the request, for example it might be a spelling mistake in team room name 
   class PageNotFound < Error; end;
+  
+  # Internal server error.
   class ServerError < Error; end;
 
   class << self
+    # Used to log all debug and error messages of RubyDesk
     attr_accessor :logger
   end
 
@@ -20,7 +31,8 @@ end
 require File.join(File.dirname(__FILE__), 'ruby_desk', 'odesk_entity')
 
 module RubyDesk
-  # Classes for simple entities are defined here for simplicity and to decrease number of files
+  # Defines a simple class with some attributes for simplicity and to decrease number of files
+  # Class is defined as a subclass of RubyDesk::OdeskEntity with the attributed in arguments.
   def self.define_simple_class(*attribute_names)
     Class.new RubyDesk::OdeskEntity do
       attributes *attribute_names
@@ -64,8 +76,6 @@ module RubyDesk
     :last_name, :mail, :creation_time, :first_name)
   DeveloperSkill = define_simple_class(:order, :description,
     :avg_category_score_recent, :avg_category_score, :label)
-#   = define_simple_class()
-#   = define_simple_class()
 end
 
 Dir.glob(File.join(File.dirname(__FILE__), 'ruby_desk', '*.rb')).each do |file|

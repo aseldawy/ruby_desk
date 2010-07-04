@@ -1,3 +1,4 @@
+# A provider in oDesk.
 class RubyDesk::Provider < RubyDesk::OdeskEntity
 
   attributes :affiliated, :ag_name, :ag_description, :dev_adj_score_recent,
@@ -42,6 +43,11 @@ class RubyDesk::Provider < RubyDesk::OdeskEntity
   attribute :portfolio_items, :class=>RubyDesk::PortfolioItem, :sub_element=>'portfolio_item'
 
   class << self
+    # Returns all categories defined in oDesk.
+    # These categories are retrieved from a static text file and not updated from the web.
+    # Return value is a hash.
+    # Each key is a name of a root category.
+    # Value is an array of subcategories.
     def all_categories
       text = File.read(File.join(File.dirname(__FILE__), "..", "categories"))
       lines = text.split(/[\r\n]+/).map{|line| line.strip}
@@ -127,6 +133,11 @@ class RubyDesk::Provider < RubyDesk::OdeskEntity
       return providers
     end
 
+    # Retrieves the profile with the given user
+    # * connector: The RubyDesk::Connector that is connected to oDesk
+    # * id: The id of the user to retrieve his profile
+    # * options: A hash of options
+    #   * brief: set this to true to retrieve only a brief profile of the given user
     def get_profile(connector, id, options={})
       brief = options.delete :brief || false
       json = connector.prepare_and_invoke_api_call(

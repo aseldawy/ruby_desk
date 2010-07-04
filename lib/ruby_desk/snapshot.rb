@@ -8,6 +8,7 @@ class RubyDesk::Snapshot < RubyDesk::OdeskEntity
 
   attribute :user, :class=>RubyDesk::User
 
+  # Retrieves work diary as an array of snapshots.
   def self.work_diary(connector, company_id, user_id, date = nil, timezone = "mine")
     json = connector.prepare_and_invoke_api_call(
       "team/v1/workdiaries/#{company_id}/#{user_id}" + (date ? "/"+date : ""),
@@ -19,6 +20,7 @@ class RubyDesk::Snapshot < RubyDesk::OdeskEntity
     end
   end
 
+  # Retrieves details of one snapshot
   def self.snapshot_details(connector, company_id, user_id, timestamp = nil)
     timestamp_param = case timestamp
       when String then timestamp

@@ -1,6 +1,7 @@
 require 'uri'
 require 'date'
 
+# An interface for accessing time reports from oDesk.
 class RubyDesk::TimeReport
   DEFAULT_OPTIONS = {:select => "worked_on, provider_id, sum(hours)",
     :conditions=>{} }
@@ -80,6 +81,7 @@ class RubyDesk::TimeReport
     return rows.compact
   end
 
+  # Builds a query in Google Data Source Language using the given options.
   def self.build_query(options)
     gds_query = ""
     gds_query << "SELECT " << (options[:select].respond_to?(:join)?
@@ -109,6 +111,7 @@ class RubyDesk::TimeReport
     gds_query
   end
 
+  # Converts an object to string based on its type
   def self.value_to_str(value)
     case value
       when String then "'#{value}'"
@@ -117,6 +120,7 @@ class RubyDesk::TimeReport
     end
   end
 
+  # Converts a string representation in first parameter back to its original value based on the second parameter
   def self.str_to_value(string, type)
     case type
       when 'number' then string.to_f
