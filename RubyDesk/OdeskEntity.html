@@ -171,24 +171,80 @@
 
 				<div class="method-description">
 					
-					
+					<p>
+Defines a new attribute or multiple attributes to this class. Allowed
+options:
+</p>
+<pre>
+  * class: The class used to initialize this attribute
+  * sub_element: Indicates this is an array. Name of the key used to initialize this attribute.
+</pre>
+<p>
+Here are some examples of how to use this method class Project
+</p>
+<pre>
+  # Defines a new attribute called 'name'.
+  # This is generally used for defining simple attributes such as String or integer
+  attribute :name
+
+  # Defines two attributes called 'description' and 'priority'.
+  attributes :description, :priority
+  # The same effect can be accomplished by calling
+  attribute :description
+  attribute :priority
+
+  # Defines an attribute called 'manager' of class User
+  # This class is used to initialize this attribute as we will see later
+  attribute :manager, :class=&gt;User
+
+  # Defines an attribute called 'tasks' which is an array of type Task
+  attribute :tasks, :class=&gt;Task, :sub_element=&gt;&quot;tasks&quot;
+</pre>
+<p>
+end
+</p>
+<p>
+Initialization
+</p>
+<h6>The above class Project can be initialized like this</h6>
+<p>
+# An instance of class Project all attributes set to nil Project.new
+</p>
+<p>
+# Initialize simple attributes with the given values Project.new
+:name=>&#8220;GitHub project&#8221;, :description=>&#8220;Sample project on
+git hub&#8220;
+</p>
+<p>
+# Initialize complex attribute # This will initialize manager with:
+User.new(:name=>&#8220;Ahmed&#8221;,
+:birthday=>Date.parse(&#8220;3/3/1983&#8220;)) Project.new
+:manager=>{:name=>&#8220;Ahmed&#8221;,
+:birthday=>Date.parse(&#8220;3/3/1983&#8220;)}
+</p>
+<p>
+# Initializes &#8216;tasks&#8217; attribute with
+[Task.new(:name=>&#8220;task1&#8221;, Task.new(:name=>&#8220;task2&#8221;,
+:priority=>3}] Project.new :tasks=>[{:name=>&#8220;task1&#8221;},
+{:name=>&#8220;task2&#8221;, :priority=>3}]
+</p>
 					
 
 					
 					<div class="method-source-code"
 						id="attribute-source">
 <pre>
-    <span class="ruby-comment cmt"># File lib/ruby_desk/odesk_entity.rb, line 5</span>
- 5:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">attribute</span>(*<span class="ruby-identifier">att_names</span>)
- 6:       <span class="ruby-identifier">options</span> = <span class="ruby-keyword kw">nil</span>
- 7:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">att_names</span>.<span class="ruby-identifier">last</span>.<span class="ruby-identifier">is_a?</span><span class="ruby-constant">Hash</span>
- 8:         <span class="ruby-identifier">options</span> = <span class="ruby-identifier">att_names</span>.<span class="ruby-identifier">delete_at</span> <span class="ruby-value">1</span>
- 9:       <span class="ruby-keyword kw">end</span>
-10:       <span class="ruby-identifier">att_names</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">att_name</span><span class="ruby-operator">|</span>
-11:         <span class="ruby-identifier">attr_reader</span> <span class="ruby-identifier">att_name</span>
-12:         <span class="ruby-identifier">@@complex_attributes</span>[<span class="ruby-identifier">att_name</span>.<span class="ruby-identifier">to_s</span>] = <span class="ruby-identifier">options</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">options</span>
-13:       <span class="ruby-keyword kw">end</span>
-14:     <span class="ruby-keyword kw">end</span></pre>
+    <span class="ruby-comment cmt"># File lib/ruby_desk/odesk_entity.rb, line 45</span>
+45:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">attribute</span>(*<span class="ruby-identifier">att_names</span>)
+46:       <span class="ruby-identifier">options</span> = <span class="ruby-keyword kw">nil</span>
+47:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">att_names</span>.<span class="ruby-identifier">last</span>.<span class="ruby-identifier">is_a?</span><span class="ruby-constant">Hash</span>
+48:         <span class="ruby-identifier">options</span> = <span class="ruby-identifier">att_names</span>.<span class="ruby-identifier">delete_at</span> <span class="ruby-value">1</span>
+49:       <span class="ruby-keyword kw">end</span>
+50:       <span class="ruby-identifier">att_names</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">att_name</span><span class="ruby-operator">|</span>
+51:         <span class="ruby-identifier">attr_reader</span> <span class="ruby-identifier">att_name</span>
+52:         <span class="ruby-identifier">@@complex_attributes</span>[<span class="ruby-identifier">att_name</span>.<span class="ruby-identifier">to_s</span>] = <span class="ruby-identifier">options</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">options</span>
+53:       <span class="ruby-keyword kw">end</span>
+54:     <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -212,39 +268,52 @@
 
 				<div class="method-description">
 					
-					
+					<p>
+Creates a new object of this class Initial values of attributes is passed
+as a paramter
+</p>
+<pre>
+  * params: A hash used to initialize this object.
+    The key is the name of the attribute to initialize.
+    The value is used as the initial value for this attribute.
+    If the attribute is defined a class in creation,
+    the value is used as an initialization parameter with this class.
+    If the attribute is marked as &quot;sub_element&quot; in creation,
+    the value is assumed to be an array.
+    Each entry in the array is used as an initialization parameter to create a new element.
+    If the value is not an array, it is used to create an array of single element.</pre>
 					
 
 					
 					<div class="method-source-code"
 						id="new-source">
 <pre>
-    <span class="ruby-comment cmt"># File lib/ruby_desk/odesk_entity.rb, line 20</span>
-20:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">params</span>={})
-21:     <span class="ruby-identifier">params</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">k</span>, <span class="ruby-identifier">v</span><span class="ruby-operator">|</span>
-22:       <span class="ruby-identifier">attribute_options</span> = <span class="ruby-identifier">@@complex_attributes</span>[<span class="ruby-identifier">k</span>.<span class="ruby-identifier">to_s</span>] <span class="ruby-operator">||</span> {}
-23:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">attribute_options</span>[<span class="ruby-value">:class</span>]
-24:         <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">attribute_options</span>[<span class="ruby-value">:sub_element</span>]
-25:           <span class="ruby-comment cmt"># This attribute has many elements each of the given class</span>
-26:           <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">v</span>[<span class="ruby-identifier">attribute_options</span>[<span class="ruby-value">:sub_element</span>]]
-27:             <span class="ruby-comment cmt"># There is values for it</span>
-28:             <span class="ruby-comment cmt"># Initialize the value to an empty array</span>
-29:             <span class="ruby-identifier">values</span> = []
-30:             <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">instance_variable_set</span>(<span class="ruby-node">&quot;@#{k}&quot;</span>, <span class="ruby-identifier">values</span>)
-31:             [<span class="ruby-identifier">v</span>[<span class="ruby-identifier">attribute_options</span>[<span class="ruby-value">:sub_element</span>]]].<span class="ruby-identifier">flatten</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">element</span><span class="ruby-operator">|</span>
-32:               <span class="ruby-comment cmt"># Create an element of the correct class</span>
-33:               <span class="ruby-identifier">values</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">attribute_options</span>[<span class="ruby-value">:class</span>].<span class="ruby-identifier">new</span>(<span class="ruby-identifier">element</span>)
-34:             <span class="ruby-keyword kw">end</span>
-35:           <span class="ruby-keyword kw">end</span>
-36:         <span class="ruby-keyword kw">else</span>
-37:           <span class="ruby-comment cmt"># This attribute is a single comple attribute</span>
-38:           <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">instance_variable_set</span>(<span class="ruby-node">&quot;@#{k}&quot;</span>, <span class="ruby-identifier">attribute_options</span>[<span class="ruby-value">:class</span>].<span class="ruby-identifier">new</span>(<span class="ruby-identifier">v</span>))
-39:         <span class="ruby-keyword kw">end</span>
-40:       <span class="ruby-keyword kw">else</span>
-41:         <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">instance_variable_set</span>(<span class="ruby-node">&quot;@#{k}&quot;</span>, <span class="ruby-identifier">v</span>)
-42:       <span class="ruby-keyword kw">end</span>
-43:     <span class="ruby-keyword kw">end</span>
-44:   <span class="ruby-keyword kw">end</span></pre>
+    <span class="ruby-comment cmt"># File lib/ruby_desk/odesk_entity.rb, line 71</span>
+71:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">params</span>={})
+72:     <span class="ruby-identifier">params</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">k</span>, <span class="ruby-identifier">v</span><span class="ruby-operator">|</span>
+73:       <span class="ruby-identifier">attribute_options</span> = <span class="ruby-identifier">@@complex_attributes</span>[<span class="ruby-identifier">k</span>.<span class="ruby-identifier">to_s</span>] <span class="ruby-operator">||</span> {}
+74:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">attribute_options</span>[<span class="ruby-value">:class</span>]
+75:         <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">attribute_options</span>[<span class="ruby-value">:sub_element</span>]
+76:           <span class="ruby-comment cmt"># This attribute has many elements each of the given class</span>
+77:           <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">v</span>[<span class="ruby-identifier">attribute_options</span>[<span class="ruby-value">:sub_element</span>]]
+78:             <span class="ruby-comment cmt"># There is values for it</span>
+79:             <span class="ruby-comment cmt"># Initialize the value to an empty array</span>
+80:             <span class="ruby-identifier">values</span> = []
+81:             <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">instance_variable_set</span>(<span class="ruby-node">&quot;@#{k}&quot;</span>, <span class="ruby-identifier">values</span>)
+82:             [<span class="ruby-identifier">v</span>[<span class="ruby-identifier">attribute_options</span>[<span class="ruby-value">:sub_element</span>]]].<span class="ruby-identifier">flatten</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">element</span><span class="ruby-operator">|</span>
+83:               <span class="ruby-comment cmt"># Create an element of the correct class</span>
+84:               <span class="ruby-identifier">values</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">attribute_options</span>[<span class="ruby-value">:class</span>].<span class="ruby-identifier">new</span>(<span class="ruby-identifier">element</span>)
+85:             <span class="ruby-keyword kw">end</span>
+86:           <span class="ruby-keyword kw">end</span>
+87:         <span class="ruby-keyword kw">else</span>
+88:           <span class="ruby-comment cmt"># This attribute is a single complex attribute</span>
+89:           <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">instance_variable_set</span>(<span class="ruby-node">&quot;@#{k}&quot;</span>, <span class="ruby-identifier">attribute_options</span>[<span class="ruby-value">:class</span>].<span class="ruby-identifier">new</span>(<span class="ruby-identifier">v</span>))
+90:         <span class="ruby-keyword kw">end</span>
+91:       <span class="ruby-keyword kw">else</span>
+92:         <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">instance_variable_set</span>(<span class="ruby-node">&quot;@#{k}&quot;</span>, <span class="ruby-identifier">v</span>)
+93:       <span class="ruby-keyword kw">end</span>
+94:     <span class="ruby-keyword kw">end</span>
+95:   <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>

@@ -147,7 +147,10 @@
 		<h1 class="class">RubyDesk::Provider</h1>
 
 		<div id="description">
-			
+			<p>
+A provider in oDesk.
+</p>
+
 		</div>
 
 		<!-- Constants -->
@@ -189,28 +192,33 @@ Save categories in a constant
 
 				<div class="method-description">
 					
-					
+					<p>
+Returns all categories defined in oDesk. These categories are retrieved
+from a static text file and not updated from the web. Return value is a
+hash. Each key is a name of a root category. Value is an array of
+subcategories.
+</p>
 					
 
 					
 					<div class="method-source-code"
 						id="all-categories-source">
 <pre>
-    <span class="ruby-comment cmt"># File lib/ruby_desk/provider.rb, line 45</span>
-45:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">all_categories</span>
-46:       <span class="ruby-identifier">text</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">read</span>(<span class="ruby-constant">File</span>.<span class="ruby-identifier">join</span>(<span class="ruby-constant">File</span>.<span class="ruby-identifier">dirname</span>(<span class="ruby-keyword kw">__FILE__</span>), <span class="ruby-value str">&quot;..&quot;</span>, <span class="ruby-value str">&quot;categories&quot;</span>))
-47:       <span class="ruby-identifier">lines</span> = <span class="ruby-identifier">text</span>.<span class="ruby-identifier">split</span>(<span class="ruby-regexp re">/[\r\n]+/</span>).<span class="ruby-identifier">map</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">line</span><span class="ruby-operator">|</span> <span class="ruby-identifier">line</span>.<span class="ruby-identifier">strip</span>}
-48:       <span class="ruby-identifier">categories</span> = {}
-49:       <span class="ruby-identifier">subcategories</span> = <span class="ruby-keyword kw">nil</span>
-50:       <span class="ruby-identifier">lines</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">line</span><span class="ruby-operator">|</span>
-51:         <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">line</span>[<span class="ruby-value">0</span>] <span class="ruby-operator">==</span> <span class="ruby-value">**</span>
-52:           <span class="ruby-identifier">subcategories</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">line</span>[<span class="ruby-value">2</span><span class="ruby-operator">..</span><span class="ruby-value">1</span>]
-53:         <span class="ruby-keyword kw">else</span>
-54:           <span class="ruby-identifier">categories</span>[<span class="ruby-identifier">line</span>] = (<span class="ruby-identifier">subcategories</span> = [])
-55:         <span class="ruby-keyword kw">end</span>
-56:       <span class="ruby-keyword kw">end</span>
-57:       <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">categories</span>
-58:     <span class="ruby-keyword kw">end</span></pre>
+    <span class="ruby-comment cmt"># File lib/ruby_desk/provider.rb, line 51</span>
+51:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">all_categories</span>
+52:       <span class="ruby-identifier">text</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">read</span>(<span class="ruby-constant">File</span>.<span class="ruby-identifier">join</span>(<span class="ruby-constant">File</span>.<span class="ruby-identifier">dirname</span>(<span class="ruby-keyword kw">__FILE__</span>), <span class="ruby-value str">&quot;..&quot;</span>, <span class="ruby-value str">&quot;categories&quot;</span>))
+53:       <span class="ruby-identifier">lines</span> = <span class="ruby-identifier">text</span>.<span class="ruby-identifier">split</span>(<span class="ruby-regexp re">/[\r\n]+/</span>).<span class="ruby-identifier">map</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">line</span><span class="ruby-operator">|</span> <span class="ruby-identifier">line</span>.<span class="ruby-identifier">strip</span>}
+54:       <span class="ruby-identifier">categories</span> = {}
+55:       <span class="ruby-identifier">subcategories</span> = <span class="ruby-keyword kw">nil</span>
+56:       <span class="ruby-identifier">lines</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">line</span><span class="ruby-operator">|</span>
+57:         <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">line</span>[<span class="ruby-value">0</span>] <span class="ruby-operator">==</span> <span class="ruby-value">**</span>
+58:           <span class="ruby-identifier">subcategories</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">line</span>[<span class="ruby-value">2</span><span class="ruby-operator">..</span><span class="ruby-value">1</span>]
+59:         <span class="ruby-keyword kw">else</span>
+60:           <span class="ruby-identifier">categories</span>[<span class="ruby-identifier">line</span>] = (<span class="ruby-identifier">subcategories</span> = [])
+61:         <span class="ruby-keyword kw">end</span>
+62:       <span class="ruby-keyword kw">end</span>
+63:       <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">categories</span>
+64:     <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -234,20 +242,43 @@ Save categories in a constant
 
 				<div class="method-description">
 					
-					
+					<p>
+Retrieves the profile with the given user
+</p>
+<ul>
+<li><p>
+connector: The <a href="Connector.html">RubyDesk::Connector</a> that is
+connected to oDesk
+</p>
+</li>
+<li><p>
+id: The id of the user to retrieve his profile
+</p>
+</li>
+<li><p>
+options: A hash of options
+</p>
+<ul>
+<li><p>
+brief: set this to true to retrieve only a brief profile of the given user
+</p>
+</li>
+</ul>
+</li>
+</ul>
 					
 
 					
 					<div class="method-source-code"
 						id="get-profile-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/ruby_desk/provider.rb, line 130</span>
-130:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">get_profile</span>(<span class="ruby-identifier">connector</span>, <span class="ruby-identifier">id</span>, <span class="ruby-identifier">options</span>={})
-131:       <span class="ruby-identifier">brief</span> = <span class="ruby-identifier">options</span>.<span class="ruby-identifier">delete</span> <span class="ruby-value">:brief</span> <span class="ruby-operator">||</span> <span class="ruby-keyword kw">false</span>
-132:       <span class="ruby-identifier">json</span> = <span class="ruby-identifier">connector</span>.<span class="ruby-identifier">prepare_and_invoke_api_call</span>(
-133:         <span class="ruby-node">&quot;profiles/v1/providers/#{id}&quot;</span> <span class="ruby-operator">+</span> (<span class="ruby-identifier">brief</span> <span class="ruby-operator">?</span> <span class="ruby-value str">&quot;/brief&quot;</span> <span class="ruby-operator">:</span> <span class="ruby-value str">&quot;&quot;</span>), <span class="ruby-value">:method=</span><span class="ruby-operator">&gt;</span><span class="ruby-value">:get</span>)
-134:       <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">json</span>[<span class="ruby-value str">'profile'</span>])
-135:     <span class="ruby-keyword kw">end</span></pre>
+     <span class="ruby-comment cmt"># File lib/ruby_desk/provider.rb, line 141</span>
+141:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">get_profile</span>(<span class="ruby-identifier">connector</span>, <span class="ruby-identifier">id</span>, <span class="ruby-identifier">options</span>={})
+142:       <span class="ruby-identifier">brief</span> = <span class="ruby-identifier">options</span>.<span class="ruby-identifier">delete</span> <span class="ruby-value">:brief</span> <span class="ruby-operator">||</span> <span class="ruby-keyword kw">false</span>
+143:       <span class="ruby-identifier">json</span> = <span class="ruby-identifier">connector</span>.<span class="ruby-identifier">prepare_and_invoke_api_call</span>(
+144:         <span class="ruby-node">&quot;profiles/v1/providers/#{id}&quot;</span> <span class="ruby-operator">+</span> (<span class="ruby-identifier">brief</span> <span class="ruby-operator">?</span> <span class="ruby-value str">&quot;/brief&quot;</span> <span class="ruby-operator">:</span> <span class="ruby-value str">&quot;&quot;</span>), <span class="ruby-value">:method=</span><span class="ruby-operator">&gt;</span><span class="ruby-value">:get</span>)
+145:       <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">json</span>[<span class="ruby-value str">'profile'</span>])
+146:     <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -393,21 +424,21 @@ sort using the field_names
 					<div class="method-source-code"
 						id="search-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/ruby_desk/provider.rb, line 115</span>
-115:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">search</span>(<span class="ruby-identifier">connector</span>, <span class="ruby-identifier">options</span>={})
-116:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">options</span>.<span class="ruby-identifier">respond_to?</span> <span class="ruby-value">:to_str</span>
-117:         <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">search</span>(<span class="ruby-identifier">connector</span>, <span class="ruby-value">:q=</span><span class="ruby-operator">&gt;</span><span class="ruby-identifier">options</span>.<span class="ruby-identifier">to_str</span>)
-118:       <span class="ruby-keyword kw">end</span>
-119:       <span class="ruby-identifier">json</span> = <span class="ruby-identifier">connector</span>.<span class="ruby-identifier">prepare_and_invoke_api_call</span>(
-120:         <span class="ruby-value str">'profiles/v1/search/providers'</span>, <span class="ruby-value">:method=</span><span class="ruby-operator">&gt;</span><span class="ruby-value">:get</span>,
-121:         <span class="ruby-value">:auth=</span><span class="ruby-operator">&gt;</span><span class="ruby-keyword kw">false</span>, <span class="ruby-value">:sign=</span><span class="ruby-operator">&gt;</span><span class="ruby-keyword kw">false</span>)
-122: 
-123:       <span class="ruby-identifier">providers</span> = []
-124:       [<span class="ruby-identifier">json</span>[<span class="ruby-value str">'providers'</span>][<span class="ruby-value str">'provider'</span>]].<span class="ruby-identifier">flatten</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">provider</span><span class="ruby-operator">|</span>
-125:         <span class="ruby-identifier">providers</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">provider</span>)
-126:       <span class="ruby-keyword kw">end</span>
-127:       <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">providers</span>
-128:     <span class="ruby-keyword kw">end</span></pre>
+     <span class="ruby-comment cmt"># File lib/ruby_desk/provider.rb, line 121</span>
+121:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">search</span>(<span class="ruby-identifier">connector</span>, <span class="ruby-identifier">options</span>={})
+122:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">options</span>.<span class="ruby-identifier">respond_to?</span> <span class="ruby-value">:to_str</span>
+123:         <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">search</span>(<span class="ruby-identifier">connector</span>, <span class="ruby-value">:q=</span><span class="ruby-operator">&gt;</span><span class="ruby-identifier">options</span>.<span class="ruby-identifier">to_str</span>)
+124:       <span class="ruby-keyword kw">end</span>
+125:       <span class="ruby-identifier">json</span> = <span class="ruby-identifier">connector</span>.<span class="ruby-identifier">prepare_and_invoke_api_call</span>(
+126:         <span class="ruby-value str">'profiles/v1/search/providers'</span>, <span class="ruby-value">:method=</span><span class="ruby-operator">&gt;</span><span class="ruby-value">:get</span>,
+127:         <span class="ruby-value">:auth=</span><span class="ruby-operator">&gt;</span><span class="ruby-keyword kw">false</span>, <span class="ruby-value">:sign=</span><span class="ruby-operator">&gt;</span><span class="ruby-keyword kw">false</span>)
+128: 
+129:       <span class="ruby-identifier">providers</span> = []
+130:       [<span class="ruby-identifier">json</span>[<span class="ruby-value str">'providers'</span>][<span class="ruby-value str">'provider'</span>]].<span class="ruby-identifier">flatten</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">provider</span><span class="ruby-operator">|</span>
+131:         <span class="ruby-identifier">providers</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">provider</span>)
+132:       <span class="ruby-keyword kw">end</span>
+133:       <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">providers</span>
+134:     <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -444,16 +475,16 @@ sort using the field_names
 					<div class="method-source-code"
 						id="iinitialize-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/ruby_desk/provider.rb, line 140</span>
-140:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">iinitialize</span>(<span class="ruby-identifier">params</span>={})
-141:     <span class="ruby-identifier">params</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">k</span>, <span class="ruby-identifier">v</span><span class="ruby-operator">|</span>
-142:       <span class="ruby-keyword kw">case</span> <span class="ruby-identifier">k</span>.<span class="ruby-identifier">to_s</span>
-143:       <span class="ruby-keyword kw">when</span> <span class="ruby-value str">&quot;portfolio_items&quot;</span> <span class="ruby-keyword kw">then</span>
-144:       <span class="ruby-keyword kw">else</span>
-145:         <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">instance_variable_set</span>(<span class="ruby-node">&quot;@#{k}&quot;</span>, <span class="ruby-identifier">v</span>)
-146:       <span class="ruby-keyword kw">end</span>
-147:     <span class="ruby-keyword kw">end</span>
-148:   <span class="ruby-keyword kw">end</span></pre>
+     <span class="ruby-comment cmt"># File lib/ruby_desk/provider.rb, line 151</span>
+151:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">iinitialize</span>(<span class="ruby-identifier">params</span>={})
+152:     <span class="ruby-identifier">params</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">k</span>, <span class="ruby-identifier">v</span><span class="ruby-operator">|</span>
+153:       <span class="ruby-keyword kw">case</span> <span class="ruby-identifier">k</span>.<span class="ruby-identifier">to_s</span>
+154:       <span class="ruby-keyword kw">when</span> <span class="ruby-value str">&quot;portfolio_items&quot;</span> <span class="ruby-keyword kw">then</span>
+155:       <span class="ruby-keyword kw">else</span>
+156:         <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">instance_variable_set</span>(<span class="ruby-node">&quot;@#{k}&quot;</span>, <span class="ruby-identifier">v</span>)
+157:       <span class="ruby-keyword kw">end</span>
+158:     <span class="ruby-keyword kw">end</span>
+159:   <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>

@@ -164,7 +164,11 @@
 		<h1 class="module">RubyDesk</h1>
 
 		<div id="description">
-			
+			<p>
+The top level module that holds all constants and classes related to Ruby
+Desk
+</p>
+
 		</div>
 
 		<!-- Constants -->
@@ -270,7 +274,10 @@
 
 				<div class="method-description">
 				
-				
+				<p>
+Used to log all debug and error messages of <a
+href="RubyDesk.html">RubyDesk</a>
+</p>
 				
 				</div>
 			</div>
@@ -298,8 +305,10 @@
 				<div class="method-description">
 					
 					<p>
-Classes for simple entities are defined here for simplicity and to decrease
-number of files
+Defines a simple class with some attributes for simplicity and to decrease
+number of files Class is defined as a subclass of <a
+href="RubyDesk/OdeskEntity.html">RubyDesk::OdeskEntity</a> with the
+attributed in arguments.
 </p>
 					
 
@@ -307,12 +316,12 @@ number of files
 					<div class="method-source-code"
 						id="define-simple-class-source">
 <pre>
-    <span class="ruby-comment cmt"># File lib/ruby_desk.rb, line 24</span>
-24:   <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">define_simple_class</span>(*<span class="ruby-identifier">attribute_names</span>)
-25:     <span class="ruby-constant">Class</span>.<span class="ruby-identifier">new</span> <span class="ruby-constant">RubyDesk</span><span class="ruby-operator">::</span><span class="ruby-constant">OdeskEntity</span> <span class="ruby-keyword kw">do</span>
-26:       <span class="ruby-identifier">attributes</span> *<span class="ruby-identifier">attribute_names</span>
-27:     <span class="ruby-keyword kw">end</span>
-28:   <span class="ruby-keyword kw">end</span></pre>
+    <span class="ruby-comment cmt"># File lib/ruby_desk.rb, line 36</span>
+36:   <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">define_simple_class</span>(*<span class="ruby-identifier">attribute_names</span>)
+37:     <span class="ruby-constant">Class</span>.<span class="ruby-identifier">new</span> <span class="ruby-constant">RubyDesk</span><span class="ruby-operator">::</span><span class="ruby-constant">OdeskEntity</span> <span class="ruby-keyword kw">do</span>
+38:       <span class="ruby-identifier">attributes</span> *<span class="ruby-identifier">attribute_names</span>
+39:     <span class="ruby-keyword kw">end</span>
+40:   <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>

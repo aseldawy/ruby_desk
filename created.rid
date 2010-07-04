@@ -1,9 +1,9 @@
-Sun, 04 Jul 2010 14:43:19 +0300
-lib/ruby_desk.rb	Sun, 04 Jul 2010 14:43:07 +0300
-lib/ruby_desk/snapshot.rb	Sun, 04 Jul 2010 14:43:07 +0300
-lib/ruby_desk/odesk_entity.rb	Sun, 04 Jul 2010 14:43:07 +0300
-lib/ruby_desk/connector.rb	Sun, 04 Jul 2010 14:43:07 +0300
-lib/ruby_desk/team_room.rb	Sun, 04 Jul 2010 14:43:07 +0300
-README.rdoc	Sun, 04 Jul 2010 14:43:07 +0300
-lib/ruby_desk/provider.rb	Sun, 04 Jul 2010 14:43:07 +0300
-lib/ruby_desk/time_report.rb	Sun, 04 Jul 2010 14:43:07 +0300
+Sun, 04 Jul 2010 16:31:19 +0300
+lib/ruby_desk.rb	Sun, 04 Jul 2010 15:15:29 +0300
+lib/ruby_desk/snapshot.rb	Sun, 04 Jul 2010 16:21:43 +0300
+lib/ruby_desk/odesk_entity.rb	Sun, 04 Jul 2010 16:27:14 +0300
+lib/ruby_desk/connector.rb	Sun, 04 Jul 2010 14:46:04 +0300
+lib/ruby_desk/team_room.rb	Sun, 04 Jul 2010 16:22:58 +0300
+README.rdoc	Sun, 04 Jul 2010 14:58:09 +0300
+lib/ruby_desk/provider.rb	Sun, 04 Jul 2010 16:30:27 +0300
+lib/ruby_desk/time_report.rb	Sun, 04 Jul 2010 16:25:40 +0300

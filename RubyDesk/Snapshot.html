@@ -171,31 +171,33 @@
 
 				<div class="method-description">
 					
-					
+					<p>
+Retrieves details of one snapshot
+</p>
 					
 
 					
 					<div class="method-source-code"
 						id="snapshot-details-source">
 <pre>
-    <span class="ruby-comment cmt"># File lib/ruby_desk/snapshot.rb, line 22</span>
-22:   <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">snapshot_details</span>(<span class="ruby-identifier">connector</span>, <span class="ruby-identifier">company_id</span>, <span class="ruby-identifier">user_id</span>, <span class="ruby-identifier">timestamp</span> = <span class="ruby-keyword kw">nil</span>)
-23:     <span class="ruby-identifier">timestamp_param</span> = <span class="ruby-keyword kw">case</span> <span class="ruby-identifier">timestamp</span>
-24:       <span class="ruby-keyword kw">when</span> <span class="ruby-constant">String</span> <span class="ruby-keyword kw">then</span> <span class="ruby-identifier">timestamp</span>
-25:       <span class="ruby-keyword kw">when</span> <span class="ruby-constant">Date</span>, <span class="ruby-constant">Time</span> <span class="ruby-keyword kw">then</span> <span class="ruby-identifier">timestamp</span>.<span class="ruby-identifier">strftime</span>(<span class="ruby-value str">&quot;%Y%m%d&quot;</span>)
-26:       <span class="ruby-keyword kw">when</span> <span class="ruby-constant">Range</span> <span class="ruby-keyword kw">then</span> [<span class="ruby-identifier">timestamp</span>.<span class="ruby-identifier">first</span>, <span class="ruby-identifier">timestamp</span>.<span class="ruby-identifier">last</span>].<span class="ruby-identifier">map</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">t</span><span class="ruby-operator">|</span><span class="ruby-identifier">t</span>.<span class="ruby-identifier">strftime</span>(<span class="ruby-value str">&quot;%Y%m%d&quot;</span>)}.<span class="ruby-identifier">join</span>(<span class="ruby-value str">&quot;,&quot;</span>)
-27:       <span class="ruby-keyword kw">when</span> <span class="ruby-constant">Array</span> <span class="ruby-keyword kw">then</span> <span class="ruby-identifier">timestamp</span>.<span class="ruby-identifier">map</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">t</span><span class="ruby-operator">|</span> <span class="ruby-identifier">t</span>.<span class="ruby-identifier">strftime</span>(<span class="ruby-value str">&quot;%Y%m%d&quot;</span>)}.<span class="ruby-identifier">join</span>(<span class="ruby-value str">&quot;;&quot;</span>)
-28:     <span class="ruby-keyword kw">end</span>
-29:     <span class="ruby-comment cmt"># Invoke API call</span>
-30:     <span class="ruby-identifier">json</span> = <span class="ruby-identifier">connector</span>.<span class="ruby-identifier">prepare_and_invoke_api_call</span>(
-31:       <span class="ruby-node">&quot;team/v1/workdiaries/#{company_id}/#{user_id}&quot;</span> <span class="ruby-operator">+</span>
-32:       (<span class="ruby-identifier">timestamp_param</span> <span class="ruby-operator">?</span> <span class="ruby-node">&quot;/#{timestamp_param}&quot;</span> <span class="ruby-operator">:</span> <span class="ruby-value str">&quot;&quot;</span>), <span class="ruby-value">:method=</span><span class="ruby-operator">&gt;</span><span class="ruby-value">:get</span>)
-33: 
-34:     <span class="ruby-comment cmt"># Generate ruby objects for each snapshot</span>
-35:     [<span class="ruby-identifier">json</span>[<span class="ruby-value str">'snapshot'</span>]].<span class="ruby-identifier">flatten</span>.<span class="ruby-identifier">map</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">snapshot</span><span class="ruby-operator">|</span>
-36:       <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">snapshot</span>)
-37:     <span class="ruby-keyword kw">end</span>
-38:   <span class="ruby-keyword kw">end</span></pre>
+    <span class="ruby-comment cmt"># File lib/ruby_desk/snapshot.rb, line 24</span>
+24:   <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">snapshot_details</span>(<span class="ruby-identifier">connector</span>, <span class="ruby-identifier">company_id</span>, <span class="ruby-identifier">user_id</span>, <span class="ruby-identifier">timestamp</span> = <span class="ruby-keyword kw">nil</span>)
+25:     <span class="ruby-identifier">timestamp_param</span> = <span class="ruby-keyword kw">case</span> <span class="ruby-identifier">timestamp</span>
+26:       <span class="ruby-keyword kw">when</span> <span class="ruby-constant">String</span> <span class="ruby-keyword kw">then</span> <span class="ruby-identifier">timestamp</span>
+27:       <span class="ruby-keyword kw">when</span> <span class="ruby-constant">Date</span>, <span class="ruby-constant">Time</span> <span class="ruby-keyword kw">then</span> <span class="ruby-identifier">timestamp</span>.<span class="ruby-identifier">strftime</span>(<span class="ruby-value str">&quot;%Y%m%d&quot;</span>)
+28:       <span class="ruby-keyword kw">when</span> <span class="ruby-constant">Range</span> <span class="ruby-keyword kw">then</span> [<span class="ruby-identifier">timestamp</span>.<span class="ruby-identifier">first</span>, <span class="ruby-identifier">timestamp</span>.<span class="ruby-identifier">last</span>].<span class="ruby-identifier">map</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">t</span><span class="ruby-operator">|</span><span class="ruby-identifier">t</span>.<span class="ruby-identifier">strftime</span>(<span class="ruby-value str">&quot;%Y%m%d&quot;</span>)}.<span class="ruby-identifier">join</span>(<span class="ruby-value str">&quot;,&quot;</span>)
+29:       <span class="ruby-keyword kw">when</span> <span class="ruby-constant">Array</span> <span class="ruby-keyword kw">then</span> <span class="ruby-identifier">timestamp</span>.<span class="ruby-identifier">map</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">t</span><span class="ruby-operator">|</span> <span class="ruby-identifier">t</span>.<span class="ruby-identifier">strftime</span>(<span class="ruby-value str">&quot;%Y%m%d&quot;</span>)}.<span class="ruby-identifier">join</span>(<span class="ruby-value str">&quot;;&quot;</span>)
+30:     <span class="ruby-keyword kw">end</span>
+31:     <span class="ruby-comment cmt"># Invoke API call</span>
+32:     <span class="ruby-identifier">json</span> = <span class="ruby-identifier">connector</span>.<span class="ruby-identifier">prepare_and_invoke_api_call</span>(
+33:       <span class="ruby-node">&quot;team/v1/workdiaries/#{company_id}/#{user_id}&quot;</span> <span class="ruby-operator">+</span>
+34:       (<span class="ruby-identifier">timestamp_param</span> <span class="ruby-operator">?</span> <span class="ruby-node">&quot;/#{timestamp_param}&quot;</span> <span class="ruby-operator">:</span> <span class="ruby-value str">&quot;&quot;</span>), <span class="ruby-value">:method=</span><span class="ruby-operator">&gt;</span><span class="ruby-value">:get</span>)
+35: 
+36:     <span class="ruby-comment cmt"># Generate ruby objects for each snapshot</span>
+37:     [<span class="ruby-identifier">json</span>[<span class="ruby-value str">'snapshot'</span>]].<span class="ruby-identifier">flatten</span>.<span class="ruby-identifier">map</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">snapshot</span><span class="ruby-operator">|</span>
+38:       <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">snapshot</span>)
+39:     <span class="ruby-keyword kw">end</span>
+40:   <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -219,24 +221,26 @@
 
 				<div class="method-description">
 					
-					
+					<p>
+Retrieves work diary as an array of snapshots.
+</p>
 					
 
 					
 					<div class="method-source-code"
 						id="work-diary-source">
 <pre>
-    <span class="ruby-comment cmt"># File lib/ruby_desk/snapshot.rb, line 11</span>
-11:   <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">work_diary</span>(<span class="ruby-identifier">connector</span>, <span class="ruby-identifier">company_id</span>, <span class="ruby-identifier">user_id</span>, <span class="ruby-identifier">date</span> = <span class="ruby-keyword kw">nil</span>, <span class="ruby-identifier">timezone</span> = <span class="ruby-value str">&quot;mine&quot;</span>)
-12:     <span class="ruby-identifier">json</span> = <span class="ruby-identifier">connector</span>.<span class="ruby-identifier">prepare_and_invoke_api_call</span>(
-13:       <span class="ruby-node">&quot;team/v1/workdiaries/#{company_id}/#{user_id}&quot;</span> <span class="ruby-operator">+</span> (<span class="ruby-identifier">date</span> <span class="ruby-operator">?</span> <span class="ruby-value str">&quot;/&quot;</span><span class="ruby-operator">+</span><span class="ruby-identifier">date</span> <span class="ruby-operator">:</span> <span class="ruby-value str">&quot;&quot;</span>),
-14:         <span class="ruby-value">:params=</span><span class="ruby-operator">&gt;</span>{<span class="ruby-value">:timezone=</span><span class="ruby-operator">&gt;</span><span class="ruby-identifier">timezone</span>}, <span class="ruby-value">:method=</span><span class="ruby-operator">&gt;</span><span class="ruby-value">:get</span>)
-15: 
-16:     <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">nil</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">json</span>[<span class="ruby-value str">'snapshots'</span>][<span class="ruby-value str">'snapshot'</span>]
-17:     [<span class="ruby-identifier">json</span>[<span class="ruby-value str">'snapshots'</span>][<span class="ruby-value str">'snapshot'</span>]].<span class="ruby-identifier">flatten</span>.<span class="ruby-identifier">map</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">snapshot</span><span class="ruby-operator">|</span>
-18:       <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">snapshot</span>)
-19:     <span class="ruby-keyword kw">end</span>
-20:   <span class="ruby-keyword kw">end</span></pre>
+    <span class="ruby-comment cmt"># File lib/ruby_desk/snapshot.rb, line 12</span>
+12:   <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">work_diary</span>(<span class="ruby-identifier">connector</span>, <span class="ruby-identifier">company_id</span>, <span class="ruby-identifier">user_id</span>, <span class="ruby-identifier">date</span> = <span class="ruby-keyword kw">nil</span>, <span class="ruby-identifier">timezone</span> = <span class="ruby-value str">&quot;mine&quot;</span>)
+13:     <span class="ruby-identifier">json</span> = <span class="ruby-identifier">connector</span>.<span class="ruby-identifier">prepare_and_invoke_api_call</span>(
+14:       <span class="ruby-node">&quot;team/v1/workdiaries/#{company_id}/#{user_id}&quot;</span> <span class="ruby-operator">+</span> (<span class="ruby-identifier">date</span> <span class="ruby-operator">?</span> <span class="ruby-value str">&quot;/&quot;</span><span class="ruby-operator">+</span><span class="ruby-identifier">date</span> <span class="ruby-operator">:</span> <span class="ruby-value str">&quot;&quot;</span>),
+15:         <span class="ruby-value">:params=</span><span class="ruby-operator">&gt;</span>{<span class="ruby-value">:timezone=</span><span class="ruby-operator">&gt;</span><span class="ruby-identifier">timezone</span>}, <span class="ruby-value">:method=</span><span class="ruby-operator">&gt;</span><span class="ruby-value">:get</span>)
+16: 
+17:     <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">nil</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">json</span>[<span class="ruby-value str">'snapshots'</span>][<span class="ruby-value str">'snapshot'</span>]
+18:     [<span class="ruby-identifier">json</span>[<span class="ruby-value str">'snapshots'</span>][<span class="ruby-value str">'snapshot'</span>]].<span class="ruby-identifier">flatten</span>.<span class="ruby-identifier">map</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">snapshot</span><span class="ruby-operator">|</span>
+19:       <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">snapshot</span>)
+20:     <span class="ruby-keyword kw">end</span>
+21:   <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
