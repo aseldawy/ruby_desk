@@ -63,7 +63,9 @@ class RubyDesk::Provider < RubyDesk::OdeskEntity
       return categories
     end
 
-    # Implements search with the given criteria
+    # Implements search with the given criteria.
+    # For basic search, pass a string as the second parameter
+    # For advanced search, pass a string according to the following parameters
     #* q - ProfileData (ProfileData)
     #      * Profile data is any text that appears in a provider's profile. For example if q = 'odesk' the search would return any user's with the word odesk in their profile.
     #* c1 - JobCategory (First Level Job Category)
@@ -124,7 +126,7 @@ class RubyDesk::Provider < RubyDesk::OdeskEntity
       end
       json = connector.prepare_and_invoke_api_call(
         'profiles/v1/search/providers', :method=>:get,
-        :auth=>false, :sign=>false)
+        :auth=>false, :sign=>false, :params=>options)
 
       providers = []
       [json['providers']['provider']].flatten.each do |provider|

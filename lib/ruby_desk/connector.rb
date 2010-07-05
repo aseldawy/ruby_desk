@@ -6,6 +6,8 @@ require 'rexml/document'
 require 'json'
 
 module RubyDesk
+  # Basic methods used for connecting with oDesk like signing request parameters and parsing response.
+  # This class is also responsible for authorizing user
   class Connector
     ODESK_URL = "www.odesk.com/"
     ODESK_API_URL = "#{ODESK_URL}api/"
@@ -15,6 +17,7 @@ module RubyDesk
       :base_url=>ODESK_API_URL, :auth=>true}
 
     attr_writer :frob
+    attr_accessor :auth_user
 
     def initialize(api_key=nil, api_secret=nil, api_token=nil)
       @api_key = api_key
@@ -99,9 +102,11 @@ module RubyDesk
 
       case resp.code
         when "200" then return data
-        when "401" then raise RubyDesk::UnauthorizedError, data
+        when "400" then raise RubyDesk::BadRequest, data
+        when "401", "403" then raise RubyDesk::UnauthorizedError, data
         when "404" then raise RubyDesk::PageNotFound, data
         when "500" then raise RubyDesk::ServerError, data
+        else raise RubyDesk::Error, data
       end
 
     end
@@ -131,7 +136,7 @@ module RubyDesk
     # return the URL that logs user out of odesk applications
     def logout_url
       logout_call = prepare_api_call("", :base_url=>ODESK_AUTH_URL,
-        :secure=>false, :auth=>false)
+        :secure=>false, :auth=>false, :format=>nil)
       return logout_call[:url]
     end
 
@@ -147,6 +152,7 @@ module RubyDesk
       json = prepare_and_invoke_api_call 'auth/v1/keys/tokens',
           :params=>{:frob=>@frob, :api_key=>@api_key}, :method=>:post,
           :auth=>false
+      @auth_user = User.new(json['auth_user'])
       @api_token = json['token']
     end
 

@@ -17,6 +17,9 @@ module RubyDesk
   
   # Internal server error.
   class ServerError < Error; end;
+  
+  # Bad request error (400). Caused by using an expired token.
+  class BadRequest < Error; end;
 
   class << self
     # Used to log all debug and error messages of RubyDesk
