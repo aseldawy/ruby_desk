@@ -90,6 +90,13 @@ class TestRubyDesk < Test::Unit::TestCase
     assert_equal RubyDesk::Snapshot, snapshots.first.class
   end
 
+  def test_jobs_search
+    connector = dummy_connector('jobs.json')
+
+    jobs = RubyDesk::Job.search(connector, "simple_query")
+    assert_equal 20, jobs.size
+    assert_equal RubyDesk::Job, jobs.first.class
+  end
   def test_snapshot
     connector = dummy_connector('snapshot.json')
 

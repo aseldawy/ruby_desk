@@ -201,17 +201,17 @@ class RubyDesk::Job < RubyDesk::OdeskEntity
   # <ul>
   # <li>Limits your search to job titles only. (you should be able to combine this search)</li>
    
-  def self.search(odesk_connector, query_options={})
-    if options.respond_to? :to_str
-      return search(connector, :q=>options.to_str)
+  def self.search(connector, query_options={})
+    if query_options.respond_to? :to_str
+      return search(connector, :q=>query_options.to_str)
     end
     json = connector.prepare_and_invoke_api_call(
         'profiles/v1/search/jobs', :method=>:get,
-        :auth=>false, :sign=>false, :params=>options)
+        :auth=>false, :sign=>false, :params=>query_options)
     jobs = []
-    [json['jobs']['jobs']].flatten.each do |job|
+    [json['jobs']['job']].flatten.each do |job|
       jobs << self.new(job)
     end
-    return job
+    return jobs
   end
 end
