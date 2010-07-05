@@ -1,59 +1,58 @@
 # A job opening with the following attributes
-# * op_tot_hours
-# * job_category_level_two
-# * op_company_name
-# * op_tot_cand_client
-# * record_id
-# * op_amount
-# * total_hours
-# * op_date_created
-# * op_city
-# * country
-# * op_tot_intv
-# * op_tot_feedback
-# * search_status
-# * op_job
-# * op_hrs_per_week
-# * op_job_category_
-# * op_country
-# * amount
-# * op_tot_cand_prof
-# * op_tot_asgs
-# * total_charge
-# * op_status_for_search
-# * op_tot_cand
-# * op_buyer_ace
-# * job_category_level_one
-# * timezone
-# * op_pref_test
 # * adj_score
-# * op_num_of_pending_invites
-# * op_tot_fp_asgs
-# * op_required_skills
+# * amount
 # * ciphertext
-# * op_title
-# * op_pref_fb_score
-# * op_tot_hr_asgs
+# * country
 # * create_date
-# * op_tot_jobs_filled
-# * op_pref_hourly_rate
-# * op_tot_jobs_posted
-# * job_type
-# * hours_per_week
-# * op_job_type
-# * op_pref_test_name
-# * op_pref_english_skill
-# * op_pref_odesk_hours
-# * op_tot_fp_charge
-# * op_contract_date
-# * op_tot_hr_charge
 # * engagement_weeks
+# * hours_per_week
+# * job_category_level_one
+# * job_category_level_two
+# * job_type
 # * op_adjusted_score
-# * op_recno
-# * total_billed_assignments
+# * op_amount
+# * op_buyer_ace
+# * op_city
+# * op_company_name
+# * op_contract_date
+# * op_country
+# * op_date_created
 # * op_description
 # * op_eng_duration
-
+# * op_hrs_per_week
+# * op_job
+# * op_job_category_
+# * op_job_type
+# * op_num_of_pending_invites
+# * op_pref_english_skill
+# * op_pref_fb_score
+# * op_pref_hourly_rate
+# * op_pref_odesk_hours
+# * op_pref_test
+# * op_pref_test_name
+# * op_recno
+# * op_required_skills
+# * op_status_for_search
+# * op_title
+# * op_tot_asgs
+# * op_tot_cand
+# * op_tot_cand_client
+# * op_tot_cand_prof
+# * op_tot_feedback
+# * op_tot_fp_asgs
+# * op_tot_fp_charge
+# * op_tot_hours
+# * op_tot_hr_asgs
+# * op_tot_hr_charge
+# * op_tot_intv
+# * op_tot_jobs_filled
+# * op_tot_jobs_posted
+# * record_id
+# * search_status
+# * timezone
+# * total_billed_assignments
+# * total_charge
+# * total_hours
 class RubyDesk::Job < RubyDesk::OdeskEntity
   attributes :op_tot_hours, :job_category_level_two, :op_company_name,
       :op_tot_cand_client, :record_id, :op_amount, :total_hours,
@@ -200,7 +199,6 @@ class RubyDesk::Job < RubyDesk::OdeskEntity
   # <li><strong>to</strong> - titles_only<b>&nbsp;</b>(titles only)
   # <ul>
   # <li>Limits your search to job titles only. (you should be able to combine this search)</li>
-   
   def self.search(connector, query_options={})
     if query_options.respond_to? :to_str
       return search(connector, :q=>query_options.to_str)

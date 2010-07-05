@@ -79,7 +79,8 @@ module RubyDesk
       http = Net::HTTP.new(url.host, url.port)
       http.use_ssl = true
 
-      data = api_call[:params].to_a.map{|pair| pair.join '='}.join('&')
+      # Concatenate parameters to form data
+      data = api_call[:params].to_a.map{|pair| pair.map{|x| URI.escape(x.to_s)}.join '='}.join('&')
       headers = {
         'Content-Type' => 'application/x-www-form-urlencoded'
       }
