@@ -1,0 +1,536 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+
+	<title>Class: RubyDesk::Job</title>
+
+	<link rel="stylesheet" href="../rdoc.css" type="text/css" media="screen" />
+
+	<script src="../js/jquery.js" type="text/javascript"
+		charset="utf-8"></script>
+	<script src="../js/thickbox-compressed.js" type="text/javascript"
+		charset="utf-8"></script>
+	<script src="../js/quicksearch.js" type="text/javascript"
+		charset="utf-8"></script>
+	<script src="../js/darkfish.js" type="text/javascript"
+		charset="utf-8"></script>
+
+</head>
+<body class="class">
+
+	<div id="metadata">
+		<div id="home-metadata">
+			<div id="home-section" class="section">
+        <h3 class="section-header">
+          <a href="../index.html">Home</a>
+          <a href="../index.html#classes">Classes</a>
+          <a href="../index.html#methods">Methods</a>
+        </h3>
+			</div>
+		</div>
+
+		<div id="file-metadata">
+			<div id="file-list-section" class="section">
+				<h3 class="section-header">In Files</h3>
+				<div class="section-body">
+					<ul>
+					
+						<li><a href="../lib/ruby_desk/job_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
+							class="thickbox" title="lib/ruby_desk/job.rb">lib/ruby_desk/job.rb</a></li>
+					
+					</ul>
+				</div>
+			</div>
+
+			
+		</div>
+
+		<div id="class-metadata">
+
+			<!-- Parent Class -->
+			
+			<div id="parent-class-section" class="section">
+				<h3 class="section-header">Parent</h3>
+				
+				<p class="link"><a href="OdeskEntity.html">RubyDesk::OdeskEntity</a></p>
+				
+			</div>
+			
+
+			<!-- Namespace Contents -->
+			
+
+			<!-- Method Quickref -->
+			
+			<div id="method-list-section" class="section">
+				<h3 class="section-header">Methods</h3>
+				<ul class="link-list">
+					
+					<li><a href="#method-c-search">::search</a></li>
+					
+				</ul>
+			</div>
+			
+
+			<!-- Included Modules -->
+			
+		</div>
+
+		<div id="project-metadata">
+			
+			
+			<div id="fileindex-section" class="section project-section">
+				<h3 class="section-header">Files</h3>
+				<ul>
+				
+					<li class="file"><a href="../README_rdoc.html">README.rdoc</a></li>
+				
+				</ul>
+			</div>
+			
+
+			<div id="classindex-section" class="section project-section">
+				<h3 class="section-header">Class Index
+					<span class="search-toggle"><img src="../images/find.png"
+						height="16" width="16" alt="[+]"
+						title="show/hide quicksearch" /></span></h3>
+				<form action="#" method="get" accept-charset="utf-8" class="initially-hidden">
+				<fieldset>
+					<legend>Quicksearch</legend>
+					<input type="text" name="quicksearch" value=""
+						class="quicksearch-field" />
+				</fieldset>
+				</form>
+
+				<ul class="link-list">
+				
+					<li><a href="../RubyDesk.html">RubyDesk</a></li>
+				
+					<li><a href="../RubyDesk/BadRequest.html">RubyDesk::BadRequest</a></li>
+				
+					<li><a href="../RubyDesk/Connector.html">RubyDesk::Connector</a></li>
+				
+					<li><a href="../RubyDesk/Error.html">RubyDesk::Error</a></li>
+				
+					<li><a href="../RubyDesk/Job.html">RubyDesk::Job</a></li>
+				
+					<li><a href="../RubyDesk/OdeskEntity.html">RubyDesk::OdeskEntity</a></li>
+				
+					<li><a href="../RubyDesk/PageNotFound.html">RubyDesk::PageNotFound</a></li>
+				
+					<li><a href="../RubyDesk/Provider.html">RubyDesk::Provider</a></li>
+				
+					<li><a href="../RubyDesk/ServerError.html">RubyDesk::ServerError</a></li>
+				
+					<li><a href="../RubyDesk/Snapshot.html">RubyDesk::Snapshot</a></li>
+				
+					<li><a href="../RubyDesk/TeamRoom.html">RubyDesk::TeamRoom</a></li>
+				
+					<li><a href="../RubyDesk/TimeReport.html">RubyDesk::TimeReport</a></li>
+				
+					<li><a href="../RubyDesk/UnauthorizedError.html">RubyDesk::UnauthorizedError</a></li>
+				
+				</ul>
+				<div id="no-class-search-results" style="display: none;">No matching classes.</div>
+			</div>
+
+			
+		</div>
+	</div>
+
+	<div id="documentation">
+		<h1 class="class">RubyDesk::Job</h1>
+
+		<div id="description">
+			<p>
+A job opening with the following attributes
+</p>
+<ul>
+<li><p>
+adj_score
+</p>
+</li>
+<li><p>
+amount
+</p>
+</li>
+<li><p>
+ciphertext
+</p>
+</li>
+<li><p>
+country
+</p>
+</li>
+<li><p>
+create_date
+</p>
+</li>
+<li><p>
+engagement_weeks
+</p>
+</li>
+<li><p>
+hours_per_week
+</p>
+</li>
+<li><p>
+job_category_level_one
+</p>
+</li>
+<li><p>
+job_category_level_two
+</p>
+</li>
+<li><p>
+job_type
+</p>
+</li>
+<li><p>
+op_adjusted_score
+</p>
+</li>
+<li><p>
+op_amount
+</p>
+</li>
+<li><p>
+op_buyer_ace
+</p>
+</li>
+<li><p>
+op_city
+</p>
+</li>
+<li><p>
+op_company_name
+</p>
+</li>
+<li><p>
+op_contract_date
+</p>
+</li>
+<li><p>
+op_country
+</p>
+</li>
+<li><p>
+op_date_created
+</p>
+</li>
+<li><p>
+op_description
+</p>
+</li>
+<li><p>
+op_eng_duration
+</p>
+</li>
+<li><p>
+op_hrs_per_week
+</p>
+</li>
+<li><p>
+op_job
+</p>
+</li>
+<li><p>
+op_job_category_
+</p>
+</li>
+<li><p>
+op_job_type
+</p>
+</li>
+<li><p>
+op_num_of_pending_invites
+</p>
+</li>
+<li><p>
+op_pref_english_skill
+</p>
+</li>
+<li><p>
+op_pref_fb_score
+</p>
+</li>
+<li><p>
+op_pref_hourly_rate
+</p>
+</li>
+<li><p>
+op_pref_odesk_hours
+</p>
+</li>
+<li><p>
+op_pref_test
+</p>
+</li>
+<li><p>
+op_pref_test_name
+</p>
+</li>
+<li><p>
+op_recno
+</p>
+</li>
+<li><p>
+op_required_skills
+</p>
+</li>
+<li><p>
+op_status_for_search
+</p>
+</li>
+<li><p>
+op_title
+</p>
+</li>
+<li><p>
+op_tot_asgs
+</p>
+</li>
+<li><p>
+op_tot_cand
+</p>
+</li>
+<li><p>
+op_tot_cand_client
+</p>
+</li>
+<li><p>
+op_tot_cand_prof
+</p>
+</li>
+<li><p>
+op_tot_feedback
+</p>
+</li>
+<li><p>
+op_tot_fp_asgs
+</p>
+</li>
+<li><p>
+op_tot_fp_charge
+</p>
+</li>
+<li><p>
+op_tot_hours
+</p>
+</li>
+<li><p>
+op_tot_hr_asgs
+</p>
+</li>
+<li><p>
+op_tot_hr_charge
+</p>
+</li>
+<li><p>
+op_tot_intv
+</p>
+</li>
+<li><p>
+op_tot_jobs_filled
+</p>
+</li>
+<li><p>
+op_tot_jobs_posted
+</p>
+</li>
+<li><p>
+record_id
+</p>
+</li>
+<li><p>
+search_status
+</p>
+</li>
+<li><p>
+timezone
+</p>
+</li>
+<li><p>
+total_billed_assignments
+</p>
+</li>
+<li><p>
+total_charge
+</p>
+</li>
+<li><p>
+total_hours
+</p>
+</li>
+</ul>
+
+		</div>
+
+		<!-- Constants -->
+		
+
+		<!-- Attributes -->
+		
+
+		<!-- Methods -->
+		
+		<div id="public-class-method-details" class="method-section section">
+			<h3 class="section-header">Public Class Methods</h3>
+
+		
+			<div id="search-method" class="method-detail ">
+				<a name="method-c-search"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">search</span><span
+						class="method-args">(connector, query_options={})</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+<h2>Details on Search Parameters</h2> <p>&amp;nbsp;</p> <ul> <li><b>q -</b>
+OpeningData<b>&amp;nbsp;</b>(Opening Data)
+</p>
+<p>
+<ul> <li>Search the text of the job description</li> </ul> </li> <li><b>c1
+-</b> JobCategory<b>&amp;nbsp;(</b>Level One <a href="Job.html">Job</a>
+Category) <ul> <li>Limit your search to a specific <a
+href=&#8221;/all-categories&#8221;>category</a></li> </ul> </li> <li><b>c2
+-</b> second_category<b>&amp;nbsp;</b>(Second Level <a
+href="Job.html">Job</a> Category)
+</p>
+<p>
+<ul> <li>Limit your search to a specific <a
+href=&#8221;/all-categories&#8221;>sub-category</a> <ul> <li>You must use a
+level one category in order to use a second level category.</li> </ul>
+</li> </ul> </li> <li><b>fb -</b> adjusted_score<b>&amp;nbsp;</b>(Adjusted
+Score) <ul> <li>Limit your search to buyers with at least a score of the
+number passed in this parameter.
+</p>
+<p>
+<ul> <li>This number must be <strong>5</strong> or less</li> </ul> </li>
+</ul> </li> <li><b>min -</b> min_budget<b>&amp;nbsp;</b>(Min Budget) <ul>
+<li>Limit your search to jobs with a budget greater than this number.</li>
+</p>
+<p>
+</ul> </li> <li><b>max -</b> max_budget<b>&amp;nbsp;</b>(Max Budget) <ul>
+<li>Limit your search to jobs with a budget less than this number.</li>
+</ul> </li> <li><b>t -</b> JobType<b>&amp;nbsp;</b>(<a
+href="Job.html">Job</a> Type) <ul> <li>oDesk has both hourly jobs and fixed
+prices jobs. This parameter allows you to limit your search to one or the
+other.
+</p>
+<p>
+<ul> <li>Hourly Jobs = &#8217;<strong>Hourly</strong>&#8217;</li> <li>Fixed
+Priced Jobs = &#8217;<strong>Fixed</strong>&#8217;</li> </ul> </li>
+<li><strong>wl -</strong> hours_per_week(Hours per Week) <ul> <li>This
+parameter can only be used when searching Hourly jobs. These numbers are a
+little arbitrary, so follow the following parameters in order to
+successfully use this parameter: <ul>
+</p>
+<p>
+<li> <p>As Needed &amp;lt; 10 Hours/Week =
+&#8217;<strong>0</strong>&#8217;</p> </li> <li> <p>Part Time: 10-30
+hrs/week = &#8217;<strong>20</strong>&#8217;</p> </li> <li>Full Time: 30+
+hrs/week = &#8217;<strong>40</strong>&#8217;</li>
+</p>
+<p>
+</ul> </li> </ul> </li> <li><b>dur -</b>
+engagement_duration<b>&amp;nbsp;</b>(Engagement Duration) <ul> <li>This
+parameter can only be used when searching Hourly jobs. These numbers are a
+little arbitrary, so follow the following parameters in order to
+successfully use this parameter: <ul> <li>Ongoing / More than 6 months =
+&#8217;<strong>1</strong>&#8217;</li> <li>3 to 6 months =
+&#8217;<strong>2</strong>&#8217;</li>
+</p>
+<p>
+<li>1 to 3 months = &#8217;<strong>3</strong>&#8217;</li> <li>Less than 1
+month = &#8217;<strong>4</strong>&#8217;</li> <li>Less than 1 week =
+&#8217;<strong>5</strong>&#8217;</li> </ul> </li> </ul> </li> </ul>
+</p>
+<p>
+</li> <li><b>dp -</b> Date_Posted<b>&amp;nbsp;</b><strong>(</strong>Date
+Posted) <ul> <li>Search jobs posted after this date. <ul> <li>Format for
+date: <em>07-22-2009</em></li> </ul> </li> </ul> </li> <li><b>st -</b>
+status_for_search<b>&amp;nbsp;</b>(Status for Search)
+</p>
+<p>
+<ul> <li>Search Canceled jobs, In Progress Jobs and Completed Jobs: By
+default this default to Open Jobs <ul> <li>Open Jobs =
+&#8217;<strong>Open</strong>&#8217;</li> <li>Jobs in Progress =
+&#8217;<strong>In Progress</strong>&#8217;</li> <li>Completed Jobs =
+&#8217;<strong>Completed</strong>&#8217;</li> <li>Canceled Jobs =
+&#8217;<strong>Cancelled</strong>&#8217;</li>
+</p>
+<p>
+</ul> </li> </ul> </li> <li><strong>tba</strong> -
+total_billed_assignments<b>&amp;nbsp;</b>(Total Billed Assignments) <ul>
+<li>Limit your search to buyers who completed at least this number of paid
+assignments <ul> <li>For example tb=5 searches buyers who have at least 5
+billed assignments</li> </ul> </li> </ul> </li>
+</p>
+<p>
+<li><strong>gr</strong> -&amp;nbsp;PrefGroup(Preferred Group)providers <ul>
+<li>Limits your search to buyers in a particular group</li> </ul> </li>
+<li><strong>to</strong> - titles_only<b>&amp;nbsp;</b>(titles only) <ul>
+<li>Limits your search to job titles only. (you should be able to combine
+this search)</li>
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="search-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/ruby_desk/job.rb, line 202</span>
+202:   <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">search</span>(<span class="ruby-identifier">connector</span>, <span class="ruby-identifier">query_options</span>={})
+203:     <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">query_options</span>.<span class="ruby-identifier">respond_to?</span> <span class="ruby-value">:to_str</span>
+204:       <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">search</span>(<span class="ruby-identifier">connector</span>, <span class="ruby-value">:q=</span><span class="ruby-operator">&gt;</span><span class="ruby-identifier">query_options</span>.<span class="ruby-identifier">to_str</span>)
+205:     <span class="ruby-keyword kw">end</span>
+206:     <span class="ruby-identifier">json</span> = <span class="ruby-identifier">connector</span>.<span class="ruby-identifier">prepare_and_invoke_api_call</span>(
+207:         <span class="ruby-value str">'profiles/v1/search/jobs'</span>, <span class="ruby-value">:method=</span><span class="ruby-operator">&gt;</span><span class="ruby-value">:get</span>,
+208:         <span class="ruby-value">:auth=</span><span class="ruby-operator">&gt;</span><span class="ruby-keyword kw">false</span>, <span class="ruby-value">:sign=</span><span class="ruby-operator">&gt;</span><span class="ruby-keyword kw">false</span>, <span class="ruby-value">:params=</span><span class="ruby-operator">&gt;</span><span class="ruby-identifier">query_options</span>)
+209:     <span class="ruby-identifier">jobs</span> = []
+210:     [<span class="ruby-identifier">json</span>[<span class="ruby-value str">'jobs'</span>][<span class="ruby-value str">'job'</span>]].<span class="ruby-identifier">flatten</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">job</span><span class="ruby-operator">|</span>
+211:       <span class="ruby-identifier">jobs</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">job</span>)
+212:     <span class="ruby-keyword kw">end</span>
+213:     <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">jobs</span>
+214:   <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+		</div>
+	
+
+	</div>
+
+
+	<div id="rdoc-debugging-section-dump" class="debugging-section">
+	
+		<p>Disabled; run with --debug to generate this.</p>
+	
+	</div>
+
+	<div id="validator-badges">
+		<p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+		<p><small>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish
+			Rdoc Generator</a> 1.1.6</small>.</p>
+	</div>
+
+</body>
+</html>
+

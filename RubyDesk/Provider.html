@@ -115,9 +115,13 @@
 				
 					<li><a href="../RubyDesk.html">RubyDesk</a></li>
 				
+					<li><a href="../RubyDesk/BadRequest.html">RubyDesk::BadRequest</a></li>
+				
 					<li><a href="../RubyDesk/Connector.html">RubyDesk::Connector</a></li>
 				
 					<li><a href="../RubyDesk/Error.html">RubyDesk::Error</a></li>
+				
+					<li><a href="../RubyDesk/Job.html">RubyDesk::Job</a></li>
 				
 					<li><a href="../RubyDesk/OdeskEntity.html">RubyDesk::OdeskEntity</a></li>
 				
@@ -148,8 +152,453 @@
 
 		<div id="description">
 			<p>
-A provider in oDesk.
+A provider in oDesk. <p>There is a TON&amp;nbsp;of info returned here and
+the best way to see what this actually means is to try pulling data from a
+few providers and match up the fields, most of the response fields are
+human readable. Here is some aditional info that should help decipher this
+response:</p>
 </p>
+<p>
+<p>&amp;nbsp;</p> <ul>
+<li>&amp;lt;dev_userid&amp;gt;scoopwilson&amp;lt;/dev_userid&amp;gt; The
+odesk users id of the provider</li>
+<li>&amp;lt;dev_rank_percentile&amp;gt;82&amp;lt;/dev_rank_percentile&amp;gt;
+The providers rank overall on oDesk</li>
+<li>&amp;lt;dev_usr_score&amp;gt;4.9681818181818&amp;lt;/dev_usr_score&amp;gt;
+The providers feedback score</li>
+</p>
+<p>
+<li>&amp;lt;dev_profile_access&amp;gt;public&amp;lt;/dev_profile_access&amp;gt;
+The status of the providers profile (public or private)</li>
+<li>&amp;lt;skill&amp;gt; The Skill tag describes a skill that the provider
+has listed in their profile</li> <li>&amp;lt;tsexam&amp;gt; tsexam
+describes a test that the provider has taken and made public.</li>
+<li>&amp;lt;dev_score&amp;gt; dev_score describes feedback that the
+provider has received after a job has been completed (or just closed)</li>
+</p>
+<p>
+<li>&amp;lt;dev_recent_rank_percentile&amp;gt;80&amp;lt;/dev_recent_rank_percentile&amp;gt;
+The providers rank on oDesk using data from the last 90 days.</li>
+<li>&amp;lt;dev_active_interviews&amp;gt;0&amp;lt;/dev_active_interviews&amp;gt;
+How many active interviews the provider is engaged in now.</li>
+<li>&amp;lt;dev_total_hours&amp;gt;2526.1666666667&amp;lt;/dev_total_hours&amp;gt;
+The providers total hours worked on oDesk.</li>
+</p>
+<p>
+<li>&amp;lt;experience&amp;gt; Describes the providers experience as listed
+in their profile under the Experience section</li>
+<li>&amp;lt;assignment&amp;gt; Describes past assignements that are
+publicly viewable.</li>
+</p>
+<p>
+Here&#8217;s a full list of all attributes available:
+</p>
+<ul>
+<li><p>
+affiliated
+</p>
+</li>
+<li><p>
+ag_active_assignments
+</p>
+</li>
+<li><p>
+ag_adj_score
+</p>
+</li>
+<li><p>
+ag_adj_score_recent
+</p>
+</li>
+<li><p>
+ag_billed_assignments
+</p>
+</li>
+<li><p>
+ag_city
+</p>
+</li>
+<li><p>
+ag_cny_recno
+</p>
+</li>
+<li><p>
+ag_country
+</p>
+</li>
+<li><p>
+ag_country_tz
+</p>
+</li>
+<li><p>
+ag_description
+</p>
+</li>
+<li><p>
+ag_hours_lastdays
+</p>
+</li>
+<li><p>
+ag_last_date_worked
+</p>
+</li>
+<li><p>
+ag_logo
+</p>
+</li>
+<li><p>
+ag_manager_blurb
+</p>
+</li>
+<li><p>
+ag_manager_name
+</p>
+</li>
+<li><p>
+ag_member_since
+</p>
+</li>
+<li><p>
+ag_name
+</p>
+</li>
+<li><p>
+ag_portrait
+</p>
+</li>
+<li><p>
+ag_rank_percentile
+</p>
+</li>
+<li><p>
+ag_recent_hours
+</p>
+</li>
+<li><p>
+ag_summary
+</p>
+</li>
+<li><p>
+ag_teamid
+</p>
+</li>
+<li><p>
+ag_teamid_rollup
+</p>
+</li>
+<li><p>
+ag_tot_feedback
+</p>
+</li>
+<li><p>
+ag_total_developers
+</p>
+</li>
+<li><p>
+ag_total_hours
+</p>
+</li>
+<li><p>
+agency_ciphertext
+</p>
+</li>
+<li><p>
+assignments
+</p>
+</li>
+<li><p>
+assignments_count
+</p>
+</li>
+<li><p>
+candidacies
+</p>
+</li>
+<li><p>
+certification
+</p>
+</li>
+<li><p>
+ciphertext
+</p>
+</li>
+<li><p>
+competencies
+</p>
+</li>
+<li><p>
+dev_ac_agencies
+</p>
+</li>
+<li><p>
+dev_active_interviews
+</p>
+</li>
+<li><p>
+dev_adj_score
+</p>
+</li>
+<li><p>
+dev_adj_score_recent
+</p>
+</li>
+<li><p>
+dev_agency_ciphertext
+</p>
+</li>
+<li><p>
+dev_agency_ref
+</p>
+</li>
+<li><p>
+dev_availability
+</p>
+</li>
+<li><p>
+dev_bill_rate
+</p>
+</li>
+<li><p>
+dev_billed_assignments
+</p>
+</li>
+<li><p>
+dev_billed_assignments_recent
+</p>
+</li>
+<li><p>
+dev_blurb
+</p>
+</li>
+<li><p>
+dev_blurb_short
+</p>
+</li>
+<li><p>
+dev_category
+</p>
+</li>
+<li><p>
+dev_city
+</p>
+</li>
+<li><p>
+dev_country
+</p>
+</li>
+<li><p>
+dev_cur_assignments
+</p>
+</li>
+<li><p>
+dev_eng_skill
+</p>
+</li>
+<li><p>
+dev_est_availability
+</p>
+</li>
+<li><p>
+dev_expose_full_name
+</p>
+</li>
+<li><p>
+dev_full_name
+</p>
+</li>
+<li><p>
+dev_groups
+</p>
+</li>
+<li><p>
+dev_ic
+</p>
+</li>
+<li><p>
+dev_is_affiliated
+</p>
+</li>
+<li><p>
+dev_is_ready
+</p>
+</li>
+<li><p>
+dev_last_activity
+</p>
+</li>
+<li><p>
+dev_last_worked
+</p>
+</li>
+<li><p>
+dev_location
+</p>
+</li>
+<li><p>
+dev_member_since
+</p>
+</li>
+<li><p>
+dev_pay_agency_rate
+</p>
+</li>
+<li><p>
+dev_pay_rate
+</p>
+</li>
+<li><p>
+dev_portfolio_items_count
+</p>
+</li>
+<li><p>
+dev_portrait
+</p>
+</li>
+<li><p>
+dev_profile_title
+</p>
+</li>
+<li><p>
+dev_rank_percentile
+</p>
+</li>
+<li><p>
+dev_recent_hours
+</p>
+</li>
+<li><p>
+dev_recent_rank_percentile
+</p>
+</li>
+<li><p>
+dev_recno
+</p>
+</li>
+<li><p>
+dev_region
+</p>
+</li>
+<li><p>
+dev_scores
+</p>
+</li>
+<li><p>
+dev_short_name
+</p>
+</li>
+<li><p>
+dev_test_passed_count
+</p>
+</li>
+<li><p>
+dev_timezone
+</p>
+</li>
+<li><p>
+dev_tot_feedback
+</p>
+</li>
+<li><p>
+dev_tot_feedback_recent
+</p>
+</li>
+<li><p>
+dev_total_assignments
+</p>
+</li>
+<li><p>
+dev_total_hours
+</p>
+</li>
+<li><p>
+dev_total_hours_rounded
+</p>
+</li>
+<li><p>
+dev_ui_profile_access
+</p>
+</li>
+<li><p>
+dev_usr_score
+</p>
+</li>
+<li><p>
+dev_year_exp
+</p>
+</li>
+<li><p>
+education
+</p>
+</li>
+<li><p>
+experiences
+</p>
+</li>
+<li><p>
+favorited
+</p>
+</li>
+<li><p>
+iinitialize
+</p>
+</li>
+<li><p>
+is_odesk_ready
+</p>
+</li>
+<li><p>
+job_categories
+</p>
+</li>
+<li><p>
+oth_experiences
+</p>
+</li>
+<li><p>
+permalink
+</p>
+</li>
+<li><p>
+portfolio_items
+</p>
+</li>
+<li><p>
+profile_title_full
+</p>
+</li>
+<li><p>
+provider_profile_api
+</p>
+</li>
+<li><p>
+response_time
+</p>
+</li>
+<li><p>
+search_affiliate_providers_url
+</p>
+</li>
+<li><p>
+skills
+</p>
+</li>
+<li><p>
+trends
+</p>
+</li>
+<li><p>
+tsexams
+</p>
+</li>
+<li><p>
+tsexams_count
+</p>
+</li>
+<li><p>
+version
+</p>
+</li>
+</ul>
 
 		</div>
 
@@ -204,21 +653,21 @@ subcategories.
 					<div class="method-source-code"
 						id="all-categories-source">
 <pre>
-    <span class="ruby-comment cmt"># File lib/ruby_desk/provider.rb, line 51</span>
-51:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">all_categories</span>
-52:       <span class="ruby-identifier">text</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">read</span>(<span class="ruby-constant">File</span>.<span class="ruby-identifier">join</span>(<span class="ruby-constant">File</span>.<span class="ruby-identifier">dirname</span>(<span class="ruby-keyword kw">__FILE__</span>), <span class="ruby-value str">&quot;..&quot;</span>, <span class="ruby-value str">&quot;categories&quot;</span>))
-53:       <span class="ruby-identifier">lines</span> = <span class="ruby-identifier">text</span>.<span class="ruby-identifier">split</span>(<span class="ruby-regexp re">/[\r\n]+/</span>).<span class="ruby-identifier">map</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">line</span><span class="ruby-operator">|</span> <span class="ruby-identifier">line</span>.<span class="ruby-identifier">strip</span>}
-54:       <span class="ruby-identifier">categories</span> = {}
-55:       <span class="ruby-identifier">subcategories</span> = <span class="ruby-keyword kw">nil</span>
-56:       <span class="ruby-identifier">lines</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">line</span><span class="ruby-operator">|</span>
-57:         <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">line</span>[<span class="ruby-value">0</span>] <span class="ruby-operator">==</span> <span class="ruby-value">**</span>
-58:           <span class="ruby-identifier">subcategories</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">line</span>[<span class="ruby-value">2</span><span class="ruby-operator">..</span><span class="ruby-value">1</span>]
-59:         <span class="ruby-keyword kw">else</span>
-60:           <span class="ruby-identifier">categories</span>[<span class="ruby-identifier">line</span>] = (<span class="ruby-identifier">subcategories</span> = [])
-61:         <span class="ruby-keyword kw">end</span>
-62:       <span class="ruby-keyword kw">end</span>
-63:       <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">categories</span>
-64:     <span class="ruby-keyword kw">end</span></pre>
+     <span class="ruby-comment cmt"># File lib/ruby_desk/provider.rb, line 173</span>
+173:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">all_categories</span>
+174:       <span class="ruby-identifier">text</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">read</span>(<span class="ruby-constant">File</span>.<span class="ruby-identifier">join</span>(<span class="ruby-constant">File</span>.<span class="ruby-identifier">dirname</span>(<span class="ruby-keyword kw">__FILE__</span>), <span class="ruby-value str">&quot;..&quot;</span>, <span class="ruby-value str">&quot;categories&quot;</span>))
+175:       <span class="ruby-identifier">lines</span> = <span class="ruby-identifier">text</span>.<span class="ruby-identifier">split</span>(<span class="ruby-regexp re">/[\r\n]+/</span>).<span class="ruby-identifier">map</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">line</span><span class="ruby-operator">|</span> <span class="ruby-identifier">line</span>.<span class="ruby-identifier">strip</span>}
+176:       <span class="ruby-identifier">categories</span> = {}
+177:       <span class="ruby-identifier">subcategories</span> = <span class="ruby-keyword kw">nil</span>
+178:       <span class="ruby-identifier">lines</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">line</span><span class="ruby-operator">|</span>
+179:         <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">line</span>[<span class="ruby-value">0</span>] <span class="ruby-operator">==</span> <span class="ruby-value">**</span>
+180:           <span class="ruby-identifier">subcategories</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">line</span>[<span class="ruby-value">2</span><span class="ruby-operator">..</span><span class="ruby-value">1</span>]
+181:         <span class="ruby-keyword kw">else</span>
+182:           <span class="ruby-identifier">categories</span>[<span class="ruby-identifier">line</span>] = (<span class="ruby-identifier">subcategories</span> = [])
+183:         <span class="ruby-keyword kw">end</span>
+184:       <span class="ruby-keyword kw">end</span>
+185:       <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">categories</span>
+186:     <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -272,13 +721,13 @@ brief: set this to true to retrieve only a brief profile of the given user
 					<div class="method-source-code"
 						id="get-profile-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/ruby_desk/provider.rb, line 141</span>
-141:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">get_profile</span>(<span class="ruby-identifier">connector</span>, <span class="ruby-identifier">id</span>, <span class="ruby-identifier">options</span>={})
-142:       <span class="ruby-identifier">brief</span> = <span class="ruby-identifier">options</span>.<span class="ruby-identifier">delete</span> <span class="ruby-value">:brief</span> <span class="ruby-operator">||</span> <span class="ruby-keyword kw">false</span>
-143:       <span class="ruby-identifier">json</span> = <span class="ruby-identifier">connector</span>.<span class="ruby-identifier">prepare_and_invoke_api_call</span>(
-144:         <span class="ruby-node">&quot;profiles/v1/providers/#{id}&quot;</span> <span class="ruby-operator">+</span> (<span class="ruby-identifier">brief</span> <span class="ruby-operator">?</span> <span class="ruby-value str">&quot;/brief&quot;</span> <span class="ruby-operator">:</span> <span class="ruby-value str">&quot;&quot;</span>), <span class="ruby-value">:method=</span><span class="ruby-operator">&gt;</span><span class="ruby-value">:get</span>)
-145:       <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">json</span>[<span class="ruby-value str">'profile'</span>])
-146:     <span class="ruby-keyword kw">end</span></pre>
+     <span class="ruby-comment cmt"># File lib/ruby_desk/provider.rb, line 267</span>
+267:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">get_profile</span>(<span class="ruby-identifier">connector</span>, <span class="ruby-identifier">id</span>, <span class="ruby-identifier">options</span>={})
+268:       <span class="ruby-identifier">brief</span> = <span class="ruby-identifier">options</span>.<span class="ruby-identifier">delete</span> <span class="ruby-value">:brief</span> <span class="ruby-operator">||</span> <span class="ruby-keyword kw">false</span>
+269:       <span class="ruby-identifier">json</span> = <span class="ruby-identifier">connector</span>.<span class="ruby-identifier">prepare_and_invoke_api_call</span>(
+270:         <span class="ruby-node">&quot;profiles/v1/providers/#{id}&quot;</span> <span class="ruby-operator">+</span> (<span class="ruby-identifier">brief</span> <span class="ruby-operator">?</span> <span class="ruby-value str">&quot;/brief&quot;</span> <span class="ruby-operator">:</span> <span class="ruby-value str">&quot;&quot;</span>), <span class="ruby-value">:method=</span><span class="ruby-operator">&gt;</span><span class="ruby-value">:get</span>)
+271:       <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">json</span>[<span class="ruby-value str">'profile'</span>])
+272:     <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -303,7 +752,9 @@ brief: set this to true to retrieve only a brief profile of the given user
 				<div class="method-description">
 					
 					<pre>
- Implements search with the given criteria
+ Implements search with the given criteria.
+ For basic search, pass a string as the second parameter
+ For advanced search, pass a string according to the following parameters
 </pre>
 <ul>
 <li><p>
@@ -314,7 +765,7 @@ q - ProfileData (ProfileData)
 </pre>
 </li>
 <li><p>
-c1 - JobCategory (First Level Job Category)
+c1 - JobCategory (First Level <a href="Job.html">Job</a> Category)
 </p>
 <pre>
     * This is the first level of job categories, there are a static number of catergories to select from and only one can be submitted at a time.
@@ -424,21 +875,23 @@ sort using the field_names
 					<div class="method-source-code"
 						id="search-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/ruby_desk/provider.rb, line 121</span>
-121:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">search</span>(<span class="ruby-identifier">connector</span>, <span class="ruby-identifier">options</span>={})
-122:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">options</span>.<span class="ruby-identifier">respond_to?</span> <span class="ruby-value">:to_str</span>
-123:         <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">search</span>(<span class="ruby-identifier">connector</span>, <span class="ruby-value">:q=</span><span class="ruby-operator">&gt;</span><span class="ruby-identifier">options</span>.<span class="ruby-identifier">to_str</span>)
-124:       <span class="ruby-keyword kw">end</span>
-125:       <span class="ruby-identifier">json</span> = <span class="ruby-identifier">connector</span>.<span class="ruby-identifier">prepare_and_invoke_api_call</span>(
-126:         <span class="ruby-value str">'profiles/v1/search/providers'</span>, <span class="ruby-value">:method=</span><span class="ruby-operator">&gt;</span><span class="ruby-value">:get</span>,
-127:         <span class="ruby-value">:auth=</span><span class="ruby-operator">&gt;</span><span class="ruby-keyword kw">false</span>, <span class="ruby-value">:sign=</span><span class="ruby-operator">&gt;</span><span class="ruby-keyword kw">false</span>)
-128: 
-129:       <span class="ruby-identifier">providers</span> = []
-130:       [<span class="ruby-identifier">json</span>[<span class="ruby-value str">'providers'</span>][<span class="ruby-value str">'provider'</span>]].<span class="ruby-identifier">flatten</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">provider</span><span class="ruby-operator">|</span>
-131:         <span class="ruby-identifier">providers</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">provider</span>)
-132:       <span class="ruby-keyword kw">end</span>
-133:       <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">providers</span>
-134:     <span class="ruby-keyword kw">end</span></pre>
+     <span class="ruby-comment cmt"># File lib/ruby_desk/provider.rb, line 245</span>
+245:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">search</span>(<span class="ruby-identifier">connector</span>, <span class="ruby-identifier">options</span>={})
+246:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">options</span>.<span class="ruby-identifier">respond_to?</span> <span class="ruby-value">:to_str</span>
+247:         <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">search</span>(<span class="ruby-identifier">connector</span>, <span class="ruby-value">:q=</span><span class="ruby-operator">&gt;</span><span class="ruby-identifier">options</span>.<span class="ruby-identifier">to_str</span>)
+248:       <span class="ruby-keyword kw">end</span>
+249:       <span class="ruby-identifier">json</span> = <span class="ruby-identifier">connector</span>.<span class="ruby-identifier">prepare_and_invoke_api_call</span>(
+250:         <span class="ruby-value str">'profiles/v1/search/providers'</span>, <span class="ruby-value">:method=</span><span class="ruby-operator">&gt;</span><span class="ruby-value">:get</span>,
+251:         <span class="ruby-value">:auth=</span><span class="ruby-operator">&gt;</span><span class="ruby-keyword kw">false</span>, <span class="ruby-value">:sign=</span><span class="ruby-operator">&gt;</span><span class="ruby-keyword kw">false</span>, <span class="ruby-value">:params=</span><span class="ruby-operator">&gt;</span><span class="ruby-identifier">options</span>)
+252: 
+253:       <span class="ruby-identifier">providers</span> = []
+254:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">json</span>[<span class="ruby-value str">'providers'</span>][<span class="ruby-value str">'provider'</span>]
+255:         [<span class="ruby-identifier">json</span>[<span class="ruby-value str">'providers'</span>][<span class="ruby-value str">'provider'</span>]].<span class="ruby-identifier">flatten</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">provider</span><span class="ruby-operator">|</span>
+256:           <span class="ruby-identifier">providers</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">provider</span>)
+257:         <span class="ruby-keyword kw">end</span>
+258:       <span class="ruby-keyword kw">end</span>
+259:       <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">providers</span>
+260:     <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -475,16 +928,16 @@ sort using the field_names
 					<div class="method-source-code"
 						id="iinitialize-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/ruby_desk/provider.rb, line 151</span>
-151:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">iinitialize</span>(<span class="ruby-identifier">params</span>={})
-152:     <span class="ruby-identifier">params</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">k</span>, <span class="ruby-identifier">v</span><span class="ruby-operator">|</span>
-153:       <span class="ruby-keyword kw">case</span> <span class="ruby-identifier">k</span>.<span class="ruby-identifier">to_s</span>
-154:       <span class="ruby-keyword kw">when</span> <span class="ruby-value str">&quot;portfolio_items&quot;</span> <span class="ruby-keyword kw">then</span>
-155:       <span class="ruby-keyword kw">else</span>
-156:         <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">instance_variable_set</span>(<span class="ruby-node">&quot;@#{k}&quot;</span>, <span class="ruby-identifier">v</span>)
-157:       <span class="ruby-keyword kw">end</span>
-158:     <span class="ruby-keyword kw">end</span>
-159:   <span class="ruby-keyword kw">end</span></pre>
+     <span class="ruby-comment cmt"># File lib/ruby_desk/provider.rb, line 277</span>
+277:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">iinitialize</span>(<span class="ruby-identifier">params</span>={})
+278:     <span class="ruby-identifier">params</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">k</span>, <span class="ruby-identifier">v</span><span class="ruby-operator">|</span>
+279:       <span class="ruby-keyword kw">case</span> <span class="ruby-identifier">k</span>.<span class="ruby-identifier">to_s</span>
+280:       <span class="ruby-keyword kw">when</span> <span class="ruby-value str">&quot;portfolio_items&quot;</span> <span class="ruby-keyword kw">then</span>
+281:       <span class="ruby-keyword kw">else</span>
+282:         <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">instance_variable_set</span>(<span class="ruby-node">&quot;@#{k}&quot;</span>, <span class="ruby-identifier">v</span>)
+283:       <span class="ruby-keyword kw">end</span>
+284:     <span class="ruby-keyword kw">end</span>
+285:   <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>

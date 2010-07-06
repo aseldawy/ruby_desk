@@ -62,9 +62,13 @@
 				<h3 class="section-header">Namespace</h3>
 				<ul class="link-list">
 					
+					<li><span class="type">CLASS</span> <a href="RubyDesk/BadRequest.html">RubyDesk::BadRequest</a></li>
+					
 					<li><span class="type">CLASS</span> <a href="RubyDesk/Connector.html">RubyDesk::Connector</a></li>
 					
 					<li><span class="type">CLASS</span> <a href="RubyDesk/Error.html">RubyDesk::Error</a></li>
+					
+					<li><span class="type">CLASS</span> <a href="RubyDesk/Job.html">RubyDesk::Job</a></li>
 					
 					<li><span class="type">CLASS</span> <a href="RubyDesk/OdeskEntity.html">RubyDesk::OdeskEntity</a></li>
 					
@@ -132,9 +136,13 @@
 				
 					<li><a href="./RubyDesk.html">RubyDesk</a></li>
 				
+					<li><a href="./RubyDesk/BadRequest.html">RubyDesk::BadRequest</a></li>
+				
 					<li><a href="./RubyDesk/Connector.html">RubyDesk::Connector</a></li>
 				
 					<li><a href="./RubyDesk/Error.html">RubyDesk::Error</a></li>
+				
+					<li><a href="./RubyDesk/Job.html">RubyDesk::Job</a></li>
 				
 					<li><a href="./RubyDesk/OdeskEntity.html">RubyDesk::OdeskEntity</a></li>
 				
@@ -316,12 +324,12 @@ attributed in arguments.
 					<div class="method-source-code"
 						id="define-simple-class-source">
 <pre>
-    <span class="ruby-comment cmt"># File lib/ruby_desk.rb, line 36</span>
-36:   <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">define_simple_class</span>(*<span class="ruby-identifier">attribute_names</span>)
-37:     <span class="ruby-constant">Class</span>.<span class="ruby-identifier">new</span> <span class="ruby-constant">RubyDesk</span><span class="ruby-operator">::</span><span class="ruby-constant">OdeskEntity</span> <span class="ruby-keyword kw">do</span>
-38:       <span class="ruby-identifier">attributes</span> *<span class="ruby-identifier">attribute_names</span>
-39:     <span class="ruby-keyword kw">end</span>
-40:   <span class="ruby-keyword kw">end</span></pre>
+    <span class="ruby-comment cmt"># File lib/ruby_desk.rb, line 39</span>
+39:   <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">define_simple_class</span>(*<span class="ruby-identifier">attribute_names</span>)
+40:     <span class="ruby-constant">Class</span>.<span class="ruby-identifier">new</span> <span class="ruby-constant">RubyDesk</span><span class="ruby-operator">::</span><span class="ruby-constant">OdeskEntity</span> <span class="ruby-keyword kw">do</span>
+41:       <span class="ruby-identifier">attributes</span> *<span class="ruby-identifier">attribute_names</span>
+42:     <span class="ruby-keyword kw">end</span>
+43:   <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>

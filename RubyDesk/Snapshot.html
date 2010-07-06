@@ -111,9 +111,13 @@
 				
 					<li><a href="../RubyDesk.html">RubyDesk</a></li>
 				
+					<li><a href="../RubyDesk/BadRequest.html">RubyDesk::BadRequest</a></li>
+				
 					<li><a href="../RubyDesk/Connector.html">RubyDesk::Connector</a></li>
 				
 					<li><a href="../RubyDesk/Error.html">RubyDesk::Error</a></li>
+				
+					<li><a href="../RubyDesk/Job.html">RubyDesk::Job</a></li>
 				
 					<li><a href="../RubyDesk/OdeskEntity.html">RubyDesk::OdeskEntity</a></li>
 				
@@ -143,7 +147,72 @@
 		<h1 class="class">RubyDesk::Snapshot</h1>
 
 		<div id="description">
-			
+			<p>
+<h2>Response Details</h2> <ul> <li>&amp;lt;snapshot&amp;gt; <ul> <li><a
+href="Snapshot.html">Snapshot</a> detail container</li> </ul> </li>
+<li>&amp;lt;status&amp;gt;PRIVATE&amp;lt;/status&amp;gt;
+</p>
+<p>
+<ul> <li>Status of the snapshot <ul> <li>LOGIN</li> <li>NORMAL</li>
+<li>PRIVATE</li> <li>EXIT</li> </ul> </li> </ul> </li>
+<li>&amp;lt;time&amp;gt;1229521500&amp;lt;/time&amp;gt;
+</p>
+<p>
+<ul> <li>The GMT&amp;nbsp;that the snapshot was taken</li> </ul> </li>
+<li>&amp;lt;billing_status&amp;gt;non-billed.disconnected&amp;lt;/billing_status&amp;gt;
+<ul> <li>A snapshot&#8217;s billing status <ul>
+<li>non-billed.disconnected</li> <li>billed.disconnected</li>
+</p>
+<p>
+<li>billed.connected</li> </ul> </li> </ul> </li>
+<li>&amp;lt;activity&amp;gt;0&amp;lt;/activity&amp;gt;</li>
+<li>&amp;lt;online_presence&amp;gt;&amp;lt;/online_presence&amp;gt;</li>
+<li>&amp;lt;user&amp;gt; <ul> <li>The general user details associated with
+the current use</li>
+</p>
+<p>
+</ul> </li> <li>&amp;lt;mouse_events_count/&amp;gt; <ul> <li>The number of
+mouse events associated with this snapshot</li> </ul> </li>
+<li>&amp;lt;company_id&amp;gt;agencyone&amp;lt;/company_id&amp;gt; <ul>
+<li>Company ID&amp;nbsp;associated with this snapshot</li>
+</p>
+<p>
+</ul> </li>
+<li>&amp;lt;timezone&amp;gt;America/Los_Angeles&amp;lt;/timezone&amp;gt;
+<ul> <li>User&#8217;s time zone</li> </ul> </li> <li>&amp;lt;uid/&amp;gt;
+<ul> <li>The user id</li> </ul>
+</p>
+<p>
+</li> <li>&amp;lt;keyboard_events_count/&amp;gt; <ul> <li>Number of
+keyboard events counted for this snapshot</li> </ul> </li>
+<li>&amp;lt;last_worked&amp;gt; <ul> <li>The timestamp last worked <ul>
+<li>Format:&amp;nbsp;[<em>1240637782</em>]</li>
+</p>
+<p>
+</ul> </li> </ul> </li> <li>&amp;lt;memo/&amp;gt; <ul> <li>Memo associated
+with the current time stamp</li> </ul> </li>
+<li>&amp;lt;active_window_title/&amp;gt; <ul> <li>The title of the active
+window when the snapshot was taken</li> </ul>
+</p>
+<p>
+</li> <li>&amp;lt;report24_img&amp;gt; <ul> <li>URL to a graph that
+describes a users activitly over a 24hr period</li> </ul> </li>
+<li>&amp;lt;computer_name/&amp;gt; <ul> <li>The name of the computer where
+the snapshot was taken</li> </ul> </li>
+<li>&amp;lt;online_presence_img&amp;gt;
+</p>
+<p>
+<ul> <li>URL&amp;nbsp;for the default online user activity</li> </ul> </li>
+<li>&amp;lt;user_id&amp;gt; <ul> <li>User id associated with the current
+snapshot</li> </ul> </li> <li>&amp;lt;client_version/&amp;gt; <ul> <li>The
+oDesk Time Tracker version used to take the snapshot</li>
+</p>
+<p>
+</ul> </li>
+<li>&amp;lt;teamroom_api&amp;gt;/api/team/v1/teamrooms/agencyone.xml&amp;lt;/teamroom_api&amp;gt;&amp;nbsp;</li>
+<li>&amp;lt;workdiary_api&amp;gt;/api/team/v1/workdiaries/agencyone/scoopwilson/20081217.xml&amp;lt;/workdiary_api&amp;gt;</li>
+</p>
+
 		</div>
 
 		<!-- Constants -->
@@ -180,24 +249,24 @@ Retrieves details of one snapshot
 					<div class="method-source-code"
 						id="snapshot-details-source">
 <pre>
-    <span class="ruby-comment cmt"># File lib/ruby_desk/snapshot.rb, line 24</span>
-24:   <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">snapshot_details</span>(<span class="ruby-identifier">connector</span>, <span class="ruby-identifier">company_id</span>, <span class="ruby-identifier">user_id</span>, <span class="ruby-identifier">timestamp</span> = <span class="ruby-keyword kw">nil</span>)
-25:     <span class="ruby-identifier">timestamp_param</span> = <span class="ruby-keyword kw">case</span> <span class="ruby-identifier">timestamp</span>
-26:       <span class="ruby-keyword kw">when</span> <span class="ruby-constant">String</span> <span class="ruby-keyword kw">then</span> <span class="ruby-identifier">timestamp</span>
-27:       <span class="ruby-keyword kw">when</span> <span class="ruby-constant">Date</span>, <span class="ruby-constant">Time</span> <span class="ruby-keyword kw">then</span> <span class="ruby-identifier">timestamp</span>.<span class="ruby-identifier">strftime</span>(<span class="ruby-value str">&quot;%Y%m%d&quot;</span>)
-28:       <span class="ruby-keyword kw">when</span> <span class="ruby-constant">Range</span> <span class="ruby-keyword kw">then</span> [<span class="ruby-identifier">timestamp</span>.<span class="ruby-identifier">first</span>, <span class="ruby-identifier">timestamp</span>.<span class="ruby-identifier">last</span>].<span class="ruby-identifier">map</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">t</span><span class="ruby-operator">|</span><span class="ruby-identifier">t</span>.<span class="ruby-identifier">strftime</span>(<span class="ruby-value str">&quot;%Y%m%d&quot;</span>)}.<span class="ruby-identifier">join</span>(<span class="ruby-value str">&quot;,&quot;</span>)
-29:       <span class="ruby-keyword kw">when</span> <span class="ruby-constant">Array</span> <span class="ruby-keyword kw">then</span> <span class="ruby-identifier">timestamp</span>.<span class="ruby-identifier">map</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">t</span><span class="ruby-operator">|</span> <span class="ruby-identifier">t</span>.<span class="ruby-identifier">strftime</span>(<span class="ruby-value str">&quot;%Y%m%d&quot;</span>)}.<span class="ruby-identifier">join</span>(<span class="ruby-value str">&quot;;&quot;</span>)
-30:     <span class="ruby-keyword kw">end</span>
-31:     <span class="ruby-comment cmt"># Invoke API call</span>
-32:     <span class="ruby-identifier">json</span> = <span class="ruby-identifier">connector</span>.<span class="ruby-identifier">prepare_and_invoke_api_call</span>(
-33:       <span class="ruby-node">&quot;team/v1/workdiaries/#{company_id}/#{user_id}&quot;</span> <span class="ruby-operator">+</span>
-34:       (<span class="ruby-identifier">timestamp_param</span> <span class="ruby-operator">?</span> <span class="ruby-node">&quot;/#{timestamp_param}&quot;</span> <span class="ruby-operator">:</span> <span class="ruby-value str">&quot;&quot;</span>), <span class="ruby-value">:method=</span><span class="ruby-operator">&gt;</span><span class="ruby-value">:get</span>)
-35: 
-36:     <span class="ruby-comment cmt"># Generate ruby objects for each snapshot</span>
-37:     [<span class="ruby-identifier">json</span>[<span class="ruby-value str">'snapshot'</span>]].<span class="ruby-identifier">flatten</span>.<span class="ruby-identifier">map</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">snapshot</span><span class="ruby-operator">|</span>
-38:       <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">snapshot</span>)
-39:     <span class="ruby-keyword kw">end</span>
-40:   <span class="ruby-keyword kw">end</span></pre>
+     <span class="ruby-comment cmt"># File lib/ruby_desk/snapshot.rb, line 150</span>
+150:   <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">snapshot_details</span>(<span class="ruby-identifier">connector</span>, <span class="ruby-identifier">company_id</span>, <span class="ruby-identifier">user_id</span>, <span class="ruby-identifier">timestamp</span> = <span class="ruby-keyword kw">nil</span>)
+151:     <span class="ruby-identifier">timestamp_param</span> = <span class="ruby-keyword kw">case</span> <span class="ruby-identifier">timestamp</span>
+152:       <span class="ruby-keyword kw">when</span> <span class="ruby-constant">String</span> <span class="ruby-keyword kw">then</span> <span class="ruby-identifier">timestamp</span>
+153:       <span class="ruby-keyword kw">when</span> <span class="ruby-constant">Date</span>, <span class="ruby-constant">Time</span> <span class="ruby-keyword kw">then</span> <span class="ruby-identifier">timestamp</span>.<span class="ruby-identifier">strftime</span>(<span class="ruby-value str">&quot;%Y%m%d&quot;</span>)
+154:       <span class="ruby-keyword kw">when</span> <span class="ruby-constant">Range</span> <span class="ruby-keyword kw">then</span> [<span class="ruby-identifier">timestamp</span>.<span class="ruby-identifier">first</span>, <span class="ruby-identifier">timestamp</span>.<span class="ruby-identifier">last</span>].<span class="ruby-identifier">map</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">t</span><span class="ruby-operator">|</span><span class="ruby-identifier">t</span>.<span class="ruby-identifier">strftime</span>(<span class="ruby-value str">&quot;%Y%m%d&quot;</span>)}.<span class="ruby-identifier">join</span>(<span class="ruby-value str">&quot;,&quot;</span>)
+155:       <span class="ruby-keyword kw">when</span> <span class="ruby-constant">Array</span> <span class="ruby-keyword kw">then</span> <span class="ruby-identifier">timestamp</span>.<span class="ruby-identifier">map</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">t</span><span class="ruby-operator">|</span> <span class="ruby-identifier">t</span>.<span class="ruby-identifier">strftime</span>(<span class="ruby-value str">&quot;%Y%m%d&quot;</span>)}.<span class="ruby-identifier">join</span>(<span class="ruby-value str">&quot;;&quot;</span>)
+156:     <span class="ruby-keyword kw">end</span>
+157:     <span class="ruby-comment cmt"># Invoke API call</span>
+158:     <span class="ruby-identifier">json</span> = <span class="ruby-identifier">connector</span>.<span class="ruby-identifier">prepare_and_invoke_api_call</span>(
+159:       <span class="ruby-node">&quot;team/v1/workdiaries/#{company_id}/#{user_id}&quot;</span> <span class="ruby-operator">+</span>
+160:       (<span class="ruby-identifier">timestamp_param</span> <span class="ruby-operator">?</span> <span class="ruby-node">&quot;/#{timestamp_param}&quot;</span> <span class="ruby-operator">:</span> <span class="ruby-value str">&quot;&quot;</span>), <span class="ruby-value">:method=</span><span class="ruby-operator">&gt;</span><span class="ruby-value">:get</span>)
+161: 
+162:     <span class="ruby-comment cmt"># Generate ruby objects for each snapshot</span>
+163:     [<span class="ruby-identifier">json</span>[<span class="ruby-value str">'snapshot'</span>]].<span class="ruby-identifier">flatten</span>.<span class="ruby-identifier">map</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">snapshot</span><span class="ruby-operator">|</span>
+164:       <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">snapshot</span>)
+165:     <span class="ruby-keyword kw">end</span>
+166:   <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -222,7 +291,11 @@ Retrieves details of one snapshot
 				<div class="method-description">
 					
 					<p>
-Retrieves work diary as an array of snapshots.
+Retrieves work diary as an array of snapshots. The Work Diary method
+retrieves all snapshots from a single user account within a single day.
+Keep in mind that a day is dependent on server time and not the day in
+which the query is made. Make sure to test with various locations before
+you&#8217;re done.
 </p>
 					
 
@@ -230,17 +303,17 @@ Retrieves work diary as an array of snapshots.
 					<div class="method-source-code"
 						id="work-diary-source">
 <pre>
-    <span class="ruby-comment cmt"># File lib/ruby_desk/snapshot.rb, line 12</span>
-12:   <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">work_diary</span>(<span class="ruby-identifier">connector</span>, <span class="ruby-identifier">company_id</span>, <span class="ruby-identifier">user_id</span>, <span class="ruby-identifier">date</span> = <span class="ruby-keyword kw">nil</span>, <span class="ruby-identifier">timezone</span> = <span class="ruby-value str">&quot;mine&quot;</span>)
-13:     <span class="ruby-identifier">json</span> = <span class="ruby-identifier">connector</span>.<span class="ruby-identifier">prepare_and_invoke_api_call</span>(
-14:       <span class="ruby-node">&quot;team/v1/workdiaries/#{company_id}/#{user_id}&quot;</span> <span class="ruby-operator">+</span> (<span class="ruby-identifier">date</span> <span class="ruby-operator">?</span> <span class="ruby-value str">&quot;/&quot;</span><span class="ruby-operator">+</span><span class="ruby-identifier">date</span> <span class="ruby-operator">:</span> <span class="ruby-value str">&quot;&quot;</span>),
-15:         <span class="ruby-value">:params=</span><span class="ruby-operator">&gt;</span>{<span class="ruby-value">:timezone=</span><span class="ruby-operator">&gt;</span><span class="ruby-identifier">timezone</span>}, <span class="ruby-value">:method=</span><span class="ruby-operator">&gt;</span><span class="ruby-value">:get</span>)
-16: 
-17:     <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">nil</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">json</span>[<span class="ruby-value str">'snapshots'</span>][<span class="ruby-value str">'snapshot'</span>]
-18:     [<span class="ruby-identifier">json</span>[<span class="ruby-value str">'snapshots'</span>][<span class="ruby-value str">'snapshot'</span>]].<span class="ruby-identifier">flatten</span>.<span class="ruby-identifier">map</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">snapshot</span><span class="ruby-operator">|</span>
-19:       <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">snapshot</span>)
-20:     <span class="ruby-keyword kw">end</span>
-21:   <span class="ruby-keyword kw">end</span></pre>
+     <span class="ruby-comment cmt"># File lib/ruby_desk/snapshot.rb, line 138</span>
+138:   <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">work_diary</span>(<span class="ruby-identifier">connector</span>, <span class="ruby-identifier">company_id</span>, <span class="ruby-identifier">user_id</span>, <span class="ruby-identifier">date</span> = <span class="ruby-keyword kw">nil</span>, <span class="ruby-identifier">timezone</span> = <span class="ruby-value str">&quot;mine&quot;</span>)
+139:     <span class="ruby-identifier">json</span> = <span class="ruby-identifier">connector</span>.<span class="ruby-identifier">prepare_and_invoke_api_call</span>(
+140:       <span class="ruby-node">&quot;team/v1/workdiaries/#{company_id}/#{user_id}&quot;</span> <span class="ruby-operator">+</span> (<span class="ruby-identifier">date</span> <span class="ruby-operator">?</span> <span class="ruby-value str">&quot;/&quot;</span><span class="ruby-operator">+</span><span class="ruby-identifier">date</span> <span class="ruby-operator">:</span> <span class="ruby-value str">&quot;&quot;</span>),
+141:         <span class="ruby-value">:params=</span><span class="ruby-operator">&gt;</span>{<span class="ruby-value">:timezone=</span><span class="ruby-operator">&gt;</span><span class="ruby-identifier">timezone</span>}, <span class="ruby-value">:method=</span><span class="ruby-operator">&gt;</span><span class="ruby-value">:get</span>)
+142: 
+143:     <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">nil</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">json</span>[<span class="ruby-value str">'snapshots'</span>][<span class="ruby-value str">'snapshot'</span>]
+144:     [<span class="ruby-identifier">json</span>[<span class="ruby-value str">'snapshots'</span>][<span class="ruby-value str">'snapshot'</span>]].<span class="ruby-identifier">flatten</span>.<span class="ruby-identifier">map</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">snapshot</span><span class="ruby-operator">|</span>
+145:       <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">snapshot</span>)
+146:     <span class="ruby-keyword kw">end</span>
+147:   <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
