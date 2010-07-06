@@ -251,8 +251,10 @@ class RubyDesk::Provider < RubyDesk::OdeskEntity
         :auth=>false, :sign=>false, :params=>options)
 
       providers = []
-      [json['providers']['provider']].flatten.each do |provider|
-        providers << self.new(provider)
+      if json['providers']['provider']
+        [json['providers']['provider']].flatten.each do |provider|
+          providers << self.new(provider)
+        end
       end
       return providers
     end
