@@ -55,10 +55,12 @@ module RubyDesk
     # path: the path of the API to call. e.g. 'auth'
     # options:
     # * :secure=>false: Whether a secure connection is required or not.
-    # * :sign=>true: Whether you need to sign the parameters or not
+    # * :sign=>true: Whether you need to sign the parameters or not.
+    #   If :scure is false, parameters are not signed regardless of this option.
     # * :params=>{}: a hash of parameters that needs to be appended
     # * :auth=>true: when true indicates that this call need authentication.
     #     This forces adding :api_token, :api_key and :api_sig to parameters.
+    #     This means that parameters are automatically signed regardless of other options
     def prepare_api_call(path, options = {})
       options = DEFAULT_OPTIONS.merge(options)
       params = options[:params] || {}
@@ -66,7 +68,7 @@ module RubyDesk
         params[:api_token] ||= @api_token
         params[:api_key] ||= @api_key
       end
-      params[:api_sig] = sign(params) if options[:secure] && (options[:sign] || options[:auth])
+      params[:api_sig] = sign(params) if (options[:secure] && options[:sign]) || options[:auth])
       url = (options[:secure] ? "https" : "http") + "://"
       url << options[:base_url] << path
       url << ".#{options[:format]}" if options[:format]
