@@ -194,7 +194,290 @@ An interface for accessing time reports from oDesk.
 
 				<div class="method-description">
 					
-					<ul>
+					<p>
+The time reports API uses the Google Visualization API&#8217;s query
+language to run detailed reports on a user&#8217;s team, company, as well
+as provider specific detail. In order to use the reports API you need to
+understand the data model accessible as well as the supported Google query
+language elements. Please see the <a href=&#8220;<a
+href="http://developers.odesk.com/oDesk-Google-Data-Source-Language">developers.odesk.com/oDesk-Google-Data-Source-Language</a>&#8220;>
+oDesk Google Data Source Language</a> page for a detailed description of
+what&#8217;s available. For more details around how to construct data
+parameters see the <a href=&#8220;<a
+href="http://code.google.com/apis/visualization/documentation/querylanguage.html">code.google.com/apis/visualization/documentation/querylanguage.html</a>&#8220;>
+google documentation</a>.
+</p>
+<p>
+Allowed values for options are
+</p>
+<ul>
+<li><p>
+:select Here is the fields available for select
+</p>
+</li>
+</ul>
+<p>
+<table style=&#8220;border-color: rgb(136, 136, 136); border-width:
+1px;&#8221; border=&#8220;1&#8221;
+cellspacing=&#8220;0&#8221;><tbody><tr><td style=&#8220;text-align: center;
+background-color: rgb(217, 234, 211); width: 168px; height:
+29px;&#8221;><strong>&amp;nbsp;Field Name<br></strong></td> <td
+style=&#8220;text-align: center; background-color: rgb(217, 234, 211);
+width: 526px; height:
+29px;&#8221;><strong>&amp;nbsp;Description</strong></td> <td
+style=&#8220;background-color: rgb(217, 234, 211); width: 70px; height:
+29px; text-align: center;&#8221;><strong>&amp;nbsp;GDS Type</strong></td>
+<td style=&#8220;text-align: center; background-color: rgb(217, 234, 211);
+width: 108px; height: 29px;&#8221;><strong>Aggregation</strong></td>
+</tr><tr><td style=&#8220;text-align: left; width: 168px; height:
+20px;&#8221;>&amp;nbsp;worked_on</td>
+</p>
+<p>
+<td style=&#8220;text-align: left; width: 526px; height: 20px;&#8221;>The
+date and and time in when exactly the work was performed by the
+provider</td> <td style=&#8220;width: 70px; height: 20px; text-align:
+center;&#8221;>date</td> <td style=&#8220;text-align: center; width: 108px;
+height: 20px;&#8221;>&amp;nbsp;</td> </tr><tr><td style=&#8220;text-align:
+left; width: 168px; height: 19px;&#8221;>&amp;nbsp;week_worked_on</td> <td
+style=&#8220;width: 526px; height: 19px;&#8221;>The date of the Monday in
+which the worked_on occurs.</td> <td style=&#8220;width: 70px; height:
+19px; text-align: center;&#8221;>date</td> <td style=&#8220;text-align:
+center; width: 108px; height: 19px;&#8221;>&amp;nbsp;</td> </tr><tr><td
+style=&#8220;text-align: left; width: 168px; height:
+19px;&#8221;>&amp;nbsp;month_worked_on</td> <td style=&#8220;width: 526px;
+height: 19px;&#8221;>The number of the month within the date that appears
+in the worked_on field</td> <td style=&#8220;width: 70px; height: 19px;
+text-align: center;&#8221;>date</td>
+</p>
+<p>
+<td style=&#8220;text-align: center; width: 108px; height:
+19px;&#8221;>&amp;nbsp;</td> </tr><tr><td style=&#8220;text-align: left;
+width: 168px; height: 19px;&#8221;>&amp;nbsp;year_worked_on</td> <td
+style=&#8220;width: 526px; height: 19px;&#8221;>The year of the date that
+appears in the Start Date field</td> <td style=&#8220;width: 70px; height:
+19px; text-align: center;&#8221;>date</td> <td style=&#8220;text-align:
+center; width: 108px; height: 19px;&#8221;>&amp;nbsp;</td> </tr><tr><td
+style=&#8220;text-align: left; width: 168px; height:
+19px;&#8221;>&amp;nbsp;provider_id</td> <td style=&#8220;width: 526px;
+height: 19px;&#8221;>The id of Provider</td> <td style=&#8220;width: 70px;
+height: 19px; text-align: center;&#8221;>string</td> <td
+style=&#8220;text-align: center; width: 108px; height:
+19px;&#8221;>&amp;nbsp;</td> </tr><tr><td style=&#8220;text-align: left;
+width: 168px; height: 19px;&#8221;>&amp;nbsp;provider_name</td>
+</p>
+<p>
+<td style=&#8220;width: 526px; height: 19px;&#8221;>The name of
+Provider</td> <td style=&#8220;width: 70px; height: 19px; text-align:
+center;&#8221;>string</td> <td style=&#8220;text-align: center; width:
+108px; height: 19px;&#8221;>&amp;nbsp;</td> </tr><tr><td
+style=&#8220;text-align: left; width: 168px; height:
+19px;&#8221;>&amp;nbsp;team_id</td> <td style=&#8220;width: 526px; height:
+19px;&#8221;>The team id of team where time was billed</td> <td
+style=&#8220;width: 70px; height: 19px; text-align:
+center;&#8221;>string</td> <td style=&#8220;text-align: center; width:
+108px; height: 19px;&#8221;>&amp;nbsp;</td> </tr><tr><td
+style=&#8220;text-align: left; width: 168px; height:
+19px;&#8221;>&amp;nbsp;team_name</td> <td style=&#8220;width: 526px;
+height: 19px;&#8221;>The name of team where time was billed</td> <td
+style=&#8220;width: 70px; height: 19px; text-align:
+center;&#8221;>string</td>
+</p>
+<p>
+<td style=&#8220;text-align: center; width: 108px; height:
+19px;&#8221;>&amp;nbsp;</td> </tr><tr><td style=&#8220;text-align: left;
+width: 168px; height: 19px;&#8221;>&amp;nbsp;assignment_team_id</td> <td
+style=&#8220;width: 526px; height: 19px;&#8221;>The team id of hiring team
+in assignment</td> <td style=&#8220;width: 70px; height: 19px; text-align:
+center;&#8221;>string</td> <td style=&#8220;text-align: center; width:
+108px; height: 19px;&#8221;>&amp;nbsp;</td> </tr><tr><td
+style=&#8220;width: 168px; height:
+19px;&#8221;>&amp;nbsp;assignment_name</td> <td style=&#8220;width: 526px;
+height: 19px;&#8221;>The opening title of assignment</td> <td
+style=&#8220;width: 70px; height: 19px; text-align:
+center;&#8221;>string</td> <td style=&#8220;width: 108px; height:
+19px;&#8221;>&amp;nbsp;</td> </tr><tr><td style=&#8220;text-align: left;
+width: 168px; height: 19px;&#8221;>&amp;nbsp;agency_id</td>
+</p>
+<p>
+<td style=&#8220;width: 526px; height: 19px;&#8221;>The team id of
+Agency</td> <td style=&#8220;width: 70px; height: 19px; text-align:
+center;&#8221;>string</td> <td style=&#8220;text-align: center; width:
+108px; height: 19px;&#8221;>&amp;nbsp;</td> </tr><tr><td
+style=&#8220;text-align: left; width: 168px; height:
+19px;&#8221;>&amp;nbsp;agency_name</td> <td style=&#8220;width: 526px;
+height: 19px;&#8221;>The name of Agency</td> <td style=&#8220;width: 70px;
+height: 19px; text-align: center;&#8221;>string</td> <td
+style=&#8220;text-align: center; width: 108px; height:
+19px;&#8221;>&amp;nbsp;</td> </tr><tr><td style=&#8220;text-align: left;
+width: 168px; height: 19px;&#8221;>&amp;nbsp;company_id</td> <td
+style=&#8220;width: 526px; height: 19px;&#8221;>The team id of rollup
+assignment_team_id</td> <td style=&#8220;width: 70px; height: 19px;
+text-align: center;&#8221;>string</td>
+</p>
+<p>
+<td style=&#8220;text-align: center; width: 108px; height:
+19px;&#8221;>&amp;nbsp;</td> </tr><tr><td style=&#8220;width: 168px;
+height: 19px;&#8221;>&amp;nbsp;agency_company_id</td> <td
+style=&#8220;width: 526px; height: 19px;&#8221;>The agency id of rollup
+agency_id</td> <td style=&#8220;width: 70px; height: 19px; text-align:
+center;&#8221;>string</td> <td style=&#8220;width: 108px; height:
+19px;&#8221;>&amp;nbsp;</td> </tr><tr><td style=&#8220;text-align: left;
+width: 168px; height: 19px;&#8221;>&amp;nbsp;task</td> <td
+style=&#8220;width: 526px; height: 19px;&#8221;>The tasks in which the <a
+href="Provider.html">Provider</a> worked on.</td> <td style=&#8220;width:
+70px; height: 19px; text-align: center;&#8221;>string</td> <td
+style=&#8220;text-align: center; width: 108px; height:
+19px;&#8221;>&amp;nbsp;</td> </tr><tr><td style=&#8220;text-align: left;
+width: 168px; height: 19px;&#8221;>&amp;nbsp;memo</td>
+</p>
+<p>
+<td style=&#8220;width: 526px; height: 19px;&#8221;>The memos logged by the
+<a href="Provider.html">Provider</a> during work</td> <td
+style=&#8220;width: 70px; height: 19px; text-align:
+center;&#8221;>string</td> <td style=&#8220;text-align: center; width:
+108px; height: 19px;&#8221;>&amp;nbsp;</td> </tr><tr><td
+style=&#8220;text-align: left; width: 168px; height:
+19px;&#8221;>&amp;nbsp;hours</td> <td style=&#8220;width: 526px; height:
+19px;&#8221;>The total hours in which the <a
+href="Provider.html">Provider</a> worked during the date of worked_on</td>
+<td style=&#8220;width: 70px; height: 19px; text-align:
+center;&#8221;>number</td> <td style=&#8220;text-align: center; width:
+108px; height: 19px;&#8221;><strong>X</strong></td> </tr><tr><td
+style=&#8220;text-align: left; width: 168px; height:
+19px;&#8221;>&amp;nbsp;charges</td> <td style=&#8220;width: 526px; height:
+19px;&#8221;>The total amount charged to Buyer</td>
+</p>
+<p>
+<td style=&#8220;width: 70px; height: 19px; text-align:
+center;&#8221;>number</td> <td style=&#8220;text-align: center; width:
+108px; height: 19px;&#8221;><strong>X</strong></td> </tr><tr><td
+style=&#8220;text-align: left; width: 168px; height:
+19px;&#8221;>&amp;nbsp;earnings</td> <td style=&#8220;width: 526px; height:
+19px;&#8221;>The total amount earned by Provider</td> <td
+style=&#8220;width: 70px; height: 19px; text-align:
+center;&#8221;>number</td> <td style=&#8220;text-align: center; width:
+108px; height: 19px;&#8221;><strong>X</strong></td> </tr><tr><td
+style=&#8220;text-align: left; width: 168px; height:
+19px;&#8221;>&amp;nbsp;hours_online</td> <td style=&#8220;width: 526px;
+height: 19px;&#8221;>The number of online hours in hours</td> <td
+style=&#8220;width: 70px; height: 19px; text-align:
+center;&#8221;>number</td>
+</p>
+<p>
+<td style=&#8220;text-align: center; width: 108px; height:
+19px;&#8221;><strong>X</strong></td> </tr><tr><td style=&#8220;text-align:
+left; width: 168px; height: 19px;&#8221;>&amp;nbsp;charges_online</td> <td
+style=&#8220;width: 526px; height: 19px;&#8221;>The charges of work
+performed online</td> <td style=&#8220;width: 70px; height: 19px;
+text-align: center;&#8221;>number</td> <td style=&#8220;text-align: center;
+width: 108px; height: 19px;&#8221;><strong>X</strong></td> </tr><tr><td
+style=&#8220;text-align: left; width: 168px; height:
+19px;&#8221;>&amp;nbsp;earnings_online</td> <td style=&#8220;width: 526px;
+height: 19px;&#8221;>The earnings of work performed online</td> <td
+style=&#8220;width: 70px; height: 19px; text-align:
+center;&#8221;>number</td> <td style=&#8220;text-align: center; width:
+108px; height: 19px;&#8221;><strong>X</strong></td>
+</p>
+<p>
+<tr><td style=&#8220;text-align: left; width: 168px; height:
+19px;&#8221;>&amp;nbsp;hours_offline</td> <td style=&#8220;width: 526px;
+height: 19px;&#8221;>The number of offline hours in hours</td> <td
+style=&#8220;width: 70px; height: 19px; text-align:
+center;&#8221;>number</td> <td style=&#8220;text-align: center; width:
+108px; height: 19px;&#8221;><strong>X</strong></td> </tr><tr><td
+style=&#8220;text-align: left; width: 168px; height:
+19px;&#8221;>&amp;nbsp;charges_offline</td> <td style=&#8220;width: 526px;
+height: 19px;&#8221;>The charges of work performed offline</td> <td
+style=&#8220;width: 70px; height: 19px; text-align:
+center;&#8221;>number</td> <td style=&#8220;text-align: center; width:
+108px; height: 19px;&#8221;><strong>X</strong></td> </tr><tr><td
+style=&#8220;text-align: left; width: 168px; height:
+19px;&#8221;>&amp;nbsp;earnings_offline</td>
+</p>
+<p>
+<td style=&#8220;width: 526px; height: 19px;&#8221;>The earnings of work
+performed offline</td> <td style=&#8220;width: 70px; height: 19px;
+text-align: center;&#8221;>number</td> <td style=&#8220;text-align: center;
+width: 108px; height: 19px;&#8221;><strong>X</strong></td>
+</tr></tbody></table>
+</p>
+<ul>
+<li><p>
+:conditions Here is the limited support for the <strong>where</strong>
+clause. <p>Fields</p> <div style=&#8220;margin-left: 40px;&#8221;> <table
+style=&#8220;border-color: rgb(136, 136, 136); border-width: 1px;
+border-collapse: collapse;&#8221; border=&#8220;1&#8221;
+cellspacing=&#8220;0&#8221;><tbody><tr style=&#8220;background-color:
+rgb(217, 234, 211);&#8221; align=&#8220;center&#8221;><td
+style=&#8220;width: 124px; height:
+16px;&#8221;><strong>&amp;nbsp;Name</strong></td> </tr><tr><td
+style=&#8220;width: 124px; height: 16px;&#8221;>&amp;nbsp;company_id</td>
+</p>
+<p>
+</tr><tr><td style=&#8220;width: 124px; height:
+16px;&#8221;>&amp;nbsp;agency_id</td> </tr><tr><td style=&#8220;width:
+124px; height: 16px;&#8221;>&amp;nbsp;provider_id</td> </tr><tr><td
+style=&#8220;width: 124px; height: 16px;&#8221;>&amp;nbsp;worked_on</td>
+</tr><tr><td style=&#8220;width: 124px; height:
+16px;&#8221;>&amp;nbsp;assignment_team_id</td> </tr><tr><td
+style=&#8220;width: 124px; height: 16px;&#8221;>&amp;nbsp;provider_id</td>
+</tr><tr><td style=&#8220;width: 124px; height:
+16px;&#8221;>&amp;nbsp;task</td> </tr></tbody></table></div>
+</p>
+</li>
+</ul>
+<p>
+<p>Multiple conditions can be joined by <strong>and</strong> operator. For
+a multiple values condition matching a specific field, they can be joined
+by <strong>or</strong> operator and enclosed by parentheses.&amp;nbsp;</p>
+</p>
+<p>
+<p>&amp;nbsp;</p> <p>The comparison operators are also limited by
+fields&#8217; data types.</p> <p>&amp;nbsp;</p> <div
+style=&#8220;margin-left: 40px;&#8221;> <div> <table border=&#8220;1&#8221;
+cellpadding=&#8220;3&#8221; cellspacing=&#8220;0&#8221;><tbody><tr><td
+style=&#8220;text-align: center; background-color: rgb(217, 234, 211);
+width: 151px; height: 16px;&#8221;><strong>Field<br></strong></td> <td
+style=&#8220;text-align: center; background-color: rgb(217, 234, 211);
+width: 82px; height: 16px;&#8221;><strong>Data Type<br></strong></td> <td
+style=&#8220;text-align: center; background-color: rgb(217, 234, 211);
+width: 72px; height: 16px;&#8221;><strong>Operator<br></strong></td>
+</tr><tr><td style=&#8220;width: 151px; height:
+17px;&#8221;>company_id</td> <td style=&#8220;text-align: center; width:
+82px; height: 17px;&#8221;>Text</td> <td style=&#8220;text-align: center;
+width: 72px; height: 17px;&#8221;>=</td>
+</p>
+<p>
+</tr><tr><td style=&#8220;width: 151px; height: 17px;&#8221;>agency_id</td>
+<td style=&#8220;text-align: center; width: 82px; height:
+17px;&#8221;>Text</td> <td style=&#8220;text-align: center; width: 72px;
+height: 17px;&#8221;>=</td> </tr><tr><td style=&#8220;width: 151px; height:
+17px;&#8221;>provider_id</td> <td style=&#8220;text-align: center; width:
+82px; height: 17px;&#8221;>Text</td> <td style=&#8220;text-align: center;
+width: 72px; height: 17px;&#8221;>=</td> </tr><tr><td style=&#8220;width:
+151px; height: 17px;&#8221;>assignment_team_id</td> <td
+style=&#8220;text-align: center; width: 82px; height:
+17px;&#8221;>Text</td> <td style=&#8220;text-align: center; width: 72px;
+height: 17px;&#8221;>=</td>
+</p>
+<p>
+</tr><tr><td style=&#8220;width: 151px; height:
+17px;&#8221;>provider_id</td> <td style=&#8220;text-align: center; width:
+82px; height: 17px;&#8221;>Text</td> <td style=&#8220;text-align: center;
+width: 72px; height: 17px;&#8221;>=</td> </tr><tr><td style=&#8220;width:
+151px; height: 17px;&#8221;>task</td> <td style=&#8220;text-align: center;
+width: 82px; height: 17px;&#8221;>Text</td> <td style=&#8220;text-align:
+center; width: 72px; height: 17px;&#8221;>=</td> </tr><tr><td
+style=&#8220;width: 151px; height: 85px;&#8221;>worked_on</td> <td
+style=&#8220;text-align: center; width: 82px; height:
+85px;&#8221;>Date</td> <td style=&#8220;text-align: center; width: 72px;
+height: 85px;&#8221;>&amp;gt;<br> &amp;gt;=<br> =<br> &amp;lt;=<br>
+&amp;lt;</td>
+</p>
+<p>
+</tr></tbody></table></div> </div>
+</p>
+<ul>
 <li><p>
 :order
 </p>
@@ -208,55 +491,55 @@ An interface for accessing time reports from oDesk.
 					<div class="method-source-code"
 						id="find-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/ruby_desk/time_report.rb, line 194</span>
-194:   <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">connector</span>, <span class="ruby-identifier">options</span>={})
-195:     <span class="ruby-identifier">options</span> = <span class="ruby-constant">DEFAULT_OPTIONS</span>.<span class="ruby-identifier">merge</span>(<span class="ruby-identifier">options</span>)
-196:     <span class="ruby-identifier">options</span>[<span class="ruby-value">:conditions</span>].<span class="ruby-identifier">each_pair</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">k</span>, <span class="ruby-identifier">v</span><span class="ruby-operator">|</span>
-197:       <span class="ruby-keyword kw">if</span> <span class="ruby-constant">Array</span> <span class="ruby-operator">===</span> <span class="ruby-identifier">v</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">v</span>.<span class="ruby-identifier">size</span> <span class="ruby-operator">==</span> <span class="ruby-value">1</span>
-198:         <span class="ruby-identifier">options</span>[<span class="ruby-value">:conditions</span>][<span class="ruby-identifier">k</span>] = <span class="ruby-identifier">v</span>.<span class="ruby-identifier">first</span>
-199:       <span class="ruby-keyword kw">elsif</span> <span class="ruby-constant">Array</span> <span class="ruby-operator">===</span> <span class="ruby-identifier">v</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">v</span>.<span class="ruby-identifier">empty?</span>
-200:         <span class="ruby-identifier">options</span>[<span class="ruby-value">:conditions</span>].<span class="ruby-identifier">delete</span>(<span class="ruby-identifier">k</span>)
-201:       <span class="ruby-keyword kw">end</span>
-202:     <span class="ruby-keyword kw">end</span>
-203:     <span class="ruby-identifier">call_url</span> = <span class="ruby-value str">&quot;timereports/v1&quot;</span>
-204:     <span class="ruby-comment cmt"># Adjust a URL that has as much information as we can</span>
-205:     <span class="ruby-keyword kw">if</span> <span class="ruby-constant">String</span> <span class="ruby-operator">===</span> <span class="ruby-identifier">options</span>[<span class="ruby-value">:conditions</span>][<span class="ruby-value">:company_id</span>]
-206:       <span class="ruby-comment cmt"># Limit to one company in url (better looking)</span>
-207:       <span class="ruby-identifier">call_url</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">&quot;/companies/#{options[:conditions].delete :company_id}&quot;</span>
-208:     <span class="ruby-keyword kw">end</span>
-209:     <span class="ruby-keyword kw">if</span> <span class="ruby-constant">String</span> <span class="ruby-operator">===</span> <span class="ruby-identifier">options</span>[<span class="ruby-value">:conditions</span>][<span class="ruby-value">:provider_id</span>]
-210:       <span class="ruby-identifier">call_url</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">&quot;/providers/#{options[:conditions].delete :provider_id}&quot;</span>
-211:     <span class="ruby-keyword kw">end</span>
-212:     <span class="ruby-keyword kw">if</span> <span class="ruby-constant">String</span> <span class="ruby-operator">===</span> <span class="ruby-identifier">options</span>[<span class="ruby-value">:conditions</span>][<span class="ruby-value">:agency_id</span>]
-213:       <span class="ruby-comment cmt"># Limit to one agency in url (better looking)</span>
-214:       <span class="ruby-identifier">call_url</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">&quot;/agencies/#{options[:conditions].delete :agency_id}&quot;</span>
-215:     <span class="ruby-keyword kw">end</span>
-216:     <span class="ruby-keyword kw">if</span> <span class="ruby-constant">String</span> <span class="ruby-operator">===</span> <span class="ruby-identifier">options</span>[<span class="ruby-value">:conditions</span>][<span class="ruby-value">:team_id</span>]
-217:       <span class="ruby-comment cmt"># Limit to one team in url (better looking)</span>
-218:       <span class="ruby-identifier">call_url</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">&quot;/teams/#{options[:conditions].delete :team_id}&quot;</span>
-219:     <span class="ruby-keyword kw">end</span>
-220: 
-221:     <span class="ruby-identifier">call_url</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-value str">&quot;/hours&quot;</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">options</span>[<span class="ruby-value">:hours</span>]
-222: 
-223:     <span class="ruby-identifier">gds_query</span> = <span class="ruby-identifier">build_query</span>(<span class="ruby-identifier">options</span>)
-224:     <span class="ruby-identifier">json</span> = <span class="ruby-identifier">connector</span>.<span class="ruby-identifier">prepare_and_invoke_api_call</span>(<span class="ruby-identifier">call_url</span>, <span class="ruby-value">:method=</span><span class="ruby-operator">&gt;</span><span class="ruby-value">:get</span>,
-225:       <span class="ruby-value">:base_url=</span><span class="ruby-operator">&gt;</span><span class="ruby-constant">RubyDesk</span><span class="ruby-operator">::</span><span class="ruby-constant">Connector</span><span class="ruby-operator">::</span><span class="ruby-constant">ODESK_GDS_URL</span>, <span class="ruby-value">:format=</span><span class="ruby-operator">&gt;</span><span class="ruby-keyword kw">nil</span>,
-226:       <span class="ruby-value">:params=</span><span class="ruby-operator">&gt;</span>{<span class="ruby-value">:tq=</span><span class="ruby-operator">&gt;</span><span class="ruby-identifier">gds_query</span>, <span class="ruby-value">:tqx=</span><span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;out:json&quot;</span>})
-227: 
-228:     <span class="ruby-identifier">raise</span> <span class="ruby-constant">RubyDesk</span><span class="ruby-operator">::</span><span class="ruby-constant">Error</span>, <span class="ruby-identifier">json</span>[<span class="ruby-value str">'errors'</span>].<span class="ruby-identifier">inspect</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">json</span>[<span class="ruby-value str">'status'</span>] <span class="ruby-operator">==</span> <span class="ruby-value str">&quot;error&quot;</span>
-229: 
-230:     <span class="ruby-identifier">columns</span> = [<span class="ruby-identifier">json</span>[<span class="ruby-value str">'table'</span>][<span class="ruby-value str">'cols'</span>]].<span class="ruby-identifier">flatten</span>
-231:     <span class="ruby-identifier">rows</span> = [<span class="ruby-identifier">json</span>[<span class="ruby-value str">'table'</span>][<span class="ruby-value str">'rows'</span>]].<span class="ruby-identifier">flatten</span>.<span class="ruby-identifier">map</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">row_data</span><span class="ruby-operator">|</span>
-232:       <span class="ruby-keyword kw">next</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">row_data</span>.<span class="ruby-identifier">empty?</span>
-233:       <span class="ruby-identifier">row</span> = {}
-234:       [<span class="ruby-identifier">row_data</span>[<span class="ruby-value str">'c'</span>]].<span class="ruby-identifier">flatten</span>.<span class="ruby-identifier">each_with_index</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">row_element</span>, <span class="ruby-identifier">element_index</span><span class="ruby-operator">|</span>
-235:         <span class="ruby-identifier">column</span> = <span class="ruby-identifier">columns</span>[<span class="ruby-identifier">element_index</span>]
-236:         <span class="ruby-identifier">row</span>[<span class="ruby-identifier">column</span>[<span class="ruby-value str">'label'</span>]] = <span class="ruby-identifier">str_to_value</span>(<span class="ruby-identifier">row_element</span>[<span class="ruby-value str">'v'</span>], <span class="ruby-identifier">column</span>[<span class="ruby-value str">'type'</span>])
-237:       <span class="ruby-keyword kw">end</span>
-238:       <span class="ruby-identifier">row</span>
-239:     <span class="ruby-keyword kw">end</span>
-240:     <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">rows</span>.<span class="ruby-identifier">compact</span>
-241:   <span class="ruby-keyword kw">end</span></pre>
+     <span class="ruby-comment cmt"># File lib/ruby_desk/time_report.rb, line 193</span>
+193:   <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">connector</span>, <span class="ruby-identifier">options</span>={})
+194:     <span class="ruby-identifier">options</span> = <span class="ruby-constant">DEFAULT_OPTIONS</span>.<span class="ruby-identifier">merge</span>(<span class="ruby-identifier">options</span>)
+195:     <span class="ruby-identifier">options</span>[<span class="ruby-value">:conditions</span>].<span class="ruby-identifier">each_pair</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">k</span>, <span class="ruby-identifier">v</span><span class="ruby-operator">|</span>
+196:       <span class="ruby-keyword kw">if</span> <span class="ruby-constant">Array</span> <span class="ruby-operator">===</span> <span class="ruby-identifier">v</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">v</span>.<span class="ruby-identifier">size</span> <span class="ruby-operator">==</span> <span class="ruby-value">1</span>
+197:         <span class="ruby-identifier">options</span>[<span class="ruby-value">:conditions</span>][<span class="ruby-identifier">k</span>] = <span class="ruby-identifier">v</span>.<span class="ruby-identifier">first</span>
+198:       <span class="ruby-keyword kw">elsif</span> <span class="ruby-constant">Array</span> <span class="ruby-operator">===</span> <span class="ruby-identifier">v</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">v</span>.<span class="ruby-identifier">empty?</span>
+199:         <span class="ruby-identifier">options</span>[<span class="ruby-value">:conditions</span>].<span class="ruby-identifier">delete</span>(<span class="ruby-identifier">k</span>)
+200:       <span class="ruby-keyword kw">end</span>
+201:     <span class="ruby-keyword kw">end</span>
+202:     <span class="ruby-identifier">call_url</span> = <span class="ruby-value str">&quot;timereports/v1&quot;</span>
+203:     <span class="ruby-comment cmt"># Adjust a URL that has as much information as we can</span>
+204:     <span class="ruby-keyword kw">if</span> <span class="ruby-constant">String</span> <span class="ruby-operator">===</span> <span class="ruby-identifier">options</span>[<span class="ruby-value">:conditions</span>][<span class="ruby-value">:company_id</span>]
+205:       <span class="ruby-comment cmt"># Limit to one company in url (better looking)</span>
+206:       <span class="ruby-identifier">call_url</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">&quot;/companies/#{options[:conditions].delete :company_id}&quot;</span>
+207:     <span class="ruby-keyword kw">end</span>
+208:     <span class="ruby-keyword kw">if</span> <span class="ruby-constant">String</span> <span class="ruby-operator">===</span> <span class="ruby-identifier">options</span>[<span class="ruby-value">:conditions</span>][<span class="ruby-value">:provider_id</span>]
+209:       <span class="ruby-identifier">call_url</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">&quot;/providers/#{options[:conditions].delete :provider_id}&quot;</span>
+210:     <span class="ruby-keyword kw">end</span>
+211:     <span class="ruby-keyword kw">if</span> <span class="ruby-constant">String</span> <span class="ruby-operator">===</span> <span class="ruby-identifier">options</span>[<span class="ruby-value">:conditions</span>][<span class="ruby-value">:agency_id</span>]
+212:       <span class="ruby-comment cmt"># Limit to one agency in url (better looking)</span>
+213:       <span class="ruby-identifier">call_url</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">&quot;/agencies/#{options[:conditions].delete :agency_id}&quot;</span>
+214:     <span class="ruby-keyword kw">end</span>
+215:     <span class="ruby-keyword kw">if</span> <span class="ruby-constant">String</span> <span class="ruby-operator">===</span> <span class="ruby-identifier">options</span>[<span class="ruby-value">:conditions</span>][<span class="ruby-value">:team_id</span>]
+216:       <span class="ruby-comment cmt"># Limit to one team in url (better looking)</span>
+217:       <span class="ruby-identifier">call_url</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">&quot;/teams/#{options[:conditions].delete :team_id}&quot;</span>
+218:     <span class="ruby-keyword kw">end</span>
+219: 
+220:     <span class="ruby-identifier">call_url</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-value str">&quot;/hours&quot;</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">options</span>[<span class="ruby-value">:hours</span>]
+221: 
+222:     <span class="ruby-identifier">gds_query</span> = <span class="ruby-identifier">build_query</span>(<span class="ruby-identifier">options</span>)
+223:     <span class="ruby-identifier">json</span> = <span class="ruby-identifier">connector</span>.<span class="ruby-identifier">prepare_and_invoke_api_call</span>(<span class="ruby-identifier">call_url</span>, <span class="ruby-value">:method=</span><span class="ruby-operator">&gt;</span><span class="ruby-value">:get</span>,
+224:       <span class="ruby-value">:base_url=</span><span class="ruby-operator">&gt;</span><span class="ruby-constant">RubyDesk</span><span class="ruby-operator">::</span><span class="ruby-constant">Connector</span><span class="ruby-operator">::</span><span class="ruby-constant">ODESK_GDS_URL</span>, <span class="ruby-value">:format=</span><span class="ruby-operator">&gt;</span><span class="ruby-keyword kw">nil</span>,
+225:       <span class="ruby-value">:params=</span><span class="ruby-operator">&gt;</span>{<span class="ruby-value">:tq=</span><span class="ruby-operator">&gt;</span><span class="ruby-identifier">gds_query</span>, <span class="ruby-value">:tqx=</span><span class="ruby-operator">&gt;</span><span class="ruby-value str">&quot;out:json&quot;</span>})
+226: 
+227:     <span class="ruby-identifier">raise</span> <span class="ruby-constant">RubyDesk</span><span class="ruby-operator">::</span><span class="ruby-constant">Error</span>, <span class="ruby-identifier">json</span>[<span class="ruby-value str">'errors'</span>].<span class="ruby-identifier">inspect</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">json</span>[<span class="ruby-value str">'status'</span>] <span class="ruby-operator">==</span> <span class="ruby-value str">&quot;error&quot;</span>
+228: 
+229:     <span class="ruby-identifier">columns</span> = [<span class="ruby-identifier">json</span>[<span class="ruby-value str">'table'</span>][<span class="ruby-value str">'cols'</span>]].<span class="ruby-identifier">flatten</span>
+230:     <span class="ruby-identifier">rows</span> = [<span class="ruby-identifier">json</span>[<span class="ruby-value str">'table'</span>][<span class="ruby-value str">'rows'</span>]].<span class="ruby-identifier">flatten</span>.<span class="ruby-identifier">map</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">row_data</span><span class="ruby-operator">|</span>
+231:       <span class="ruby-keyword kw">next</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">row_data</span>.<span class="ruby-identifier">empty?</span>
+232:       <span class="ruby-identifier">row</span> = {}
+233:       [<span class="ruby-identifier">row_data</span>[<span class="ruby-value str">'c'</span>]].<span class="ruby-identifier">flatten</span>.<span class="ruby-identifier">each_with_index</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">row_element</span>, <span class="ruby-identifier">element_index</span><span class="ruby-operator">|</span>
+234:         <span class="ruby-identifier">column</span> = <span class="ruby-identifier">columns</span>[<span class="ruby-identifier">element_index</span>]
+235:         <span class="ruby-identifier">row</span>[<span class="ruby-identifier">column</span>[<span class="ruby-value str">'label'</span>]] = <span class="ruby-identifier">str_to_value</span>(<span class="ruby-identifier">row_element</span>[<span class="ruby-value str">'v'</span>], <span class="ruby-identifier">column</span>[<span class="ruby-value str">'type'</span>])
+236:       <span class="ruby-keyword kw">end</span>
+237:       <span class="ruby-identifier">row</span>
+238:     <span class="ruby-keyword kw">end</span>
+239:     <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">rows</span>.<span class="ruby-identifier">compact</span>
+240:   <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -296,35 +579,35 @@ Called internally by find
 					<div class="method-source-code"
 						id="build-query-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/ruby_desk/time_report.rb, line 246</span>
-246:   <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">build_query</span>(<span class="ruby-identifier">options</span>)
-247:     <span class="ruby-identifier">gds_query</span> = <span class="ruby-value str">&quot;&quot;</span>
-248:     <span class="ruby-identifier">gds_query</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-value str">&quot;SELECT &quot;</span> <span class="ruby-operator">&lt;&lt;</span> (<span class="ruby-identifier">options</span>[<span class="ruby-value">:select</span>].<span class="ruby-identifier">respond_to?</span>(<span class="ruby-value">:join</span>)<span class="ruby-operator">?</span>
-249:       <span class="ruby-identifier">options</span>[<span class="ruby-value">:select</span>].<span class="ruby-identifier">join</span>(<span class="ruby-value str">&quot;,&quot;</span>) <span class="ruby-operator">:</span> <span class="ruby-identifier">options</span>[<span class="ruby-value">:select</span>])
-250:     <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">options</span>[<span class="ruby-value">:conditions</span>] <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">options</span>[<span class="ruby-value">:conditions</span>].<span class="ruby-identifier">any?</span>
-251:       <span class="ruby-identifier">gds_query</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-value str">&quot; WHERE &quot;</span>
-252:       <span class="ruby-identifier">combined</span> = <span class="ruby-identifier">options</span>[<span class="ruby-value">:conditions</span>].<span class="ruby-identifier">map</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">field</span>, <span class="ruby-identifier">condition</span><span class="ruby-operator">|</span>
-253:         <span class="ruby-value str">&quot;(&quot;</span> <span class="ruby-operator">+</span>
-254:         <span class="ruby-keyword kw">case</span> <span class="ruby-identifier">condition</span>
-255:           <span class="ruby-keyword kw">when</span> <span class="ruby-constant">String</span>, <span class="ruby-constant">Numeric</span>, <span class="ruby-constant">Date</span>, <span class="ruby-constant">Time</span> <span class="ruby-keyword kw">then</span>
-256:             <span class="ruby-node">&quot;#{field}=#{value_to_str(condition)}&quot;</span>
-257:           <span class="ruby-keyword kw">when</span> <span class="ruby-constant">Array</span> <span class="ruby-keyword kw">then</span>
-258:             <span class="ruby-identifier">condition</span>.<span class="ruby-identifier">map</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">v</span><span class="ruby-operator">|</span> <span class="ruby-node">&quot;#{field}=#{value_to_str(v)}&quot;</span>}.<span class="ruby-identifier">join</span>(<span class="ruby-value str">&quot; OR &quot;</span>)
-259:           <span class="ruby-keyword kw">when</span> <span class="ruby-constant">Range</span> <span class="ruby-keyword kw">then</span>
-260:             <span class="ruby-node">&quot;#{field}&gt;=#{value_to_str(condition.first)} AND #{field}&quot;</span> <span class="ruby-operator">+</span>
-261:               (<span class="ruby-identifier">condition</span>.<span class="ruby-identifier">exclude_end?</span> <span class="ruby-operator">?</span> <span class="ruby-value str">&quot;&lt;&quot;</span> <span class="ruby-operator">:</span> <span class="ruby-value str">&quot;&lt;=&quot;</span>) <span class="ruby-operator">+</span>
-262:               <span class="ruby-identifier">value_to_str</span>(<span class="ruby-identifier">condition</span>.<span class="ruby-identifier">last</span>)
-263:           <span class="ruby-keyword kw">else</span> <span class="ruby-identifier">raise</span> <span class="ruby-node">&quot;Invalid condition for field: #{field}&quot;</span>
-264:         <span class="ruby-keyword kw">end</span> <span class="ruby-operator">+</span>
-265:         <span class="ruby-value str">&quot;)&quot;</span>
-266:       <span class="ruby-keyword kw">end</span>
-267:       <span class="ruby-identifier">gds_query</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">combined</span>.<span class="ruby-identifier">join</span>(<span class="ruby-value str">&quot; AND &quot;</span>)
-268:     <span class="ruby-keyword kw">end</span>
-269:     <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">options</span>[<span class="ruby-value">:order</span>]
-270:       <span class="ruby-identifier">gds_query</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-value str">&quot; ORDER BY &quot;</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">options</span>[<span class="ruby-value">:order</span>]
-271:     <span class="ruby-keyword kw">end</span>
-272:     <span class="ruby-identifier">gds_query</span>
-273:   <span class="ruby-keyword kw">end</span></pre>
+     <span class="ruby-comment cmt"># File lib/ruby_desk/time_report.rb, line 245</span>
+245:   <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">build_query</span>(<span class="ruby-identifier">options</span>)
+246:     <span class="ruby-identifier">gds_query</span> = <span class="ruby-value str">&quot;&quot;</span>
+247:     <span class="ruby-identifier">gds_query</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-value str">&quot;SELECT &quot;</span> <span class="ruby-operator">&lt;&lt;</span> (<span class="ruby-identifier">options</span>[<span class="ruby-value">:select</span>].<span class="ruby-identifier">respond_to?</span>(<span class="ruby-value">:join</span>)<span class="ruby-operator">?</span>
+248:       <span class="ruby-identifier">options</span>[<span class="ruby-value">:select</span>].<span class="ruby-identifier">join</span>(<span class="ruby-value str">&quot;,&quot;</span>) <span class="ruby-operator">:</span> <span class="ruby-identifier">options</span>[<span class="ruby-value">:select</span>])
+249:     <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">options</span>[<span class="ruby-value">:conditions</span>] <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">options</span>[<span class="ruby-value">:conditions</span>].<span class="ruby-identifier">any?</span>
+250:       <span class="ruby-identifier">gds_query</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-value str">&quot; WHERE &quot;</span>
+251:       <span class="ruby-identifier">combined</span> = <span class="ruby-identifier">options</span>[<span class="ruby-value">:conditions</span>].<span class="ruby-identifier">map</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">field</span>, <span class="ruby-identifier">condition</span><span class="ruby-operator">|</span>
+252:         <span class="ruby-value str">&quot;(&quot;</span> <span class="ruby-operator">+</span>
+253:         <span class="ruby-keyword kw">case</span> <span class="ruby-identifier">condition</span>
+254:           <span class="ruby-keyword kw">when</span> <span class="ruby-constant">String</span>, <span class="ruby-constant">Numeric</span>, <span class="ruby-constant">Date</span>, <span class="ruby-constant">Time</span> <span class="ruby-keyword kw">then</span>
+255:             <span class="ruby-node">&quot;#{field}=#{value_to_str(condition)}&quot;</span>
+256:           <span class="ruby-keyword kw">when</span> <span class="ruby-constant">Array</span> <span class="ruby-keyword kw">then</span>
+257:             <span class="ruby-identifier">condition</span>.<span class="ruby-identifier">map</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">v</span><span class="ruby-operator">|</span> <span class="ruby-node">&quot;#{field}=#{value_to_str(v)}&quot;</span>}.<span class="ruby-identifier">join</span>(<span class="ruby-value str">&quot; OR &quot;</span>)
+258:           <span class="ruby-keyword kw">when</span> <span class="ruby-constant">Range</span> <span class="ruby-keyword kw">then</span>
+259:             <span class="ruby-node">&quot;#{field}&gt;=#{value_to_str(condition.first)} AND #{field}&quot;</span> <span class="ruby-operator">+</span>
+260:               (<span class="ruby-identifier">condition</span>.<span class="ruby-identifier">exclude_end?</span> <span class="ruby-operator">?</span> <span class="ruby-value str">&quot;&lt;&quot;</span> <span class="ruby-operator">:</span> <span class="ruby-value str">&quot;&lt;=&quot;</span>) <span class="ruby-operator">+</span>
+261:               <span class="ruby-identifier">value_to_str</span>(<span class="ruby-identifier">condition</span>.<span class="ruby-identifier">last</span>)
+262:           <span class="ruby-keyword kw">else</span> <span class="ruby-identifier">raise</span> <span class="ruby-node">&quot;Invalid condition for field: #{field}&quot;</span>
+263:         <span class="ruby-keyword kw">end</span> <span class="ruby-operator">+</span>
+264:         <span class="ruby-value str">&quot;)&quot;</span>
+265:       <span class="ruby-keyword kw">end</span>
+266:       <span class="ruby-identifier">gds_query</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">combined</span>.<span class="ruby-identifier">join</span>(<span class="ruby-value str">&quot; AND &quot;</span>)
+267:     <span class="ruby-keyword kw">end</span>
+268:     <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">options</span>[<span class="ruby-value">:order</span>]
+269:       <span class="ruby-identifier">gds_query</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-value str">&quot; ORDER BY &quot;</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">options</span>[<span class="ruby-value">:order</span>]
+270:     <span class="ruby-keyword kw">end</span>
+271:     <span class="ruby-identifier">gds_query</span>
+272:   <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -358,14 +641,14 @@ value based on the second parameter
 					<div class="method-source-code"
 						id="str-to-value-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/ruby_desk/time_report.rb, line 285</span>
-285:   <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">str_to_value</span>(<span class="ruby-identifier">string</span>, <span class="ruby-identifier">type</span>)
-286:     <span class="ruby-keyword kw">case</span> <span class="ruby-identifier">type</span>
-287:       <span class="ruby-keyword kw">when</span> <span class="ruby-value str">'number'</span> <span class="ruby-keyword kw">then</span> <span class="ruby-identifier">string</span>.<span class="ruby-identifier">to_f</span>
-288:       <span class="ruby-keyword kw">when</span> <span class="ruby-value str">'date'</span> <span class="ruby-keyword kw">then</span> <span class="ruby-constant">Date</span>.<span class="ruby-identifier">strptime</span>(<span class="ruby-identifier">string</span>, <span class="ruby-value str">&quot;%Y%m%d&quot;</span>)
-289:       <span class="ruby-keyword kw">when</span> <span class="ruby-value str">'string'</span> <span class="ruby-keyword kw">then</span> <span class="ruby-identifier">string</span>
-290:     <span class="ruby-keyword kw">end</span>
-291:   <span class="ruby-keyword kw">end</span></pre>
+     <span class="ruby-comment cmt"># File lib/ruby_desk/time_report.rb, line 284</span>
+284:   <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">str_to_value</span>(<span class="ruby-identifier">string</span>, <span class="ruby-identifier">type</span>)
+285:     <span class="ruby-keyword kw">case</span> <span class="ruby-identifier">type</span>
+286:       <span class="ruby-keyword kw">when</span> <span class="ruby-value str">'number'</span> <span class="ruby-keyword kw">then</span> <span class="ruby-identifier">string</span>.<span class="ruby-identifier">to_f</span>
+287:       <span class="ruby-keyword kw">when</span> <span class="ruby-value str">'date'</span> <span class="ruby-keyword kw">then</span> <span class="ruby-constant">Date</span>.<span class="ruby-identifier">strptime</span>(<span class="ruby-identifier">string</span>, <span class="ruby-value str">&quot;%Y%m%d&quot;</span>)
+288:       <span class="ruby-keyword kw">when</span> <span class="ruby-value str">'string'</span> <span class="ruby-keyword kw">then</span> <span class="ruby-identifier">string</span>
+289:     <span class="ruby-keyword kw">end</span>
+290:   <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -398,14 +681,14 @@ Converts an object to string based on its type
 					<div class="method-source-code"
 						id="value-to-str-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/ruby_desk/time_report.rb, line 276</span>
-276:   <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">value_to_str</span>(<span class="ruby-identifier">value</span>)
-277:     <span class="ruby-keyword kw">case</span> <span class="ruby-identifier">value</span>
-278:       <span class="ruby-keyword kw">when</span> <span class="ruby-constant">String</span> <span class="ruby-keyword kw">then</span> <span class="ruby-node">&quot;'#{value}'&quot;</span>
-279:       <span class="ruby-keyword kw">when</span> <span class="ruby-constant">Date</span>, <span class="ruby-constant">Time</span> <span class="ruby-keyword kw">then</span> <span class="ruby-value str">&quot;'&quot;</span><span class="ruby-operator">+</span><span class="ruby-identifier">value</span>.<span class="ruby-identifier">strftime</span>(<span class="ruby-value str">&quot;%Y-%m-%d&quot;</span>)<span class="ruby-operator">+</span><span class="ruby-value str">&quot;'&quot;</span>
-280:       <span class="ruby-keyword kw">when</span> <span class="ruby-constant">Numeric</span> <span class="ruby-keyword kw">then</span> <span class="ruby-identifier">value</span>.<span class="ruby-identifier">to_s</span>
-281:     <span class="ruby-keyword kw">end</span>
-282:   <span class="ruby-keyword kw">end</span></pre>
+     <span class="ruby-comment cmt"># File lib/ruby_desk/time_report.rb, line 275</span>
+275:   <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">value_to_str</span>(<span class="ruby-identifier">value</span>)
+276:     <span class="ruby-keyword kw">case</span> <span class="ruby-identifier">value</span>
+277:       <span class="ruby-keyword kw">when</span> <span class="ruby-constant">String</span> <span class="ruby-keyword kw">then</span> <span class="ruby-node">&quot;'#{value}'&quot;</span>
+278:       <span class="ruby-keyword kw">when</span> <span class="ruby-constant">Date</span>, <span class="ruby-constant">Time</span> <span class="ruby-keyword kw">then</span> <span class="ruby-value str">&quot;'&quot;</span><span class="ruby-operator">+</span><span class="ruby-identifier">value</span>.<span class="ruby-identifier">strftime</span>(<span class="ruby-value str">&quot;%Y-%m-%d&quot;</span>)<span class="ruby-operator">+</span><span class="ruby-value str">&quot;'&quot;</span>
+279:       <span class="ruby-keyword kw">when</span> <span class="ruby-constant">Numeric</span> <span class="ruby-keyword kw">then</span> <span class="ruby-identifier">value</span>.<span class="ruby-identifier">to_s</span>
+280:     <span class="ruby-keyword kw">end</span>
+281:   <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
