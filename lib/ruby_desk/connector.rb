@@ -68,7 +68,7 @@ module RubyDesk
         params[:api_token] ||= @api_token
         params[:api_key] ||= @api_key
       end
-      params[:api_sig] = sign(params) if (options[:secure] && options[:sign]) || options[:auth])
+      params[:api_sig] = sign(params) if (options[:secure] && options[:sign]) || options[:auth]
       url = (options[:secure] ? "https" : "http") + "://"
       url << options[:base_url] << path
       url << ".#{options[:format]}" if options[:format]

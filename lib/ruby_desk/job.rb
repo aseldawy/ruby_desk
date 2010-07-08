@@ -1,75 +1,128 @@
 # A job opening with the following attributes
-# * adj_score
 # * amount
-# * ciphertext
-# * country
-# * create_date
+# * buyer
+# * candidates_total
+# * candidates_total_active
+# * company_ref
+# * date_posted
+# * engagement_related
 # * engagement_weeks
 # * hours_per_week
+# * interviewees_total_active
 # * job_category_level_one
 # * job_category_level_two
 # * job_type
-# * op_adjusted_score
-# * op_amount
+# * odr_meta
+# * offers_total
+# * offers_total_open
+# * op_active
+# * op_attached_doc
+# * op_avg_bid_active
+# * op_avg_bid_active_interviewees
+# * op_avg_bid_all
+# * op_avg_bid_interviewees
+# * op_avg_hourly_rate_active
+# * op_avg_hourly_rate_active_interviewees
+# * op_avg_hourly_rate_all
+# * op_avg_hourly_rate_interviewees
 # * op_buyer_ace
-# * op_city
-# * op_company_name
-# * op_contract_date
+# * op_cancel_ts
+# * op_comm_status
 # * op_country
+# * op_ctime
 # * op_date_created
+# * op_desc_digest
 # * op_description
-# * op_eng_duration
-# * op_hrs_per_week
-# * op_job
-# * op_job_category_
-# * op_job_type
+# * op_end_date
+# * op_eng_type
+# * op_engagement
+# * op_est_duration
+# * op_high_bid_active
+# * op_high_bid_active_interviewees
+# * op_high_bid_all
+# * op_high_bid_interviewees
+# * op_high_hourly_rate_active
+# * op_high_hourly_rate_active_interviewees
+# * op_high_hourly_rate_all
+# * op_high_hourly_rate_interviewees
+# * op_is_validnonprivate
+# * op_is_viewable
+# * op_job_category_seo
+# * op_job_expiration
+# * op_last_buyer_activity
+# * op_low_bid_active
+# * op_low_bid_active_interviewees
+# * op_low_bid_all
+# * op_low_hourly_rate_active
+# * op_low_hourly_rate_active_interviewees
+# * op_low_hourly_rate_all
+# * op_low_hourly_rate_interviewees
+# * op_lowhigh_bid_interviewees
 # * op_num_of_pending_invites
 # * op_pref_english_skill
 # * op_pref_fb_score
-# * op_pref_hourly_rate
+# * op_pref_group_recno
+# * op_pref_has_portfolio
+# * op_pref_hourly_rate_max
+# * op_pref_hourly_rate_min
+# * op_pref_hours_per_week
+# * op_pref_location
 # * op_pref_odesk_hours
 # * op_pref_test
 # * op_pref_test_name
+# * op_private_rating_active
+# * op_reason
 # * op_recno
 # * op_required_skills
+# * op_skill
+# * op_start_date
 # * op_status_for_search
+# * op_time_created
+# * op_time_posted
 # * op_title
-# * op_tot_asgs
-# * op_tot_cand
 # * op_tot_cand_client
 # * op_tot_cand_prof
-# * op_tot_feedback
-# * op_tot_fp_asgs
-# * op_tot_fp_charge
-# * op_tot_hours
-# * op_tot_hr_asgs
-# * op_tot_hr_charge
-# * op_tot_intv
-# * op_tot_jobs_filled
-# * op_tot_jobs_posted
-# * record_id
+# * op_tot_new_cond
+# * op_tot_rej
+# * op_ui_profile_access
+# * profile_key
 # * search_status
 # * timezone
-# * total_billed_assignments
-# * total_charge
-# * total_hours
+# * ui_job_profile_access
+# * version
 class RubyDesk::Job < RubyDesk::OdeskEntity
-  attributes :op_tot_hours, :job_category_level_two, :op_company_name,
-      :op_tot_cand_client, :record_id, :op_amount, :total_hours,
-      :op_date_created, :op_city, :country, :op_tot_intv, :op_tot_feedback,
-      :search_status, :op_job, :op_hrs_per_week, :op_job_category_, :op_country,
-      :amount, :op_tot_cand_prof, :op_tot_asgs, :total_charge,
-      :op_status_for_search, :op_tot_cand, :op_buyer_ace,
-      :job_category_level_one, :timezone, :op_pref_test, :adj_score,
-      :op_num_of_pending_invites, :op_tot_fp_asgs, :op_required_skills,
-      :ciphertext, :op_title, :op_pref_fb_score, :op_tot_hr_asgs, :create_date,
-      :op_tot_jobs_filled, :op_pref_hourly_rate, :op_tot_jobs_posted,
-      :job_type, :hours_per_week, :op_job_type, :op_pref_test_name,
-      :op_pref_english_skill, :op_pref_odesk_hours, :op_tot_fp_charge,
-      :op_contract_date, :op_tot_hr_charge, :engagement_weeks,
-      :op_adjusted_score, :op_recno, :total_billed_assignments,
-      :op_description, :op_eng_duration
-   
+  attributes :amount, :buyer, :candidates_total, :candidates_total_active,
+      :company_ref, :date_posted, :engagement_related, :engagement_weeks,
+      :hours_per_week, :interviewees_total_active, :job_category_level_one,
+      :job_category_level_two, :job_type, :odr_meta, :offers_total,
+      :offers_total_open, :op_active, :op_attached_doc, :op_avg_bid_active,
+      :op_avg_bid_active_interviewees, :op_avg_bid_all,
+      :op_avg_bid_interviewees, :op_avg_hourly_rate_active,
+      :op_avg_hourly_rate_active_interviewees, :op_avg_hourly_rate_all,
+      :op_avg_hourly_rate_interviewees, :op_buyer_ace, :op_cancel_ts,
+      :op_comm_status, :op_country, :op_ctime, :op_date_created,
+      :op_desc_digest, :op_description, :op_end_date, :op_eng_type,
+      :op_engagement, :op_est_duration, :op_high_bid_active,
+      :op_high_bid_active_interviewees, :op_high_bid_all,
+      :op_high_bid_interviewees, :op_high_hourly_rate_active,
+      :op_high_hourly_rate_active_interviewees, :op_high_hourly_rate_all,
+      :op_high_hourly_rate_interviewees, :op_is_validnonprivate,
+      :op_is_viewable, :op_job_category_seo, :op_job_expiration,
+      :op_last_buyer_activity, :op_low_bid_active,
+      :op_low_bid_active_interviewees, :op_low_bid_all,
+      :op_low_hourly_rate_active, :op_low_hourly_rate_active_interviewees,
+      :op_low_hourly_rate_all, :op_low_hourly_rate_interviewees,
+      :op_lowhigh_bid_interviewees, :op_num_of_pending_invites,
+      :op_pref_english_skill, :op_pref_fb_score, :op_pref_group_recno,
+      :op_pref_has_portfolio, :op_pref_hourly_rate_max,
+      :op_pref_hourly_rate_min, :op_pref_hours_per_week, :op_pref_location,
+      :op_pref_odesk_hours, :op_pref_test, :op_pref_test_name,
+      :op_private_rating_active, :op_reason, :op_recno, :op_required_skills,
+      :op_skill, :op_start_date, :op_status_for_search, :op_time_created,
+      :op_time_posted, :op_title, :op_tot_cand_client, :op_tot_cand_prof,
+      :op_tot_new_cond, :op_tot_rej, :op_ui_profile_access, :profile_key,
+      :search_status, :timezone, :ui_job_profile_access, :version
+ 
   # <h2>Details on Search Parameters</h2>
   # <p>&nbsp;</p>
   # <ul>
