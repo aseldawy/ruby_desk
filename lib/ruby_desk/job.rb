@@ -260,8 +260,10 @@ class RubyDesk::Job < RubyDesk::OdeskEntity
         'profiles/v1/search/jobs', :method=>:get,
         :auth=>false, :sign=>false, :params=>query_options)
     jobs = []
-    [json['jobs']['job']].flatten.each do |job|
-      jobs << self.new(job)
+    if json['jobs']['job']
+      [json['jobs']['job']].flatten.each do |job|
+        jobs << self.new(job)
+      end
     end
     return jobs
   end
