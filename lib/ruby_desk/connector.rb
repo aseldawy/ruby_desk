@@ -128,9 +128,20 @@ module RubyDesk
       return parsed_data
     end
 
-    # Returns the URL that authenticates the application for the current user
+    # Returns the URL that authenticates the application for the current user.
+    # This is used for web applications only
     def auth_url
       auth_call = prepare_api_call("", :params=>{:api_key=>@api_key},
+        :base_url=>ODESK_AUTH_URL, :format=>nil, :method=>:get, :auth=>false)
+      data = auth_call[:params].to_a.map{|pair| pair.join '='}.join('&')
+      return auth_call[:url]+"?"+data
+    end
+    
+    # Returns a URL that the desktop user should visit to activate current frob.
+    # This method should not be called before a frob has been requested
+    def desktop_auth_url
+      raise "Frob should be requested first. Use RubyDesk::Controller#get_frob()" unless @frob
+      auth_call = prepare_api_call("", :params=>{:api_key=>@api_key, :frob=>@frob},
         :base_url=>ODESK_AUTH_URL, :format=>nil, :method=>:get, :auth=>false)
       data = auth_call[:params].to_a.map{|pair| pair.join '='}.join('&')
       return auth_call[:url]+"?"+data

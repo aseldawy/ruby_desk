@@ -12,6 +12,18 @@ class TestRubyDesk < Test::Unit::TestCase
     end if result_filename
     return connector
   end
+  
+  def test_desktop_auth_url
+    connector = dummy_connector('frob.json')
+    frob = connector.get_frob
+    assert_equal "954461d16a2b843f259f3c059acdd81d", frob
+    
+    desktop_auth_url = connector.desktop_auth_url
+    assert desktop_auth_url =~ /frob=/
+    assert desktop_auth_url =~ /api_key=/
+    assert desktop_auth_url =~ /api_sig=/
+  end
+
 
   def test_sign
     connector  = RubyDesk::Connector.new('824d225a889aca186c55ac49a6b23957',
