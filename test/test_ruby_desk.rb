@@ -1,4 +1,4 @@
-require 'helper'
+require './helper'
 require 'date'
 
 class TestRubyDesk < Test::Unit::TestCase

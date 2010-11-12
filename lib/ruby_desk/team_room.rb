@@ -5,7 +5,7 @@ class RubyDesk::TeamRoom
   class << self
     # Retrieves all team rooms for the currently logged in user
     def get_teamrooms(connector)
-      json = connector.prepare_and_invoke_api_call 'team/v1/teamrooms',
+      json = connector.prepare_and_invoke_api_call 'team/v2/teamrooms',
           :method=>:get
 
       team_rooms = []
@@ -29,7 +29,7 @@ class RubyDesk::TeamRoom
 
   # Retrieves all snaphots for users currently connected to this team room
   def snapshot(connector, online='now')
-    json = connector.prepare_and_invoke_api_call "team/v1/teamrooms/#{self.id}",
+    json = connector.prepare_and_invoke_api_call "team/v2/teamrooms/#{self.id}",
       :params=>{:online=>online}, :method=>:get
 
     RubyDesk::Snapshot.new(json['teamroom']['snapshot'])
@@ -37,7 +37,6 @@ class RubyDesk::TeamRoom
 
   # Retrieves work diary for this team room
   def work_diary(connector, user_id, date = nil, timezone = "mine")
-    RubyDesk::Snapshot.workdiary(connector, self.id, user_id, date, timezone)
+    RubyDesk::Snapshot.work_diary(connector, self.id, user_id, date, timezone)
   end
 end
-
