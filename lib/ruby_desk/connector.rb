@@ -39,7 +39,7 @@ module RubyDesk
       end
 
       # concatenate secret with names, values
-      concatenated = @api_secret + sorted_params.to_s
+      concatenated = @api_secret + sorted_params.join
 
       RubyDesk.logger.debug {"concatenated: #{concatenated}"}
 
@@ -80,6 +80,7 @@ module RubyDesk
       url = URI.parse(api_call[:url])
       http = Net::HTTP.new(url.host, url.port)
       http.use_ssl = true
+			http.verify_mode = OpenSSL::SSL::VERIFY_NONE
 
       # Concatenate parameters to form data
       data = api_call[:params].to_a.map{|pair| pair.map{|x| URI.escape(x.to_s)}.join '='}.join('&')
@@ -213,4 +214,3 @@ module RubyDesk
 
   end
 end
-
