@@ -85,7 +85,7 @@
 # * op_tot_new_cond
 # * op_tot_rej
 # * op_ui_profile_access
-# * profile_key
+# * ciphertext
 # * search_status
 # * timezone
 # * ui_job_profile_access
@@ -120,7 +120,7 @@ class RubyDesk::Job < RubyDesk::OdeskEntity
       :op_private_rating_active, :op_reason, :op_recno, :op_required_skills,
       :op_skill, :op_start_date, :op_status_for_search, :op_time_created,
       :op_time_posted, :op_title, :op_tot_cand_client, :op_tot_cand_prof,
-      :op_tot_new_cond, :op_tot_rej, :op_ui_profile_access, :profile_key,
+      :op_tot_new_cond, :op_tot_rej, :op_ui_profile_access, :ciphertext,
       :search_status, :timezone, :ui_job_profile_access, :version
  
   # <h2>Details on Search Parameters</h2>
